@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3E2F8BD885F831B8B53AAAA5 /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */; };
+		C8562E0124F0BD4C008443B5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0024F0BD4C008443B5 /* SettingsView.swift */; };
+		C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0224F0BDC2008443B5 /* EditView.swift */; };
+		C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0424F0BDDD008443B5 /* AddView.swift */; };
+		C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0624F0BDFA008443B5 /* SavingView.swift */; };
+		C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0824F0BE15008443B5 /* SpendingView.swift */; };
 		C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BB9F424EF5D24000DD312 /* AppDelegate.swift */; };
 		C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BB9F624EF5D24000DD312 /* SceneDelegate.swift */; };
 		C85BB9FB24EF5D26000DD312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9FA24EF5D26000DD312 /* Assets.xcassets */; };
@@ -22,6 +27,7 @@
 		C85BBA1624EF5D93000DD312 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1224EF5D93000DD312 /* Category.swift */; };
 		C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1324EF5D93000DD312 /* Entry.swift */; };
 		C85BBA1924EF5EB0000DD312 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */; };
+		C85D578B24F18135005A9A41 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D578A24F18135005A9A41 /* Chart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,11 @@
 		81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Budgie-SwiftUI.entitlements"; sourceTree = "<group>"; };
+		C8562E0024F0BD4C008443B5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C8562E0224F0BDC2008443B5 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		C8562E0424F0BDDD008443B5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		C8562E0624F0BDFA008443B5 /* SavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingView.swift; sourceTree = "<group>"; };
+		C8562E0824F0BE15008443B5 /* SpendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingView.swift; sourceTree = "<group>"; };
 		C85BB9F124EF5D24000DD312 /* Budgie-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgie-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85BB9F424EF5D24000DD312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C85BB9F624EF5D24000DD312 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +56,7 @@
 		C85BBA1224EF5D93000DD312 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C85BBA1324EF5D93000DD312 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C85D578A24F18135005A9A41 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,7 @@
 				C85BBA1324EF5D93000DD312 /* Entry.swift */,
 				C85BBA1024EF5D93000DD312 /* Bill.swift */,
 				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
+				C85D578A24F18135005A9A41 /* Chart.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -137,6 +150,11 @@
 				C85BBA0924EF5D86000DD312 /* SignupUI.swift */,
 				C85BBA0B24EF5D86000DD312 /* LoginUI.swift */,
 				C85BBA0824EF5D86000DD312 /* MainUI.swift */,
+				C8562E0824F0BE15008443B5 /* SpendingView.swift */,
+				C8562E0624F0BDFA008443B5 /* SavingView.swift */,
+				C8562E0424F0BDDD008443B5 /* AddView.swift */,
+				C8562E0224F0BDC2008443B5 /* EditView.swift */,
+				C8562E0024F0BD4C008443B5 /* SettingsView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -257,16 +275,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */,
+				C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */,
 				C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */,
 				C85BBA1624EF5D93000DD312 /* Category.swift in Sources */,
+				C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */,
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
 				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
+				C85D578B24F18135005A9A41 /* Chart.swift in Sources */,
 				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,
 				C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */,
+				C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */,
 				C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */,
 				C85BBA0D24EF5D86000DD312 /* SignupUI.swift in Sources */,
 				C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */,
+				C8562E0124F0BD4C008443B5 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,3 +15,7 @@ struct Category {
     let moneySpentThisPeriod: Decimal
     
 }
+
+let testData = [Category(name: "McDonald's", description: "Restaurant", moneySpentThisPeriod: 0.0),
+                Category(name: "Tim Hortons", description: "Restaurant", moneySpentThisPeriod: 0.0),
+                Category(name: "Canadian Tire", description: "Store", moneySpentThisPeriod: 0.0)]
