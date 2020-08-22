@@ -3,27 +3,48 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2F8BD885F831B8B53AAAA5 /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */; };
 		C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BB9F424EF5D24000DD312 /* AppDelegate.swift */; };
 		C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BB9F624EF5D24000DD312 /* SceneDelegate.swift */; };
-		C85BB9F924EF5D24000DD312 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BB9F824EF5D24000DD312 /* ContentView.swift */; };
 		C85BB9FB24EF5D26000DD312 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9FA24EF5D26000DD312 /* Assets.xcassets */; };
 		C85BB9FE24EF5D26000DD312 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9FD24EF5D26000DD312 /* Preview Assets.xcassets */; };
 		C85BBA0124EF5D26000DD312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9FF24EF5D26000DD312 /* LaunchScreen.storyboard */; };
+		C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0824EF5D86000DD312 /* MainUI.swift */; };
+		C85BBA0D24EF5D86000DD312 /* SignupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0924EF5D86000DD312 /* SignupUI.swift */; };
+		C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */; };
+		C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0B24EF5D86000DD312 /* LoginUI.swift */; };
+		C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1024EF5D93000DD312 /* Bill.swift */; };
+		C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1124EF5D93000DD312 /* Frequency.swift */; };
+		C85BBA1624EF5D93000DD312 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1224EF5D93000DD312 /* Category.swift */; };
+		C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1324EF5D93000DD312 /* Entry.swift */; };
+		C85BBA1924EF5EB0000DD312 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0A96EFD6CB0D527D551C15 /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
+		985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Budgie-SwiftUI.entitlements"; sourceTree = "<group>"; };
 		C85BB9F124EF5D24000DD312 /* Budgie-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgie-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85BB9F424EF5D24000DD312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C85BB9F624EF5D24000DD312 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C85BB9F824EF5D24000DD312 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C85BB9FA24EF5D26000DD312 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C85BB9FD24EF5D26000DD312 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C85BBA0024EF5D26000DD312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C85BBA0224EF5D26000DD312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C85BBA0824EF5D86000DD312 /* MainUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUI.swift; sourceTree = "<group>"; };
+		C85BBA0924EF5D86000DD312 /* SignupUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupUI.swift; sourceTree = "<group>"; };
+		C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeUI.swift; sourceTree = "<group>"; };
+		C85BBA0B24EF5D86000DD312 /* LoginUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
+		C85BBA1024EF5D93000DD312 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		C85BBA1124EF5D93000DD312 /* Frequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
+		C85BBA1224EF5D93000DD312 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C85BBA1324EF5D93000DD312 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +52,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2F8BD885F831B8B53AAAA5 /* Pods_Budgie_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85229E5CB622AD85C1410241 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */,
+				0F0A96EFD6CB0D527D551C15 /* Pods-Budgie-SwiftUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A31829E274720407205A7CD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C85BB9E824EF5D24000DD312 = {
 			isa = PBXGroup;
 			children = (
 				C85BB9F324EF5D24000DD312 /* Budgie-SwiftUI */,
 				C85BB9F224EF5D24000DD312 /* Products */,
+				C85BBA1A24EF5F83000DD312 /* Model */,
+				C85BBA1B24EF5F95000DD312 /* View */,
+				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
+				85229E5CB622AD85C1410241 /* Pods */,
+				A31829E274720407205A7CD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,9 +100,9 @@
 		C85BB9F324EF5D24000DD312 /* Budgie-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */,
 				C85BB9F424EF5D24000DD312 /* AppDelegate.swift */,
 				C85BB9F624EF5D24000DD312 /* SceneDelegate.swift */,
-				C85BB9F824EF5D24000DD312 /* ContentView.swift */,
 				C85BB9FA24EF5D26000DD312 /* Assets.xcassets */,
 				C85BB9FF24EF5D26000DD312 /* LaunchScreen.storyboard */,
 				C85BBA0224EF5D26000DD312 /* Info.plist */,
@@ -75,6 +119,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C85BBA1A24EF5F83000DD312 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C85BBA1224EF5D93000DD312 /* Category.swift */,
+				C85BBA1324EF5D93000DD312 /* Entry.swift */,
+				C85BBA1024EF5D93000DD312 /* Bill.swift */,
+				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C85BBA1B24EF5F95000DD312 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */,
+				C85BBA0924EF5D86000DD312 /* SignupUI.swift */,
+				C85BBA0B24EF5D86000DD312 /* LoginUI.swift */,
+				C85BBA0824EF5D86000DD312 /* MainUI.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie-SwiftUI" */;
 			buildPhases = (
+				5BDB683B585BB72C40938813 /* [CP] Check Pods Manifest.lock */,
 				C85BB9ED24EF5D24000DD312 /* Sources */,
 				C85BB9EE24EF5D24000DD312 /* Frameworks */,
 				C85BB9EF24EF5D24000DD312 /* Resources */,
+				0977A907F5E1D70C02595154 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C85BBA0124EF5D26000DD312 /* LaunchScreen.storyboard in Resources */,
+				C85BBA1924EF5EB0000DD312 /* GoogleService-Info.plist in Resources */,
 				C85BB9FE24EF5D26000DD312 /* Preview Assets.xcassets in Resources */,
 				C85BB9FB24EF5D26000DD312 /* Assets.xcassets in Resources */,
 			);
@@ -141,14 +210,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0977A907F5E1D70C02595154 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BDB683B585BB72C40938813 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Budgie-SwiftUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C85BB9ED24EF5D24000DD312 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */,
+				C85BBA1624EF5D93000DD312 /* Category.swift in Sources */,
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
+				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
-				C85BB9F924EF5D24000DD312 /* ContentView.swift in Sources */,
+				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,
+				C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */,
+				C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */,
+				C85BBA0D24EF5D86000DD312 /* SignupUI.swift in Sources */,
+				C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +400,10 @@
 		};
 		C85BBA0624EF5D26000DD312 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Budgie-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = MMVMP38QPK;
@@ -295,6 +415,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,8 +423,10 @@
 		};
 		C85BBA0724EF5D26000DD312 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F0A96EFD6CB0D527D551C15 /* Pods-Budgie-SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Budgie-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = MMVMP38QPK;
@@ -315,6 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
