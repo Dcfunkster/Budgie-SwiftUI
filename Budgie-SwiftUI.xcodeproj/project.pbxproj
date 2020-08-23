@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3E2F8BD885F831B8B53AAAA5 /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */; };
-		C8562E0124F0BD4C008443B5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0024F0BD4C008443B5 /* SettingsView.swift */; };
 		C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0224F0BDC2008443B5 /* EditView.swift */; };
 		C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0424F0BDDD008443B5 /* AddView.swift */; };
 		C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0624F0BDFA008443B5 /* SavingView.swift */; };
@@ -27,7 +26,7 @@
 		C85BBA1624EF5D93000DD312 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1224EF5D93000DD312 /* Category.swift */; };
 		C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1324EF5D93000DD312 /* Entry.swift */; };
 		C85BBA1924EF5EB0000DD312 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */; };
-		C85D578B24F18135005A9A41 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D578A24F18135005A9A41 /* Chart.swift */; };
+		C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D5B7824F1DCFF008F169A /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Budgie-SwiftUI.entitlements"; sourceTree = "<group>"; };
-		C8562E0024F0BD4C008443B5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C8562E0224F0BDC2008443B5 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		C8562E0424F0BDDD008443B5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		C8562E0624F0BDFA008443B5 /* SavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingView.swift; sourceTree = "<group>"; };
@@ -56,7 +54,7 @@
 		C85BBA1224EF5D93000DD312 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C85BBA1324EF5D93000DD312 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C85D578A24F18135005A9A41 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		C85D5B7824F1DCFF008F169A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +92,6 @@
 				C85BB9F324EF5D24000DD312 /* Budgie-SwiftUI */,
 				C85BB9F224EF5D24000DD312 /* Products */,
 				C85BBA1A24EF5F83000DD312 /* Model */,
-				C85BBA1B24EF5F95000DD312 /* View */,
 				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
 				85229E5CB622AD85C1410241 /* Pods */,
 				A31829E274720407205A7CD8 /* Frameworks */,
@@ -134,11 +131,11 @@
 		C85BBA1A24EF5F83000DD312 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C85BBA1224EF5D93000DD312 /* Category.swift */,
 				C85BBA1324EF5D93000DD312 /* Entry.swift */,
+				C85BBA1224EF5D93000DD312 /* Category.swift */,
 				C85BBA1024EF5D93000DD312 /* Bill.swift */,
 				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
-				C85D578A24F18135005A9A41 /* Chart.swift */,
+				C85BBA1B24EF5F95000DD312 /* View */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -154,7 +151,7 @@
 				C8562E0624F0BDFA008443B5 /* SavingView.swift */,
 				C8562E0424F0BDDD008443B5 /* AddView.swift */,
 				C8562E0224F0BDC2008443B5 /* EditView.swift */,
-				C8562E0024F0BD4C008443B5 /* SettingsView.swift */,
+				C85D5B7824F1DCFF008F169A /* SettingsView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -283,14 +280,13 @@
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
 				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
-				C85D578B24F18135005A9A41 /* Chart.swift in Sources */,
+				C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */,
 				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,
 				C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */,
 				C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */,
 				C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */,
 				C85BBA0D24EF5D86000DD312 /* SignupUI.swift in Sources */,
 				C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */,
-				C8562E0124F0BD4C008443B5 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,7 +458,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
