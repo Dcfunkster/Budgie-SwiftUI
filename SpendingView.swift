@@ -30,28 +30,29 @@ struct SpendingView: View {
             .padding(.top, 20)
             .clipShape(Circle())
             .shadow(radius: 8)
-            
-            VStack {
-                ForEach(testArcData) { i in
-                    HStack {
-                        Text(i.name)
-                            .frame(width: 100)
-                        GeometryReader { g in
-                            HStack {
-                                Spacer(minLength: 0)
-                                Capsule()
-                                    .fill(i.color)
-                                    .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.value), height: 10)
-                                Text(String(format: "\(i.value)", "%.0f"))
-                                    .fontWeight(.bold)
-                                    .padding(.leading, 10)
-                            }
-                        }
-                    }
-                    .padding(.top, 18)
-                }
-            }
-            .padding()
+  
+            ///Optional bar graph beneath pie chart
+//            VStack {
+//                ForEach(testArcData) { i in
+//                    HStack {
+//                        Text(i.name)
+//                            .frame(width: 100)
+//                        GeometryReader { g in
+//                            HStack {
+//                                Spacer(minLength: 0)
+//                                Capsule()
+//                                    .fill(i.color)
+//                                    .frame(width: self.getWidth(width: g.frame(in: .global).width, value: i.value), height: 10)
+//                                Text(String(format: "\(i.value)", "%.0f"))
+//                                    .fontWeight(.bold)
+//                                    .padding(.leading, 10)
+//                            }
+//                        }
+//                    }
+//                    .padding(.top, 18)
+//                }
+//            }
+//            .padding()
             
         }
         .edgesIgnoringSafeArea(.top)
@@ -130,7 +131,9 @@ struct DrawShape: View {
 
 struct SpendingView_Previews: PreviewProvider {
     static var previews: some View {
-        SpendingView()
+        TabView {
+            SpendingView()
+        }
     }
 }
 
