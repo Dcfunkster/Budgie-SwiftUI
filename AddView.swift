@@ -21,16 +21,12 @@ struct AddView: View {
         return formatter
     }
     
-    var testData = [Category(name: "McDonald's", description: "Restaurant", moneySpentThisPeriod: 0.0),
-                    Category(name: "Tim Hortons", description: "Restaurant", moneySpentThisPeriod: 0.0),
-                    Category(name: "Canadian Tire", description: "Hardware Store", moneySpentThisPeriod: 0.0)]
-    
     var body: some View {
         Form {
             Section {
                 Picker(selection: $selection, label: Text("Category")) {
                     ForEach(0..<testData.count) {
-                        Text(self.testData[$0].name)
+                        Text(testData[$0].name)
                     }
                 }
                 

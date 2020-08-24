@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 
 struct MainUI: View {
-    @State var selection = 0
+    @State var selection: Int = 0
  
     var body: some View {
         TabView(selection: $selection) {

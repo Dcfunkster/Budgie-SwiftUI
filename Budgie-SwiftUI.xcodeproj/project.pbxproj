@@ -27,6 +27,8 @@
 		C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1324EF5D93000DD312 /* Entry.swift */; };
 		C85BBA1924EF5EB0000DD312 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */; };
 		C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D5B7824F1DCFF008F169A /* SettingsView.swift */; };
+		C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57124F33F3B00D69E34 /* ArcView.swift */; };
+		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		C85BBA1324EF5D93000DD312 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C85D5B7824F1DCFF008F169A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
+		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +156,18 @@
 				C8562E0424F0BDDD008443B5 /* AddView.swift */,
 				C8562E0224F0BDC2008443B5 /* EditView.swift */,
 				C85D5B7824F1DCFF008F169A /* SettingsView.swift */,
+				C85EE57324F3402800D69E34 /* Bar Graph */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		C85EE57324F3402800D69E34 /* Bar Graph */ = {
+			isa = PBXGroup;
+			children = (
+				C85EE57124F33F3B00D69E34 /* ArcView.swift */,
+				C85EE57424F3403F00D69E34 /* DrawShape.swift */,
+			);
+			path = "Bar Graph";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +295,8 @@
 				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
 				C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */,
+				C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */,
+				C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */,
 				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,
 				C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */,
 				C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */,
