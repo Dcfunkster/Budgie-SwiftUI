@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Entry {
+class Entry: Object {
     
-    let date: Date
-    let deltaMoney: Decimal
-    let category: Category
-    let vendor: String
-    let description: String
+    dynamic var category: Category = Category()
+    dynamic var date: Date = Date()
+    dynamic var deltaMoney: Decimal = 0.0
+    dynamic var vendor: Vendor = Vendor()
+    dynamic var descriptor: String? = nil
     
 }

@@ -29,6 +29,7 @@
 		C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D5B7824F1DCFF008F169A /* SettingsView.swift */; };
 		C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57124F33F3B00D69E34 /* ArcView.swift */; };
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
+		C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* Vendor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		C85D5B7824F1DCFF008F169A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
+		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				C85BBA1324EF5D93000DD312 /* Entry.swift */,
 				C85BBA1224EF5D93000DD312 /* Category.swift */,
 				C85BBA1024EF5D93000DD312 /* Bill.swift */,
+				C8663BA124FB225D00D28C4B /* Vendor.swift */,
 				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
 				C85BBA1B24EF5F95000DD312 /* View */,
 			);
@@ -147,27 +150,43 @@
 		C85BBA1B24EF5F95000DD312 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C8E3DBA124FBF8C1003FDF34 /* Welcome */,
+				C8E3DBA224FBF8CB003FDF34 /* Main */,
+				C85EE57324F3402800D69E34 /* Graphs */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C85EE57324F3402800D69E34 /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				C85EE57124F33F3B00D69E34 /* ArcView.swift */,
+				C85EE57424F3403F00D69E34 /* DrawShape.swift */,
+			);
+			path = Graphs;
+			sourceTree = "<group>";
+		};
+		C8E3DBA124FBF8C1003FDF34 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
 				C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */,
 				C85BBA0924EF5D86000DD312 /* SignupUI.swift */,
 				C85BBA0B24EF5D86000DD312 /* LoginUI.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		C8E3DBA224FBF8CB003FDF34 /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				C85BBA0824EF5D86000DD312 /* MainUI.swift */,
 				C8562E0824F0BE15008443B5 /* SpendingView.swift */,
 				C8562E0624F0BDFA008443B5 /* SavingView.swift */,
 				C8562E0424F0BDDD008443B5 /* AddView.swift */,
 				C8562E0224F0BDC2008443B5 /* EditView.swift */,
 				C85D5B7824F1DCFF008F169A /* SettingsView.swift */,
-				C85EE57324F3402800D69E34 /* Bar Graph */,
 			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		C85EE57324F3402800D69E34 /* Bar Graph */ = {
-			isa = PBXGroup;
-			children = (
-				C85EE57124F33F3B00D69E34 /* ArcView.swift */,
-				C85EE57424F3403F00D69E34 /* DrawShape.swift */,
-			);
-			path = "Bar Graph";
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +314,7 @@
 				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
 				C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */,
+				C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */,
 				C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */,
 				C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */,
 				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,

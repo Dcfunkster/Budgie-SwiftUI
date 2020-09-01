@@ -6,12 +6,15 @@
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
 
-import Foundation
+/// A recurring payment to be taken out of account automatically
 
-struct Bill {
+import Foundation
+import RealmSwift
+
+class Bill: Object {
     
-    let amount: Decimal
-    let vendor: String
-    let frequency: Frequency
-    
+    dynamic var amount: Decimal = 0.0
+    dynamic var vendor: Vendor = Vendor()
+    dynamic var frequency: Frequency? = nil
+
 }
