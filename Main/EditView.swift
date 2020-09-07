@@ -15,27 +15,17 @@ struct EditView: View {
     @State private var showCategoryAlert = false
     
     var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    NavigationLink(
-                        destination: CategoryList()
-                            .navigationBarTitle("Categories")
-                            .navigationBarHidden(false)
-                    ) {
-                        Text("Categories")
-                    }
+        Form {
+            Section {
+                NavigationLink(
+                    destination: CategoryList()
+                        .navigationBarTitle("Categories")
+                        .navigationBarHidden(false)
+                ) {
+                    Text("Categories")
                 }
             }
-            .navigationBarTitle("Edit Budget")
         }
-        .tabItem {
-            VStack {
-                Image(systemName: "pencil.circle.fill")
-                Text("Edit")
-            }
-        }
-        .tag(3)
     }
 }
 
@@ -43,7 +33,6 @@ struct EditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             EditView()
-            .navigationBarTitle("Categories")
             .navigationBarItems(trailing:
                 Button(action: {
                     print("Plus button pressed")
@@ -58,34 +47,29 @@ struct EditView_Previews: PreviewProvider {
 struct CategoryList: View {
     var body: some View {
 
-        NavigationView {
-            List {
-                /// Create a location for a category to be displayed for every category in entries
-                ForEach(0..<(entries?.count ?? 1)) { i in
+        List {
+            /// Create a location for a category to be displayed for every category in entries
+            ForEach(0..<(entries?.count ?? 1)) { i in
+                
+                NavigationLink(destination: EditCategory(selectedCategory: categories?[i])) {
                     
-                    NavigationLink(destination: EditCategory(selectedCategory: categories?[i])) {
-                        
-                        Text(categories?[i].name ?? "Press the + button to create a category")
-                    
-                    }
-                    
+                    Text(categories?[i].name ?? "Press the + button to create a category")
+                
                 }
-
+                
             }
-            .navigationBarTitle("Categories")
-            .navigationBarHidden(false)
+            .navigationBarTitle("Categories", displayMode: .inline)
 
-            /// Plus button pressed
-            .navigationBarItems(trailing:
-                Button(action: {
-                    /** I want to  1) Add a new row to the list
-                               2) Let the user type directly into that new row with a TextField
-                               3) Add the text the user selected as a new category**/
-                    print("Plus button pressed")
-                }) {
-                    Image(systemName: "plus").imageScale(.large)
-                }
-            )
+        /// Plus button pressed
+        .navigationBarItems(trailing:
+            Button(action: {
+                /** I want to  1) Add a new row to the list
+                           2) Let the user type directly into that new row with a TextField
+                           3) Add the text the user selected as a new category**/
+                print("Plus button pressed")
+            }) {
+                Image(systemName: "plus").imageScale(.large)
+            })
         }
     }
 }

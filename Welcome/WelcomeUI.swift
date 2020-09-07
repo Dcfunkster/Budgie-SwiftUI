@@ -42,6 +42,7 @@ struct WelcomeUI: View {
                 .foregroundColor(.white)
             }
         .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         }
     }
 }

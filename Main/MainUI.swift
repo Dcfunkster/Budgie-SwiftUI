@@ -15,23 +15,45 @@ var categories: Results<Category>?
 var entries: Results<Entry>?
 
 struct MainUI: View {
-    @State var selection: Int = 3
- 
     var body: some View {
-        TabView(selection: $selection) {
-            SpendingView()
-            SavingView()
-            AddView()
-            EditView()
-            SettingsView()
-        }
+    TabView {
+        SpendingView()
+            .navigationBarTitle("Spending")
+            .tabItem {
+                Image(systemName: "dollarsign.circle")
+                Text("Spending")
+            }
+        SavingView()
+            .navigationBarTitle("Saving")
+            .tabItem {
+                Image(systemName: "dollarsign.circle.fill")
+                Text("Saving")
+            }
+        AddView()
+            .navigationBarTitle("Add")
+            .tabItem {
+                Image(systemName: "plus.circle.fill")
+                Text("Add")
+            }
+        EditView()
+            .navigationBarTitle("Edit")
+            .tabItem {
+                Image(systemName: "pencil.circle.fill")
+                Text("Edit")
+            }
+        SettingsView()
+            .navigationBarTitle("Settings")
+            .tabItem {
+                Image(systemName: "gear")
+                Text("Settings")
+            }
+    }
     .navigationBarBackButtonHidden(true)
-    .navigationBarHidden(true)
     }
 }
 
 struct MainUI_Previews: PreviewProvider {
     static var previews: some View {
-        MainUI(selection: 4)
+        MainUI()
     }
 }

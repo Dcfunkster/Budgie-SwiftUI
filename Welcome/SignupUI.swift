@@ -55,7 +55,7 @@ struct SignupUI: View {
             })
             Spacer()
         }
-
+    .navigationBarHidden(false)
     }
 }
 

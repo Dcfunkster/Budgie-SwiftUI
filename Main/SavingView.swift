@@ -10,16 +10,7 @@ import SwiftUI
 
 struct SavingView: View {
     var body: some View {
-        NavigationView {
-            ArcView(data: secondTestArcData)
-        }
-        .tabItem {
-            VStack {
-                Image(systemName: "dollarsign.circle.fill")
-                Text("Saving")
-            }
-        }
-        .tag(1)
+        ArcView(data: secondTestArcData)
     }
 }
 

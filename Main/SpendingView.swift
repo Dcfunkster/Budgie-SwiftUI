@@ -13,19 +13,9 @@ struct SpendingView: View {
     @State private var show: Bool = false
     
     var body: some View {
-        
-        NavigationView {
-            VStack {
-                ArcView(data: testArcData)
-            }
+        VStack {
+            ArcView(data: testArcData)
         }
-        .tabItem {
-            VStack {
-                Image(systemName: "dollarsign.circle")
-                Text("Spending")
-            }
-        }
-        .tag(0)
     }
 }
 

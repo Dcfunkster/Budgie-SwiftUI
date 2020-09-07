@@ -46,6 +46,7 @@ struct LoginUI: View {
                 .padding()
             Spacer()
         }
+    .navigationBarHidden(false)
     }
 }
 
