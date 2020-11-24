@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E2F8BD885F831B8B53AAAA5 /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */; };
+		0CBB6662085EB806F50250A6 /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCCA91DA62E773506E3E5C5 /* Pods_Budgie_SwiftUI.framework */; };
 		C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0224F0BDC2008443B5 /* EditView.swift */; };
 		C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0424F0BDDD008443B5 /* AddView.swift */; };
 		C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0624F0BDFA008443B5 /* SavingView.swift */; };
@@ -33,9 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F0A96EFD6CB0D527D551C15 /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
-		81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
-		985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3116853D1DB976E77D26AA2A /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		BCCCA91DA62E773506E3E5C5 /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Budgie-SwiftUI.entitlements"; sourceTree = "<group>"; };
 		C8562E0224F0BDC2008443B5 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		C8562E0424F0BDDD008443B5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E2F8BD885F831B8B53AAAA5 /* Pods_Budgie_SwiftUI.framework in Frameworks */,
+				0CBB6662085EB806F50250A6 /* Pods_Budgie_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,16 +78,16 @@
 		85229E5CB622AD85C1410241 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */,
-				0F0A96EFD6CB0D527D551C15 /* Pods-Budgie-SwiftUI.release.xcconfig */,
+				DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */,
+				3116853D1DB976E77D26AA2A /* Pods-Budgie-SwiftUI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A31829E274720407205A7CD8 /* Frameworks */ = {
+		A95169D8F671BD3B9968D2D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				985DAD740CB59B6087B08FFF /* Pods_Budgie_SwiftUI.framework */,
+				BCCCA91DA62E773506E3E5C5 /* Pods_Budgie_SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,7 +100,7 @@
 				C85BBA1A24EF5F83000DD312 /* Model */,
 				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
 				85229E5CB622AD85C1410241 /* Pods */,
-				A31829E274720407205A7CD8 /* Frameworks */,
+				A95169D8F671BD3B9968D2D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,11 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie-SwiftUI" */;
 			buildPhases = (
-				5BDB683B585BB72C40938813 /* [CP] Check Pods Manifest.lock */,
+				B97F1E07DFAA4B88E7479BD5 /* [CP] Check Pods Manifest.lock */,
 				C85BB9ED24EF5D24000DD312 /* Sources */,
 				C85BB9EE24EF5D24000DD312 /* Frameworks */,
 				C85BB9EF24EF5D24000DD312 /* Resources */,
-				0977A907F5E1D70C02595154 /* [CP] Embed Pods Frameworks */,
+				65A24418B990B84DC3306434 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,7 +218,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Daniel Funk";
 				TargetAttributes = {
 					C85BB9F024EF5D24000DD312 = {
@@ -259,7 +259,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0977A907F5E1D70C02595154 /* [CP] Embed Pods Frameworks */ = {
+		65A24418B990B84DC3306434 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -276,7 +276,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5BDB683B585BB72C40938813 /* [CP] Check Pods Manifest.lock */ = {
+		B97F1E07DFAA4B88E7479BD5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,6 +366,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -426,6 +427,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -456,7 +458,7 @@
 		};
 		C85BBA0624EF5D26000DD312 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81138791B584718BA60ED5B9 /* Pods-Budgie-SwiftUI.debug.xcconfig */;
+			baseConfigurationReference = DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
@@ -465,6 +467,7 @@
 				DEVELOPMENT_TEAM = MMVMP38QPK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Budgie-SwiftUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -479,7 +482,7 @@
 		};
 		C85BBA0724EF5D26000DD312 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F0A96EFD6CB0D527D551C15 /* Pods-Budgie-SwiftUI.release.xcconfig */;
+			baseConfigurationReference = 3116853D1DB976E77D26AA2A /* Pods-Budgie-SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
@@ -488,6 +491,7 @@
 				DEVELOPMENT_TEAM = MMVMP38QPK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Budgie-SwiftUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
