@@ -32,7 +32,7 @@ struct SignupUI: View {
                     .multilineTextAlignment(.center)
             }
             
-            NavigationLink(destination: MainUI(), isActive: $authenticationDidSucceed) { EmptyView() }
+            NavigationLink(destination: MainUI(selectedTab: .add), isActive: $authenticationDidSucceed) { EmptyView() }
             // Sign Up Button
             Button(action: {
                 

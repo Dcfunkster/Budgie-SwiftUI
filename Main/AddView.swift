@@ -10,11 +10,13 @@ import SwiftUI
 import RealmSwift
 
 struct AddView: View {
-    @State private var selection: Int = 0
+    @State private var category: Int = 0
     @State private var date = Date()
-    @State private var amount: String = ""
+    @ObservedObject var amount = NumbersOnly()
     @State private var vendor: String = ""
     @State private var description: String = ""
+    
+    let realm = try! Realm()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -25,9 +27,9 @@ struct AddView: View {
     var body: some View {
         Form {
             Section {
-                Picker(selection: $selection, label: Text("Category")) {
+                Picker(selection: $category, label: Text("Category")) {
                     ForEach(0..<(entries?.count ?? 1)) {
-                        Text(entries?[$0].category.name ?? "Go to the Edit tab to add a new category!")
+                        Text(entries?[$0].testCategory?.name ?? "Go to the Edit tab to add a new category!")
                     }
                 }
                 
@@ -38,9 +40,10 @@ struct AddView: View {
                 HStack {
                     Text("Amount ($)")
                     Spacer()
-                    TextField("E.g. 5.67", text: $amount)
+                    TextField("E.g. 5.67", text: $amount.value)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
+                        .keyboardType(.decimalPad)
                 }
                 
                 HStack {
@@ -57,7 +60,12 @@ struct AddView: View {
             }
             Section {
                 Button(action: {
-                    var newEntry = Entry()
+                    let newEntry = Entry()
+                    //newEntry.category = category -need to make a universally accessible list of categories stored in db
+                    newEntry.date = date
+                    newEntry.deltaMoney = Decimal((amount.value as NSString).doubleValue)
+                    //newEntry.vendor = vendor -also need a list of vendors stored in db
+                    newEntry.descriptor = description
 
                 }, label: {Text("Add Entry")})
             }
@@ -65,6 +73,18 @@ struct AddView: View {
     }
 }
 
+class NumbersOnly: ObservableObject {
+    @Published var value = "" {
+        didSet {
+            let filtered = value.filter { $0.isNumber }
+            
+            if value != filtered {
+                value = filtered
+            }
+        }
+    }
+}
+ 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         TabView {

@@ -27,7 +27,7 @@ struct LoginUI: View {
                 Text("Error: \(errorMessage)")
             }
             
-            NavigationLink(destination: MainUI(), isActive: $authenticationDidSucceed) { EmptyView() }
+            NavigationLink(destination: MainUI(selectedTab: .add), isActive: $authenticationDidSucceed) { EmptyView() }
             Button(action: {
                 
                 // Login
@@ -45,8 +45,8 @@ struct LoginUI: View {
             })
                 .padding()
             Spacer()
-        }
-    .navigationBarHidden(false)
+        }.navigationTitle("LoginUI")
+        .navigationBarHidden(false)
     }
 }
 

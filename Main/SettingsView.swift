@@ -15,23 +15,24 @@ struct SettingsView: View {
     @State private var logoutSuccessful: Bool = false
     
     var body: some View {
-        ZStack {
-            Form {
-                Section(header: Text("Section Header")) {
-                    NavigationLink(destination: WelcomeUI()) {
-                        Text("Setting Option")
+        VStack {
+            ZStack {
+                Form {
+                    Section(header: Text("Section Header")) {
+                        NavigationLink(destination: WelcomeUI()) {
+                            Text("Setting Option")
+                        }
+                    }
+                    Section {
+                        Button("Log Out") {
+                            self.logout()
+                        }
+                        .foregroundColor(.red)
                     }
                 }
-                Section {
-                    Button("Log Out") {
-                        self.logout()
-                    }
-                    .foregroundColor(.red)
-                }
+                NavigationLink(destination: WelcomeUI(), isActive: $logoutSuccessful) { EmptyView() }
             }
-            NavigationLink(destination: WelcomeUI(), isActive: $logoutSuccessful) { EmptyView() }
-        }
-            
+        }.navigationBarTitle("Settings")
         /// Error message if logout unsuccessful
         .alert(isPresented: $alertState) {
             Alert(title: Text("Logout Error"), message: Text("There was an error logging you out, please try again later."), dismissButton: .default(Text("OK")))

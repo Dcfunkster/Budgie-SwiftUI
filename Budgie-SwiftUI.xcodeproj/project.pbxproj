@@ -92,12 +92,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C817838A25896F4900B8F221 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		C85BB9E824EF5D24000DD312 = {
 			isa = PBXGroup;
 			children = (
 				C85BB9F324EF5D24000DD312 /* Budgie-SwiftUI */,
 				C85BB9F224EF5D24000DD312 /* Products */,
 				C85BBA1A24EF5F83000DD312 /* Model */,
+				C817838A25896F4900B8F221 /* Data */,
+				C85BBA1B24EF5F95000DD312 /* View */,
 				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
 				85229E5CB622AD85C1410241 /* Pods */,
 				A95169D8F671BD3B9968D2D5 /* Frameworks */,
@@ -137,12 +146,11 @@
 		C85BBA1A24EF5F83000DD312 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C85BBA1324EF5D93000DD312 /* Entry.swift */,
 				C85BBA1224EF5D93000DD312 /* Category.swift */,
-				C85BBA1024EF5D93000DD312 /* Bill.swift */,
+				C85BBA1324EF5D93000DD312 /* Entry.swift */,
 				C8663BA124FB225D00D28C4B /* Vendor.swift */,
+				C85BBA1024EF5D93000DD312 /* Bill.swift */,
 				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
-				C85BBA1B24EF5F95000DD312 /* View */,
 			);
 			name = Model;
 			sourceTree = "<group>";

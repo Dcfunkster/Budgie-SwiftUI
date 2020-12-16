@@ -15,41 +15,49 @@ var categories: Results<Category>?
 var entries: Results<Entry>?
 
 struct MainUI: View {
+    
+    @State var selectedTab: Views = .add
+    
     var body: some View {
-    TabView {
-        SpendingView()
-            .navigationBarTitle("Spending")
-            .tabItem {
-                Image(systemName: "dollarsign.circle")
-                Text("Spending")
-            }
-        SavingView()
-            .navigationBarTitle("Saving")
-            .tabItem {
-                Image(systemName: "dollarsign.circle.fill")
-                Text("Saving")
-            }
-        AddView()
-            .navigationBarTitle("Add")
-            .tabItem {
-                Image(systemName: "plus.circle.fill")
-                Text("Add")
-            }
-        EditView()
-            .navigationBarTitle("Edit")
-            .tabItem {
-                Image(systemName: "pencil.circle.fill")
-                Text("Edit")
-            }
-        SettingsView()
-            .navigationBarTitle("Settings")
-            .tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
-            }
+        TabView(selection: $selectedTab) {
+            SpendingView()
+                .tabItem {
+                    Image(systemName: "bag.fill")
+                    Text("Spending")
+                }.tag(Views.spending)
+            SavingView()
+                .tabItem {
+                    Image(systemName: "dollarsign.circle.fill")
+                    Text("Saving")
+                }.tag(Views.saving)
+            AddView()
+                .tabItem {
+                    Image(systemName: "plus.circle.fill")
+                    Text("Add")
+                }.tag(Views.add)
+            EditView()
+                .tabItem {
+                    Image(systemName: "pencil.circle.fill")
+                    Text("Edit")
+                }.tag(Views.edit)
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }.tag(Views.settings)
+        }
+        .navigationTitle(Text(selectedTab.rawValue))
+        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarBackButtonHidden(true)
     }
-    .navigationBarBackButtonHidden(true)
-    }
+}
+
+enum Views: String {
+    case spending = "Spending"
+    case saving = "Saving"
+    case add = "Add"
+    case edit = "Edit"
+    case settings = "Settings"
 }
 
 struct MainUI_Previews: PreviewProvider {

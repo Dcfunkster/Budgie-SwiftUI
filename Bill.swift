@@ -14,7 +14,7 @@ import RealmSwift
 class Bill: Object {
     
     dynamic var amount: Decimal = 0.0
-    dynamic var vendor: Vendor = Vendor()
+    dynamic var vendor: Vendor? = nil
     dynamic var frequency: Frequency? = nil
 
 }

@@ -19,7 +19,7 @@ struct EditView: View {
             Section {
                 NavigationLink(
                     destination: CategoryList()
-                        .navigationBarTitle("Categories")
+                        .navigationBarTitle("Categories", displayMode: .inline)
                         .navigationBarHidden(false)
                 ) {
                     Text("Categories")

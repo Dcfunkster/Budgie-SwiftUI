@@ -40,9 +40,7 @@ struct WelcomeUI: View {
                 .padding()
                 .background(Color.purple)
                 .foregroundColor(.white)
-            }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+            }.navigationTitle(Text("WelcomeUI"))
         }
     }
 }

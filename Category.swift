@@ -15,5 +15,7 @@ class Category: Object {
     dynamic var descriptor: String? = nil
     dynamic var moneySpentThisPeriod: Decimal = 0.0
     dynamic var colour: Color = Color.white
+    
+    let entries = RealmSwift.List<Entry>()
 
 }
