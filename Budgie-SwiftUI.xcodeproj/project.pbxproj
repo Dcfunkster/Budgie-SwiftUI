@@ -30,6 +30,7 @@
 		C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57124F33F3B00D69E34 /* ArcView.swift */; };
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
 		C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* Vendor.swift */; };
+		C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 		DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,11 @@
 		C817838A25896F4900B8F221 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C85BBA1224EF5D93000DD312 /* Category.swift */,
+				C85BBA1324EF5D93000DD312 /* Entry.swift */,
+				C8663BA124FB225D00D28C4B /* Vendor.swift */,
+				C85BBA1024EF5D93000DD312 /* Bill.swift */,
+				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -106,7 +113,7 @@
 				C85BB9F224EF5D24000DD312 /* Products */,
 				C85BBA1A24EF5F83000DD312 /* Model */,
 				C817838A25896F4900B8F221 /* Data */,
-				C85BBA1B24EF5F95000DD312 /* View */,
+				C85BBA1B24EF5F95000DD312 /* Views */,
 				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
 				85229E5CB622AD85C1410241 /* Pods */,
 				A95169D8F671BD3B9968D2D5 /* Frameworks */,
@@ -146,23 +153,19 @@
 		C85BBA1A24EF5F83000DD312 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C85BBA1224EF5D93000DD312 /* Category.swift */,
-				C85BBA1324EF5D93000DD312 /* Entry.swift */,
-				C8663BA124FB225D00D28C4B /* Vendor.swift */,
-				C85BBA1024EF5D93000DD312 /* Bill.swift */,
-				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
+				C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		C85BBA1B24EF5F95000DD312 /* View */ = {
+		C85BBA1B24EF5F95000DD312 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				C8E3DBA124FBF8C1003FDF34 /* Welcome */,
 				C8E3DBA224FBF8CB003FDF34 /* Main */,
 				C85EE57324F3402800D69E34 /* Graphs */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		C85EE57324F3402800D69E34 /* Graphs */ = {
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */,
+				C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */,
 				C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */,
 				C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */,
 				C85BBA1624EF5D93000DD312 /* Category.swift in Sources */,

@@ -41,9 +41,8 @@ struct AddView: View {
                     Text("Amount ($)")
                     Spacer()
                     TextField("E.g. 5.67", text: $amount.value)
-                        .keyboardType(.numberPad)
-                        .multilineTextAlignment(.trailing)
                         .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
                 }
                 
                 HStack {
@@ -60,31 +59,18 @@ struct AddView: View {
             }
             Section {
                 Button(action: {
-                    let newEntry = Entry()
-                    //newEntry.category = category -need to make a universally accessible list of categories stored in db
-                    newEntry.date = date
-                    newEntry.deltaMoney = Decimal((amount.value as NSString).doubleValue)
-                    //newEntry.vendor = vendor -also need a list of vendors stored in db
-                    newEntry.descriptor = description
-
+//                    let newEntry = Entry()
+//                    //newEntry.category = category -need to make a universally accessible list of categories stored in db
+//                    newEntry.date = date
+//                    newEntry.deltaMoney = Decimal((amount.value as NSString).doubleValue)
+//                    //newEntry.vendor = vendor -also need a list of vendors stored in db
+//                    newEntry.descriptor = description
                 }, label: {Text("Add Entry")})
             }
         }
     }
 }
 
-class NumbersOnly: ObservableObject {
-    @Published var value = "" {
-        didSet {
-            let filtered = value.filter { $0.isNumber }
-            
-            if value != filtered {
-                value = filtered
-            }
-        }
-    }
-}
- 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         TabView {

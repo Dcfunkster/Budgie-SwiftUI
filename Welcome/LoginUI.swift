@@ -26,24 +26,24 @@ struct LoginUI: View {
             if authenticationDidFail {
                 Text("Error: \(errorMessage)")
             }
-            
-            NavigationLink(destination: MainUI(selectedTab: .add), isActive: $authenticationDidSucceed) { EmptyView() }
-            Button(action: {
-                
-                // Login
-                Auth.auth().signIn(withEmail: self.email, password: self.password) { (authResult, error) in
-                    if let e = error {
-                        self.errorMessage = e.localizedDescription
-                        self.authenticationDidFail = true
-                    } else {
-                        self.authenticationDidSucceed = true
-                    }
-                }
-                
-            }, label: {
-                Text("Log In")
-            })
-                .padding()
+            NavigationLink(destination: MainUI(), label: { Text("Log In") })
+//            NavigationLink(destination: MainUI(), isActive: $authenticationDidSucceed) { EmptyView() }
+//            Button(action: {
+//
+//                // Login
+//                Auth.auth().signIn(withEmail: self.email, password: self.password) { (authResult, error) in
+//                    if let e = error {
+//                        self.errorMessage = e.localizedDescription
+//                        self.authenticationDidFail = true
+//                    } else {
+//                        self.authenticationDidSucceed = true
+//                    }
+//                }
+//
+//            }, label: {
+//                Text("Log In")
+//            })
+//                .padding()
             Spacer()
         }.navigationTitle("LoginUI")
         .navigationBarHidden(false)
