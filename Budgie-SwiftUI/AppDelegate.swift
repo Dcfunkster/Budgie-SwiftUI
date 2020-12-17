@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseCore
 import RealmSwift
+import FileProvider
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,13 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        //print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         do {
             let realm = try Realm()
         } catch {
             print("Error initialising new realm, \(error)")
         }
+        
         
         return true
     }

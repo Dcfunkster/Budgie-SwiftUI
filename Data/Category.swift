@@ -8,14 +8,18 @@
 
 import SwiftUI
 import RealmSwift
+import UIKit
 
 class Category: Object {
     
-    dynamic var name: String = ""
-    dynamic var descriptor: String? = nil
-    dynamic var moneySpentThisPeriod: Decimal = 0.0
-    dynamic var colour: Color = Color.white
+    @objc dynamic var name: String = ""
+    @objc dynamic var descriptor: String?
+    @objc dynamic var moneySpentThisPeriod: Double = 0.0
+    @objc dynamic var colour: UIColor = UIColor.white
     
     let entries = RealmSwift.List<Entry>()
 
+    override static func ignoredProperties() -> [String] {
+        return ["colour"]
+    }
 }

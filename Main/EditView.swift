@@ -9,6 +9,8 @@
 import SwiftUI
 import RealmSwift
 
+var realm = try! Realm()
+
 struct EditView: View {
     
     @State private var categoryName: String = ""
@@ -17,10 +19,12 @@ struct EditView: View {
     var body: some View {
         Form {
             Section {
-                NavigationLink(
-                    destination: CategoryList()
+                NavigationLink(destination: CategoryList()
                         .navigationBarTitle("Categories", displayMode: .inline)
                         .navigationBarHidden(false)
+                        .onAppear(perform: {
+                            load()
+                        })
                 ) {
                     Text("Categories")
                 }
@@ -29,47 +33,150 @@ struct EditView: View {
     }
 }
 
-struct EditView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            EditView()
-            .navigationBarItems(trailing:
-                Button(action: {
-                    print("Plus button pressed")
-                }) {
-                    Image(systemName: "plus").imageScale(.large)
+struct CategoryList: View {
+    
+    @State private var showingAddView: Bool = false
+    @State private var editBtnPressed: Bool = false
+    @State private var cancelBtnPressed: Bool = true
+    
+    var body: some View {
+        
+        
+        /// Create a location for a category to be displayed for every category in entries
+        if let safeCategories = categories { // Categories found in db
+            List {
+                ForEach(0..<(safeCategories.count)) { i in
+                    NavigationLink(destination: EditCategory(selectedCategory: safeCategories[i])) {
+                        Text(safeCategories[i].name)
+                    }
                 }
-            )
+            }
+            .navigationBarTitle("Categories", displayMode: .inline)
+            // Edit button pressed
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing) {
+//                    if cancelBtnPressed {
+//                        Button("Edit", action: {
+//                            editBtnPressed = true
+//                            cancelBtnPressed = false
+//                        })
+//                    } else if editBtnPressed {
+//                        Button("Cancel", action: {
+//                            cancelBtnPressed = true
+//                            editBtnPressed = false
+//                        })
+//                    }
+                    Button(action: {
+                        self.showingAddView.toggle()
+                    }) {
+                        Image(systemName: "plus").imageScale(.large)
+                    }.sheet(isPresented: $showingAddView) {
+                        AddCategory()
+                    }
+                }
+            })
+        } else { // No categories
+            ScrollView {
+                Text("Press the Edit button to start adding!").padding()
+            }
+            .navigationBarTitle("Categories", displayMode: .inline)
+            // Edit button pressed
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing) {
+//                    if cancelBtnPressed {
+//                        Button("Edit", action: {
+//                            editBtnPressed = true
+//                            cancelBtnPressed = false
+//                        })
+//                    } else if editBtnPressed {
+//                        Button("Cancel", action: {
+//                            cancelBtnPressed = true
+//                            editBtnPressed = false
+//                        })
+//                    }
+                    
+                    Button(action: {
+                        self.showingAddView.toggle()
+                    }) {
+                        Image(systemName: "plus").imageScale(.large)
+                    }.sheet(isPresented: $showingAddView) {
+                        AddCategory()
+                    }
+                    
+                }
+            })
         }
+        /** I want to  1) Add a new row to the list
+                   2) Let the user type directly into that new row with a TextField
+                   3) Add the text the user selected as a new category**/
     }
 }
 
-struct CategoryList: View {
+func save(_ category: Category) {
+    do {
+        try realm.write {
+            realm.add(category)
+        }
+    } catch {
+        print("Error saving category \(error)")
+    }
+}
+func load() {
+    categories = realm.objects(Category.self)
+}
+
+struct AddCategory: View {
+    
+    @State private var name: String = ""
+    @State private var descriptor: String = ""
+    @State private var colour = Color.red
+    
     var body: some View {
-
-        List {
-            /// Create a location for a category to be displayed for every category in entries
-            ForEach(0..<(entries?.count ?? 1)) { i in
-                
-                NavigationLink(destination: EditCategory(selectedCategory: categories?[i])) {
-                    
-                    Text(categories?[i].name ?? "Press the + button to create a category")
-                
-                }
-                
-            }
-            .navigationBarTitle("Categories", displayMode: .inline)
-
-        /// Plus button pressed
-        .navigationBarItems(trailing:
+        HStack {
+            Spacer()
             Button(action: {
-                /** I want to  1) Add a new row to the list
-                           2) Let the user type directly into that new row with a TextField
-                           3) Add the text the user selected as a new category**/
-                print("Plus button pressed")
+                
             }) {
-                Image(systemName: "plus").imageScale(.large)
-            })
+                Image(systemName: "xmark.circle.fill")
+            }
+            .padding()
+            .foregroundColor(.gray)
+            .imageScale(.large)
+        }
+        Form {
+            Text("Add new category")
+            Section {
+                HStack {
+                    Text("Name")
+                    Spacer()
+                    TextField("Groceries", text: $name)
+                        .multilineTextAlignment(.trailing)
+                }
+                HStack {
+                    Text("Description")
+                    Spacer()
+                    TextField("Optional", text: $descriptor)
+                        .multilineTextAlignment(.trailing)
+                }
+                HStack {
+                    Text("Colour")
+                    Spacer()
+                    ColorPicker("", selection: $colour, supportsOpacity: false) // Want this to eventually automatically choose a colour that the user has not previously selected.
+                        .multilineTextAlignment(.trailing)
+                }
+                Button(action: {
+                    
+                    let newCategory = Category()
+                    newCategory.name = name
+                    newCategory.descriptor = descriptor
+                    newCategory.colour = UIColor(colour)
+                    save(newCategory)
+                    load()
+                    
+                }) {
+                    Text("Add Category")
+                }
+            }
         }
     }
 }
@@ -82,6 +189,14 @@ struct EditCategory: View {
             Section {
                 Text("New")
             }
+        }
+    }
+}
+
+struct EditView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            CategoryList()
         }
     }
 }

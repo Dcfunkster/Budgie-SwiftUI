@@ -10,8 +10,7 @@ import SwiftUI
 import Firebase
 import RealmSwift
 
-var realm = try! Realm()
-var categories: Results<Category>?
+var categories: Results<Category>? = realm.objects(Category.self)
 var entries: Results<Entry>?
 
 struct MainUI: View {
@@ -42,7 +41,7 @@ struct MainUI: View {
                 }.tag(Views.edit)
             SettingsView()
                 .tabItem {
-                    Image(systemName: "gear")
+                    Image(systemName: "gearshape.fill")
                     Text("Settings")
                 }.tag(Views.settings)
         }

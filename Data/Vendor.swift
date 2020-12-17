@@ -8,11 +8,16 @@
 
 import SwiftUI
 import RealmSwift
+import UIKit
 
 class Vendor: Object {
     
-    dynamic var name: String = ""
-    dynamic var descriptor: String? = nil
-    dynamic var colour: Color = Color.white
+    @objc dynamic var name: String = ""
+    @objc dynamic var descriptor: String? = nil
+    @objc dynamic var colour: UIColor = UIColor.white
+    
+    override static func ignoredProperties() -> [String] {
+        return ["colour"]
+    }
     
 }

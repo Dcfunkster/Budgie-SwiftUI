@@ -10,13 +10,14 @@ import SwiftUI
 import RealmSwift
 
 struct AddView: View {
+    
+    //var realm = try! Realm()
+    
     @State private var category: Int = 0
     @State private var date = Date()
     @ObservedObject var amount = NumbersOnly()
     @State private var vendor: String = ""
     @State private var description: String = ""
-    
-    let realm = try! Realm()
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -32,9 +33,15 @@ struct AddView: View {
                         Text(entries?[$0].testCategory?.name ?? "Go to the Edit tab to add a new category!")
                     }
                 }
+                .onTapGesture {
+                    self.hideKeyboard()
+                }
                 
                 DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
                     Text("Select a date")
+                }
+                .onTapGesture {
+                    self.hideKeyboard()
                 }
                 
                 HStack {
@@ -65,11 +72,24 @@ struct AddView: View {
 //                    newEntry.deltaMoney = Decimal((amount.value as NSString).doubleValue)
 //                    //newEntry.vendor = vendor -also need a list of vendors stored in db
 //                    newEntry.descriptor = description
+                    self.hideKeyboard()
                 }, label: {Text("Add Entry")})
             }
         }
+        .onTapGesture {
+            self.hideKeyboard()
+        }
     }
 }
+
+// adds functionality to self to easily dismiss keyboard using self.hideKeyboard()
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {

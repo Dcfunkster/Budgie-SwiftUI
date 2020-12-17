@@ -13,11 +13,11 @@ import RealmSwift
 
 class Entry: Object {
     
-    dynamic var testCategory: Category? = nil
-    dynamic var date: Date = Date()
-    dynamic var deltaMoney: Decimal = 0.0
-    dynamic var vendor: Vendor? = nil
-    dynamic var descriptor: String? = nil
+    @objc dynamic var testCategory: Category?
+    @objc dynamic var date: Date = Date()
+    @objc dynamic var deltaMoney: Double = 0.0
+    @objc dynamic var vendor: Vendor?
+    @objc dynamic var descriptor: String?
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "entries")
 }

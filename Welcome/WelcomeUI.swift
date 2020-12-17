@@ -42,6 +42,9 @@ struct WelcomeUI: View {
                 .foregroundColor(.white)
             }.navigationTitle(Text("WelcomeUI"))
         }
+//        .onTapGesture {
+//            self.hideKeyboard()
+//        }
     }
 }
 
