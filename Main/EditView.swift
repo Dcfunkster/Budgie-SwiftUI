@@ -22,9 +22,9 @@ struct EditView: View {
                 NavigationLink(destination: CategoryList()
                         .navigationBarTitle("Categories", displayMode: .inline)
                         .navigationBarHidden(false)
-                        .onAppear(perform: {
-                            load()
-                        })
+//                        .onAppear(perform: {
+//                            load()
+//                        })
                 ) {
                     Text("Categories")
                 }
@@ -38,12 +38,14 @@ struct CategoryList: View {
     @State private var showingAddView: Bool = false
     @State private var editBtnPressed: Bool = false
     @State private var cancelBtnPressed: Bool = true
+    @State var categoryListItems: Results<Category>? = realm.objects(Category.self)
     
+    @EnvironmentObject var categories: CategoryObservable
+
     var body: some View {
         
-        
         /// Create a location for a category to be displayed for every category in entries
-        if let safeCategories = categories { // Categories found in db
+        if let safeCategories = categoryListItems { // Categories found in db
             List {
                 ForEach(0..<(safeCategories.count)) { i in
                     NavigationLink(destination: EditCategory(selectedCategory: safeCategories[i])) {
@@ -71,7 +73,7 @@ struct CategoryList: View {
                     }) {
                         Image(systemName: "plus").imageScale(.large)
                     }.sheet(isPresented: $showingAddView) {
-                        AddCategory()
+                        AddCategory(showModal: self.$showingAddView)
                     }
                 }
             })
@@ -100,7 +102,7 @@ struct CategoryList: View {
                     }) {
                         Image(systemName: "plus").imageScale(.large)
                     }.sheet(isPresented: $showingAddView) {
-                        AddCategory()
+                        AddCategory(showModal: self.$showingAddView)
                     }
                     
                 }
@@ -122,7 +124,7 @@ func save(_ category: Category) {
     }
 }
 func load() {
-    categories = realm.objects(Category.self)
+    categoryListItems = realm.objects(Category.self)
 }
 
 struct AddCategory: View {
@@ -130,12 +132,15 @@ struct AddCategory: View {
     @State private var name: String = ""
     @State private var descriptor: String = ""
     @State private var colour = Color.red
+    @Binding var showModal: Bool
+    
+    @EnvironmentObject var categories: CategoryObservable
     
     var body: some View {
         HStack {
             Spacer()
             Button(action: {
-                
+                self.showModal.toggle()
             }) {
                 Image(systemName: "xmark.circle.fill")
             }
@@ -166,13 +171,12 @@ struct AddCategory: View {
                 }
                 Button(action: {
                     
+                    self.showModal = false
                     let newCategory = Category()
                     newCategory.name = name
                     newCategory.descriptor = descriptor
                     newCategory.colour = UIColor(colour)
                     save(newCategory)
-                    load()
-                    
                 }) {
                     Text("Add Category")
                 }

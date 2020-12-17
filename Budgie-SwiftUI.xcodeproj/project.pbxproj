@@ -31,6 +31,7 @@
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
 		C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* Vendor.swift */; };
 		C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */; };
+		C8F50D38258BFDA800D51B7E /* CategoryObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F50D37258BFDA800D51B7E /* CategoryObservable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
+		C8F50D37258BFDA800D51B7E /* CategoryObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryObservable.swift; sourceTree = "<group>"; };
 		DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C85BBA1224EF5D93000DD312 /* Category.swift */,
+				C8F50D37258BFDA800D51B7E /* CategoryObservable.swift */,
 				C85BBA1324EF5D93000DD312 /* Entry.swift */,
 				C8663BA124FB225D00D28C4B /* Vendor.swift */,
 				C85BBA1024EF5D93000DD312 /* Bill.swift */,
@@ -322,6 +325,7 @@
 				C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */,
 				C85BBA1624EF5D93000DD312 /* Category.swift in Sources */,
 				C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */,
+				C8F50D38258BFDA800D51B7E /* CategoryObservable.swift in Sources */,
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
 				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,

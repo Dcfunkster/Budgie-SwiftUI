@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 import RealmSwift
 
-var categories: Results<Category>? = realm.objects(Category.self)
+//var categories: Results<Category>? = realm.objects(Category.self)
 var entries: Results<Entry>?
 
 struct MainUI: View {
