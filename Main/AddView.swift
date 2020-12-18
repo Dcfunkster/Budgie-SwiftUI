@@ -29,8 +29,9 @@ struct AddView: View {
         Form {
             Section {
                 Picker(selection: $category, label: Text("Category")) {
-                    ForEach(0..<(entries?.count ?? 1)) {
-                        Text(entries?[$0].testCategory?.name ?? "Go to the Edit tab to add a new category!")
+                    ForEach(0..<(entries?.count ?? 1)) {_ in 
+                        //Text(entries?[$0].testCategory?.name ?? "Go to the Edit tab to add a new category!")
+                        Text("Test Entry")
                     }
                 }
                 .onTapGesture {

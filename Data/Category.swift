@@ -6,20 +6,23 @@
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
 
-import SwiftUI
 import RealmSwift
 import UIKit
 
-class Category: Object {
+class Category: Identifiable {
+    let id: Int
+    let name: String
+    let descriptor: String?
+    let moneySpentThisPeriod: Double
+    let colour: UIColor
+    let entries: List<Entry>?
     
-    @objc dynamic var name: String = ""
-    @objc dynamic var descriptor: String?
-    @objc dynamic var moneySpentThisPeriod: Double = 0.0
-    @objc dynamic var colour: UIColor = UIColor.white
-    
-    let entries = RealmSwift.List<Entry>()
-
-    override static func ignoredProperties() -> [String] {
-        return ["colour"]
+    init(categoryDB: CategoryDB) {
+        id = categoryDB.id
+        name = categoryDB.name
+        descriptor = categoryDB.descriptor
+        moneySpentThisPeriod = categoryDB.moneySpentThisPeriod
+        entries = categoryDB.entries
+        colour = categoryDB.colour
     }
 }

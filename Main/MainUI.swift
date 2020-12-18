@@ -16,6 +16,7 @@ var entries: Results<Entry>?
 struct MainUI: View {
     
     @State var selectedTab: Views = .add
+    @EnvironmentObject var categoryTest: CategoryViewModel
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -34,7 +35,7 @@ struct MainUI: View {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
                 }.tag(Views.add)
-            EditView()
+            EditView(input: categoryTest.categories)
                 .tabItem {
                     Image(systemName: "pencil.circle.fill")
                     Text("Edit")
