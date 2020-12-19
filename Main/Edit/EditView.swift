@@ -15,8 +15,6 @@ struct EditView: View {
     
     @EnvironmentObject var categoryModel: CategoryViewModel
     
-    let input: [Category]
-    
     var body: some View {
         Form {
             Section {

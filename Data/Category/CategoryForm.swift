@@ -6,10 +6,11 @@
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CategoryForm: ObservableObject {
+    
+    // The items that will be presented on the add category form
     @Published var name = ""
     @Published var descriptor = ""
     @Published var colour = UIColor.white

@@ -54,8 +54,4 @@ extension AddCategory {
         categoryModel.create(name: form.name, descriptor: form.descriptor)
         dismiss()
     }
-    
-    //func load() {
-    //    categoryListItems = realm.objects(Category.self)
-    //}
 }

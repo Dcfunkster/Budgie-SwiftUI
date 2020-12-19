@@ -11,12 +11,12 @@ import Firebase
 import RealmSwift
 
 //var categories: Results<Category>? = realm.objects(Category.self)
-var entries: Results<Entry>?
+var entries: Results<EntryDB>?
 
 struct MainUI: View {
     
     @State var selectedTab: Views = .add
-    @EnvironmentObject var categoryTest: CategoryViewModel
+    @EnvironmentObject var categoryModel: CategoryViewModel
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -30,12 +30,12 @@ struct MainUI: View {
                     Image(systemName: "dollarsign.circle.fill")
                     Text("Saving")
                 }.tag(Views.saving)
-            AddView()
+            AddView(form: EntryForm())
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
                 }.tag(Views.add)
-            EditView(input: categoryTest.categories)
+            EditView()
                 .tabItem {
                     Image(systemName: "pencil.circle.fill")
                     Text("Edit")
