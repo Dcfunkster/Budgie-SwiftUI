@@ -9,8 +9,6 @@
 import SwiftUI
 import RealmSwift
 
-var realm = try! Realm()
-
 struct EditView: View {
     
     @EnvironmentObject var categoryModel: CategoryViewModel

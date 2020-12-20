@@ -14,7 +14,7 @@ class CategoryForm: ObservableObject {
     @Published var name = ""
     @Published var descriptor = ""
     @Published var colour = UIColor.white
-    //@Published var color
+
     var categoryID: Int?
     
     var updating: Bool {

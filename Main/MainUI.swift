@@ -7,10 +7,9 @@
 //
 
 import SwiftUI
-import Firebase
 import RealmSwift
 
-//var categories: Results<Category>? = realm.objects(Category.self)
+var realm = try! Realm()
 var entries: Results<EntryDB>?
 
 struct MainUI: View {
@@ -22,7 +21,7 @@ struct MainUI: View {
         TabView(selection: $selectedTab) {
             SpendingView()
                 .tabItem {
-                    Image(systemName: "bag.fill")
+                    Image(systemName: "bag.circle.fill")
                     Text("Spending")
                 }.tag(Views.spending)
             SavingView()
@@ -30,7 +29,7 @@ struct MainUI: View {
                     Image(systemName: "dollarsign.circle.fill")
                     Text("Saving")
                 }.tag(Views.saving)
-            AddView(form: EntryForm())
+            AddView(form: EntryForm(), categories: categoryModel.categories)
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
@@ -58,6 +57,7 @@ enum Views: String {
     case add = "Add"
     case edit = "Edit"
     case settings = "Settings"
+    case none = "None"
 }
 
 struct MainUI_Previews: PreviewProvider {

@@ -13,6 +13,9 @@ struct AddView: View {
     
     @State private var catPickerSelection = 0
     @State private var vendorPickerselection = 0
+    @State private var categoryEntries: Results<EntryDB>?
+    @State private var vendors: Results<Vendor>?
+    @State private var selectedCategory: Category?
     
     @EnvironmentObject var categoryModel: CategoryViewModel
     @EnvironmentObject var entryModel: EntryViewModel
@@ -25,28 +28,21 @@ struct AddView: View {
         formatter.dateStyle = .long
         return formatter
     }
-    var categoryEntries: Results<EntryDB>?
-    var vendors: Results<Vendor>?
-    var selectedCategory: Category? {
-        didSet {
-            loadItems() // this will run every time selectedCategory is changed
-        }               // probably a SwiftUI way of doing this
-    }
+    let categories: [Category]
     
     // TODO: use the list of all categories and find the index of selection using the int given by the picker
     var body: some View {
         Form {
-            Section {             // needs to be converted to type LinkingObjects<CategoryDB>
+            Section {
                 Picker(selection: $catPickerSelection, label: Text("Category")) {
-                    ForEach(0..<categoryModel.categories.count) { i in
-                        Text(categoryModel.categories[i].name)
+                    ForEach(categories) { category in
+                        VStack {
+                            Text(category.name)
+                            Text(category.descriptor!)
+                        }
                     }
                 }
-                .onTapGesture {
-                    self.hideKeyboard()
-                }
-                Text("You picked: \(categoryModel.categories[catPickerSelection].descriptor!)")
-
+                Text(selectedCategory?.name ?? "No category selected")
                 DatePicker(selection: $form.date, in: ...Date(), displayedComponents: .date) {
                     Text("Select a date")
                 }
@@ -76,14 +72,13 @@ struct AddView: View {
             }
             Section {
                 Button(action: {
+                    selectedCategory = categoryModel.categories[catPickerSelection]
+                    loadItems()
 //                    //newEntry.vendor = vendor -also need a list of vendors stored in db
                     self.hideKeyboard()
                 }, label: {Text("Add Entry")})
             }
         }
-//        .onTapGesture {
-//            self.hideKeyboard()
-//        }
     }
 }
 
@@ -94,8 +89,8 @@ extension AddView {
     func saveItems() {
         entryModel.create(parentCategory: form.parentCategory, date: form.date, deltaMoney: form.deltaMoney, vendor: form.vendor, descriptor: form.descriptor)
     }
-    mutating func loadItems() {
-        categoryEntries = selectedCategory?.entries?.sorted(byKeyPath: "name", ascending: true)
+    func loadItems() {
+        categoryEntries = selectedCategory?.entries?.sorted(byKeyPath: "date", ascending: true)
     }
 }
 
