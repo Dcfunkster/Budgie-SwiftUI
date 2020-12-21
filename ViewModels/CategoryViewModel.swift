@@ -40,7 +40,7 @@ extension CategoryViewModel {
             }
         } catch {
             // Handle error
-            print(error.localizedDescription)
+            print("Error creating new category, \(error.localizedDescription)")
         }
     }
     
@@ -58,7 +58,24 @@ extension CategoryViewModel {
                              update: .modified)
             }
         } catch {
-            print(error.localizedDescription)
+            print("Error updating category, \(error.localizedDescription)")
+        }
+    }
+    
+    func delete(categoryID: Int) {
+        objectWillChange.send()
+        
+        guard let categoryDB = categoryResults.first(
+            where: { $0.id == categoryID })
+        else { return }
+        
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(categoryDB)
+            }
+        } catch {
+            print("Error deleting category, \(error.localizedDescription)")
         }
     }
 }

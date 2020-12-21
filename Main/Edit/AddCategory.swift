@@ -37,6 +37,9 @@ struct AddCategory: View {
     //                    ColorPicker("", selection: $form.colour, supportsOpacity: false) // Want this to eventually automatically choose a colour that the user has not previously selected.
     //                        .multilineTextAlignment(.trailing)
     //                }
+                    Button("Delete", action: {
+                        deleteCategory(categoryID: form.categoryID!)
+                    })
                 }
                 .navigationBarTitle(form.updating ? form.name : "New Category")
                 .navigationBarItems(leading: Button("Cancel", action: dismiss),
@@ -59,6 +62,10 @@ extension AddCategory {
     }
     func saveCategory() {
         categoryModel.create(name: form.name, descriptor: form.descriptor)
+        dismiss()
+    }
+    func deleteCategory(categoryID: Int) {
+        categoryModel.delete(categoryID: categoryID)
         dismiss()
     }
 }
