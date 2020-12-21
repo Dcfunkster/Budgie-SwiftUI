@@ -11,7 +11,7 @@ import RealmSwift
 
 struct AddView: View {
     
-    @State private var catPickerSelection = 0
+    @State private var catPickerSelection: Int = 0 // Turns out this is now the selected category's id
     @State private var vendorPickerselection = 0
     @State private var categoryEntries: Results<EntryDB>?
     @State private var vendors: Results<Vendor>?
@@ -34,15 +34,15 @@ struct AddView: View {
     var body: some View {
         Form {
             Section {
-                Picker(selection: $catPickerSelection, label: Text("Category")) {
-                    ForEach(categories) { category in
+                Picker("Category", selection: $catPickerSelection) {
+                    ForEach(categories) { i in
                         VStack {
-                            Text(category.name)
-                            Text(category.descriptor!)
+                            Text(i.name)
+                            Text(i.descriptor!)
                         }
                     }
                 }
-                Text(selectedCategory?.name ?? "No category selected")
+                
                 DatePicker(selection: $form.date, in: ...Date(), displayedComponents: .date) {
                     Text("Select a date")
                 }
@@ -58,7 +58,7 @@ struct AddView: View {
                         .multilineTextAlignment(.trailing)
                 }
                 
-                Picker(selection: $vendorPickerselection, label: Text("Vendor")) {
+                Picker("Vendor", selection: $vendorPickerselection) {
                     ForEach(0..<(vendors?.count ?? 1)) { _ in
                         Text("")
                     }
@@ -72,9 +72,8 @@ struct AddView: View {
             }
             Section {
                 Button(action: {
-                    selectedCategory = categoryModel.categories[catPickerSelection]
                     loadItems()
-//                    //newEntry.vendor = vendor -also need a list of vendors stored in db
+                    //newEntry.vendor = vendor -also need a list of vendors stored in db
                     self.hideKeyboard()
                 }, label: {Text("Add Entry")})
             }
@@ -89,7 +88,10 @@ extension AddView {
     func saveItems() {
         entryModel.create(parentCategory: form.parentCategory, date: form.date, deltaMoney: form.deltaMoney, vendor: form.vendor, descriptor: form.descriptor)
     }
+    
     func loadItems() {
+        // finds the category with the id inputted into catPickerSelection from the picker
+        selectedCategory = categories.filter{ $0.id == catPickerSelection }.first
         categoryEntries = selectedCategory?.entries?.sorted(byKeyPath: "date", ascending: true)
     }
 }

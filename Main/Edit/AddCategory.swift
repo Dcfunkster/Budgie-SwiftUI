@@ -37,9 +37,10 @@ struct AddCategory: View {
     //                    ColorPicker("", selection: $form.colour, supportsOpacity: false) // Want this to eventually automatically choose a colour that the user has not previously selected.
     //                        .multilineTextAlignment(.trailing)
     //                }
-                    Button("Add", action: saveCategory)
                 }
-                .navigationBarTitle("Add Category", displayMode: .inline)
+                .navigationBarTitle(form.updating ? form.name : "New Category")
+                .navigationBarItems(leading: Button("Cancel", action: dismiss),
+                                    trailing: Button(form.updating ? "Update" : "Save", action: form.updating ? updateCategory : saveCategory))
             }
         }
     }
@@ -49,6 +50,12 @@ struct AddCategory: View {
 extension AddCategory {
     func dismiss() {
         presentationMode.wrappedValue.dismiss()
+    }
+    func updateCategory() {
+        if let categoryID = form.categoryID {
+            categoryModel.update(categoryID: categoryID, name: form.name, descriptor: form.descriptor)
+            dismiss()
+        }
     }
     func saveCategory() {
         categoryModel.create(name: form.name, descriptor: form.descriptor)

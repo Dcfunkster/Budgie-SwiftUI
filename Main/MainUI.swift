@@ -14,7 +14,7 @@ var entries: Results<EntryDB>?
 
 struct MainUI: View {
     
-    @State var selectedTab: Views = .add
+    @State var selectedTab: Views = .settings
     @EnvironmentObject var categoryModel: CategoryViewModel
     
     var body: some View {
@@ -57,7 +57,6 @@ enum Views: String {
     case add = "Add"
     case edit = "Edit"
     case settings = "Settings"
-    case none = "None"
 }
 
 struct MainUI_Previews: PreviewProvider {

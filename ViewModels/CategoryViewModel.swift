@@ -43,4 +43,22 @@ extension CategoryViewModel {
             print(error.localizedDescription)
         }
     }
+    
+    func update(categoryID: Int, name: String, descriptor: String) {
+        objectWillChange.send()
+        
+        do {
+            let realm = try! Realm()
+            try realm.write {
+                realm.create(CategoryDB.self,
+                             value: [
+                                "id": categoryID,
+                                "name": name,
+                                "descriptor": descriptor],
+                             update: .modified)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
