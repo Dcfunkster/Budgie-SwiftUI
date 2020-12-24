@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CBB6662085EB806F50250A6 /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCCA91DA62E773506E3E5C5 /* Pods_Budgie_SwiftUI.framework */; };
+		2F1E7FFD9E307C368C7440EE /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF298019CAC84549153F1017 /* Pods_Budgie_SwiftUI.framework */; };
+		C8373E8A2593D1470079B52B /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8373E892593D1470079B52B /* CategoryRow.swift */; };
 		C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0224F0BDC2008443B5 /* EditView.swift */; };
 		C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0424F0BDDD008443B5 /* AddView.swift */; };
 		C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0624F0BDFA008443B5 /* SavingView.swift */; };
@@ -35,7 +36,6 @@
 		C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57124F33F3B00D69E34 /* ArcView.swift */; };
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
 		C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* Vendor.swift */; };
-		C8A15651258D0C8F00208A2B /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A15650258D0C8F00208A2B /* CategoryRow.swift */; };
 		C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A15658258D1A0B00208A2B /* EntryDB.swift */; };
 		C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565B258D1B2A00208A2B /* EntryForm.swift */; };
 		C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */; };
@@ -43,8 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3116853D1DB976E77D26AA2A /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
-		BCCCA91DA62E773506E3E5C5 /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		216400FC1F863C146425C99B /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		25A577AB09F5F21A3AF6BEC2 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
+		AF298019CAC84549153F1017 /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8373E892593D1470079B52B /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Budgie-SwiftUI.entitlements"; sourceTree = "<group>"; };
 		C8562E0224F0BDC2008443B5 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		C8562E0424F0BDDD008443B5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
@@ -75,12 +77,10 @@
 		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
-		C8A15650258D0C8F00208A2B /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		C8A15658258D1A0B00208A2B /* EntryDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDB.swift; sourceTree = "<group>"; };
 		C8A1565B258D1B2A00208A2B /* EntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryForm.swift; sourceTree = "<group>"; };
 		C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
-		DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,28 +88,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CBB6662085EB806F50250A6 /* Pods_Budgie_SwiftUI.framework in Frameworks */,
+				2F1E7FFD9E307C368C7440EE /* Pods_Budgie_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27CEAF42ECC2F5EB9B833C3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF298019CAC84549153F1017 /* Pods_Budgie_SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85229E5CB622AD85C1410241 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */,
-				3116853D1DB976E77D26AA2A /* Pods-Budgie-SwiftUI.release.xcconfig */,
+				25A577AB09F5F21A3AF6BEC2 /* Pods-Budgie-SwiftUI.debug.xcconfig */,
+				216400FC1F863C146425C99B /* Pods-Budgie-SwiftUI.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		A95169D8F671BD3B9968D2D5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BCCCA91DA62E773506E3E5C5 /* Pods_Budgie_SwiftUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C817838A25896F4900B8F221 /* Data */ = {
@@ -138,7 +138,7 @@
 			children = (
 				C8562E0224F0BDC2008443B5 /* EditView.swift */,
 				C85B3CE3258C3DE8000D8B6A /* CategoryList.swift */,
-				C8A15650258D0C8F00208A2B /* CategoryRow.swift */,
+				C8373E892593D1470079B52B /* CategoryRow.swift */,
 				C85B3CE7258C5564000D8B6A /* AddCategory.swift */,
 			);
 			path = Edit;
@@ -154,7 +154,7 @@
 				C85BBA1B24EF5F95000DD312 /* Views */,
 				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
 				85229E5CB622AD85C1410241 /* Pods */,
-				A95169D8F671BD3B9968D2D5 /* Frameworks */,
+				27CEAF42ECC2F5EB9B833C3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,11 +266,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie-SwiftUI" */;
 			buildPhases = (
-				B97F1E07DFAA4B88E7479BD5 /* [CP] Check Pods Manifest.lock */,
+				76F1CFAEC4F0FB275A9B6686 /* [CP] Check Pods Manifest.lock */,
 				C85BB9ED24EF5D24000DD312 /* Sources */,
 				C85BB9EE24EF5D24000DD312 /* Frameworks */,
 				C85BB9EF24EF5D24000DD312 /* Resources */,
-				787AC3AAD9FDC8B312D146D1 /* [CP] Embed Pods Frameworks */,
+				DDE5799815B9020D12AF0FBD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,24 +329,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		787AC3AAD9FDC8B312D146D1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B97F1E07DFAA4B88E7479BD5 /* [CP] Check Pods Manifest.lock */ = {
+		76F1CFAEC4F0FB275A9B6686 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,6 +349,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDE5799815B9020D12AF0FBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -389,11 +389,11 @@
 				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
 				C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */,
 				C85B3CE8258C5564000D8B6A /* AddCategory.swift in Sources */,
-				C8A15651258D0C8F00208A2B /* CategoryRow.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
 				C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */,
 				C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */,
 				C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */,
+				C8373E8A2593D1470079B52B /* CategoryRow.swift in Sources */,
 				C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */,
 				C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */,
 				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,
@@ -538,7 +538,7 @@
 		};
 		C85BBA0624EF5D26000DD312 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAC228D0C6CF59E6641B58F9 /* Pods-Budgie-SwiftUI.debug.xcconfig */;
+			baseConfigurationReference = 25A577AB09F5F21A3AF6BEC2 /* Pods-Budgie-SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
@@ -546,11 +546,16 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Budgie-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = MMVMP38QPK;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Budgie-SwiftUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -562,7 +567,7 @@
 		};
 		C85BBA0724EF5D26000DD312 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3116853D1DB976E77D26AA2A /* Pods-Budgie-SwiftUI.release.xcconfig */;
+			baseConfigurationReference = 216400FC1F863C146425C99B /* Pods-Budgie-SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
@@ -570,11 +575,16 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Budgie-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = MMVMP38QPK;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Budgie-SwiftUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";

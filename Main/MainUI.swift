@@ -14,7 +14,7 @@ var entries: Results<EntryDB>?
 
 struct MainUI: View {
     
-    @State var selectedTab: Views = .settings
+    @State var selectedTab: Views = .edit
     @EnvironmentObject var categoryModel: CategoryViewModel
     
     var body: some View {
@@ -48,7 +48,7 @@ struct MainUI: View {
         .navigationTitle(Text(selectedTab.rawValue))
         .navigationBarTitleDisplayMode(.automatic)
         .navigationBarBackButtonHidden(true)
-    }
+        }
 }
 
 enum Views: String {

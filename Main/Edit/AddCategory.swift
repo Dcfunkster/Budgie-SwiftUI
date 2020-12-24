@@ -10,8 +10,9 @@ import SwiftUI
 
 struct AddCategory: View {
     
+    @Binding var isPresented: Bool
+    
     @EnvironmentObject var categoryModel: CategoryViewModel
-    @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var form: CategoryForm
     
@@ -37,14 +38,22 @@ struct AddCategory: View {
     //                    ColorPicker("", selection: $form.colour, supportsOpacity: false) // Want this to eventually automatically choose a colour that the user has not previously selected.
     //                        .multilineTextAlignment(.trailing)
     //                }
-                    Button("Delete", action: {
-                        deleteCategory(categoryID: form.categoryID!)
-                    })
+                    if form.updating {
+                        Button("Delete", action: {
+                            deleteCategory(categoryID: form.categoryID!)
+                        })
+                    }
                 }
-                .navigationBarTitle(form.updating ? form.name : "New Category")
-                .navigationBarItems(leading: Button("Cancel", action: dismiss),
-                                    trailing: Button(form.updating ? "Update" : "Save", action: form.updating ? updateCategory : saveCategory))
             }
+            .navigationBarTitle(form.updating ? form.name : "New Category")
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: dismiss)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(form.updating ? "Update" : "Save", action: form.updating ? updateCategory : saveCategory)
+                }
+            })
         }
     }
 }
@@ -52,7 +61,7 @@ struct AddCategory: View {
 //MARK: - Actions
 extension AddCategory {
     func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        self.isPresented = false
     }
     func updateCategory() {
         if let categoryID = form.categoryID {

@@ -10,18 +10,18 @@ import SwiftUI
 
 struct CategoryRow: View {
     @EnvironmentObject var categoryModel: CategoryViewModel
-    @State private var showAddModal = false
+    @State var showAddModal = false
     let category: Category
-    
+
     var body: some View {
-        
+
         HStack {
             Button(action: openUpdateCategory) {
                 Text(category.name)
             }
         }
         .sheet(isPresented: $showAddModal) {
-            AddCategory(form: CategoryForm(self.category))
+            AddCategory(isPresented: self.$showAddModal, form: CategoryForm(self.category))
                 .environmentObject(self.categoryModel)
         }
     }
@@ -31,6 +31,6 @@ struct CategoryRow: View {
 //MARK: - Actions
 extension CategoryRow {
     func openUpdateCategory() {
-        showAddModal.toggle()
+        self.showAddModal = true
     }
 }

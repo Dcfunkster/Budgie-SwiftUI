@@ -12,39 +12,38 @@ import RealmSwift
 
 struct CategoryList: View {
     
-    @State private var showingAddView: Bool = false
-    @State var categoryListItems: Results<CategoryDB>? = realm.objects(CategoryDB.self)
+    @State private var showingAddView = false
+    @State private var categoryListItems: Results<CategoryDB>? = realm.objects(CategoryDB.self)
+    var categories: [Category]
     
     @EnvironmentObject var categoryModel: CategoryViewModel
-    
-    let categories: [Category]
 
     var body: some View {
         
         // Create a location for a category to be displayed for every category in entries
         List {
-            if categories.isEmpty {
-                Text("Press the add button to add your first category")
-            }
+            newCategoryButton
             ForEach(categories) { category in
                 CategoryRow(category: category)
             }
-            newCategoryButton
+            .onDelete(perform: delete)
         }
         .navigationBarTitle("Categories", displayMode: .inline)
         .navigationBarHidden(false)
+        .toolbar { EditButton() }
     }
     
     var newCategoryButton: some View {
         Button(action: openNewCategory) {
             HStack {
                 Image(systemName: "plus.circle.fill")
-                Text("New Category")
+                Text("Add new category")
                     .bold()
             }
+                .multilineTextAlignment(.center)
         }
         .sheet(isPresented: $showingAddView) {
-            AddCategory(form: CategoryForm())
+            AddCategory(isPresented: self.$showingAddView, form: CategoryForm())
                 .environmentObject(self.categoryModel)
         }
     }
@@ -53,6 +52,13 @@ struct CategoryList: View {
 //MARK: - Actions
 extension CategoryList {
     func openNewCategory() {
-        showingAddView.toggle()
+        self.showingAddView = true
+    }
+    
+    func delete(category: IndexSet) {
+        if let first = category.first {
+            let categoryID = categories[first].id
+            categoryModel.delete(categoryID: categoryID)
+        }
     }
 }

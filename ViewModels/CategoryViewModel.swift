@@ -44,6 +44,10 @@ extension CategoryViewModel {
         }
     }
     
+    func refresh() {
+        categoryResults = realm.objects(CategoryDB.self)
+    }
+    
     func update(categoryID: Int, name: String, descriptor: String) {
         objectWillChange.send()
         

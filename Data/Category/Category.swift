@@ -9,15 +9,15 @@
 import RealmSwift
 import UIKit
 
-class Category: Identifiable {
+class Category: Identifiable, ObservableObject {
     
     // The category object that is more usable for our code
-    let id: Int
-    let name: String
-    let descriptor: String?
-    let moneySpentThisPeriod: Double
-    let colour: UIColor
-    let entries: List<EntryDB>?
+    @Published var id: Int
+    @Published var name: String
+    @Published var descriptor: String?
+    @Published var moneySpentThisPeriod: Double
+    @Published var colour: UIColor
+    @Published var entries: List<EntryDB>?
     
     // Convenience initializer
     init(categoryDB: CategoryDB) {
