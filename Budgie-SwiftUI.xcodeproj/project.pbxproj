@@ -24,9 +24,9 @@
 		C85BB9FE24EF5D26000DD312 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9FD24EF5D26000DD312 /* Preview Assets.xcassets */; };
 		C85BBA0124EF5D26000DD312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9FF24EF5D26000DD312 /* LaunchScreen.storyboard */; };
 		C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0824EF5D86000DD312 /* MainUI.swift */; };
-		C85BBA0D24EF5D86000DD312 /* SignupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0924EF5D86000DD312 /* SignupUI.swift */; };
+		C85BBA0D24EF5D86000DD312 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0924EF5D86000DD312 /* SignupView.swift */; };
 		C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */; };
-		C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0B24EF5D86000DD312 /* LoginUI.swift */; };
+		C85BBA0F24EF5D86000DD312 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA0B24EF5D86000DD312 /* LoginView.swift */; };
 		C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1024EF5D93000DD312 /* Bill.swift */; };
 		C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1124EF5D93000DD312 /* Frequency.swift */; };
 		C85BBA1624EF5D93000DD312 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBA1224EF5D93000DD312 /* Category.swift */; };
@@ -65,9 +65,9 @@
 		C85BBA0024EF5D26000DD312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C85BBA0224EF5D26000DD312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C85BBA0824EF5D86000DD312 /* MainUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUI.swift; sourceTree = "<group>"; };
-		C85BBA0924EF5D86000DD312 /* SignupUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupUI.swift; sourceTree = "<group>"; };
+		C85BBA0924EF5D86000DD312 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeUI.swift; sourceTree = "<group>"; };
-		C85BBA0B24EF5D86000DD312 /* LoginUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUI.swift; sourceTree = "<group>"; };
+		C85BBA0B24EF5D86000DD312 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C85BBA1024EF5D93000DD312 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		C85BBA1124EF5D93000DD312 /* Frequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		C85BBA1224EF5D93000DD312 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -240,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				C85BBA0A24EF5D86000DD312 /* WelcomeUI.swift */,
-				C85BBA0924EF5D86000DD312 /* SignupUI.swift */,
-				C85BBA0B24EF5D86000DD312 /* LoginUI.swift */,
+				C85BBA0924EF5D86000DD312 /* SignupView.swift */,
+				C85BBA0B24EF5D86000DD312 /* LoginView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -386,7 +386,7 @@
 				C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */,
 				C85B3CD4258C2733000D8B6A /* CategoryViewModel.swift in Sources */,
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
-				C85BBA0F24EF5D86000DD312 /* LoginUI.swift in Sources */,
+				C85BBA0F24EF5D86000DD312 /* LoginView.swift in Sources */,
 				C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */,
 				C85B3CE8258C5564000D8B6A /* AddCategory.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
@@ -400,7 +400,7 @@
 				C85BBA1724EF5D93000DD312 /* Entry.swift in Sources */,
 				C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */,
 				C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */,
-				C85BBA0D24EF5D86000DD312 /* SignupUI.swift in Sources */,
+				C85BBA0D24EF5D86000DD312 /* SignupView.swift in Sources */,
 				C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */,
 				C85B3CE4258C3DE8000D8B6A /* CategoryList.swift in Sources */,
 			);

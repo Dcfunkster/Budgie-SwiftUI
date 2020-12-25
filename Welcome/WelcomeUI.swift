@@ -9,47 +9,74 @@
 import SwiftUI
 
 struct WelcomeUI: View {
+    
+    // Organized into two views: WelcomeUI/(SignupUI/LoginUI)
+    
+    @State private var signupPressed = false
+    @State private var loginPressed = false
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Spacer()
-                Text("Budgie")
-                    .font(.largeTitle)
-                Image("budgie_sample")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                
-                Spacer()
-                
-                // Sign Up button
-                NavigationLink(destination: SignupUI(), label: {
-                    Spacer()
-                    Text("Sign Up")
-                    Spacer()
-                })
-                .padding(.top).padding(.bottom)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                
-                // Log In button
-                NavigationLink(destination: LoginUI(), label: {
-                    Spacer()
-                    Text("Log In")
-                    Spacer()
-                })
-                .padding()
-                .background(Color.purple)
-                .foregroundColor(.white)
-            }.navigationTitle(Text("WelcomeUI"))
+        ZStack {
+            if !signupPressed && !loginPressed {
+                WelcomeView(signupPressed: $signupPressed, loginPressed: $loginPressed)
+                    .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
+            } else if signupPressed {
+                SignupView(signupPressed: $signupPressed)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            } else if loginPressed {
+                LoginView(loginPressed: $loginPressed)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            }
         }
-//        .onTapGesture {
-//            self.hideKeyboard()
-//        }
     }
 }
 
 struct WelcomeUI_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeUI()
+    }
+}
+
+struct WelcomeView: View {
+    @Binding var signupPressed: Bool
+    @Binding var loginPressed: Bool
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("Budgie")
+                .font(.largeTitle)
+            Image("budgie_sample")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            Spacer()
+            
+            Button(action: {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    self.signupPressed.toggle()
+                }
+            }) {
+                Spacer()
+                Text("Sign Up")
+                Spacer()
+            }
+            .padding(.top).padding(.bottom)
+            .background(Color.blue)
+            .foregroundColor(.white)
+            
+            Button(action: {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    self.loginPressed.toggle()
+                }
+            }) {
+                Spacer()
+                Text("Log In")
+                Spacer()
+            }
+            .padding(.top).padding(.bottom)
+            .background(Color.purple)
+            .foregroundColor(.white)
+        }
     }
 }

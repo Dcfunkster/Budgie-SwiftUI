@@ -18,37 +18,39 @@ struct MainUI: View {
     @EnvironmentObject var categoryModel: CategoryViewModel
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            SpendingView()
-                .tabItem {
-                    Image(systemName: "bag.circle.fill")
-                    Text("Spending")
-                }.tag(Views.spending)
-            SavingView()
-                .tabItem {
-                    Image(systemName: "dollarsign.circle.fill")
-                    Text("Saving")
-                }.tag(Views.saving)
-            AddView(form: EntryForm(), categories: categoryModel.categories)
-                .tabItem {
-                    Image(systemName: "plus.circle.fill")
-                    Text("Add")
-                }.tag(Views.add)
-            EditView()
-                .tabItem {
-                    Image(systemName: "pencil.circle.fill")
-                    Text("Edit")
-                }.tag(Views.edit)
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("Settings")
-                }.tag(Views.settings)
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                SpendingView()
+                    .tabItem {
+                        Image(systemName: "bag.circle.fill")
+                        Text("Spending")
+                    }.tag(Views.spending)
+                SavingView()
+                    .tabItem {
+                        Image(systemName: "dollarsign.circle.fill")
+                        Text("Saving")
+                    }.tag(Views.saving)
+                AddView(form: EntryForm(), categories: categoryModel.categories)
+                    .tabItem {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Add")
+                    }.tag(Views.add)
+                EditView()
+                    .tabItem {
+                        Image(systemName: "pencil.circle.fill")
+                        Text("Edit")
+                    }.tag(Views.edit)
+                SettingsView()
+                    .tabItem {
+                        Image(systemName: "gearshape.fill")
+                        Text("Settings")
+                    }.tag(Views.settings)
+            }
+            .navigationTitle(Text(selectedTab.rawValue))
+            .navigationBarTitleDisplayMode(.automatic)
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationTitle(Text(selectedTab.rawValue))
-        .navigationBarTitleDisplayMode(.automatic)
-        .navigationBarBackButtonHidden(true)
-        }
+    }
 }
 
 enum Views: String {
