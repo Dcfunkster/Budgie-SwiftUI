@@ -23,7 +23,7 @@ final class EntryViewModel: ObservableObject {
 
 //MARK: - CRUD Actions
 extension EntryViewModel {
-    func create(parentCategory: LinkingObjects<CategoryDB>, date: Date, deltaMoney: Double, vendor: Vendor?, descriptor: String?) {
+    func create(parentCategory: LinkingObjects<CategoryDB>, date: Date, deltaMoney: Double, parentVendor: LinkingObjects<VendorDB>, descriptor: String?) {
         objectWillChange.send()
         
         do {
@@ -34,7 +34,7 @@ extension EntryViewModel {
             entryDB.parentCategory = parentCategory
             entryDB.date = date
             entryDB.deltaMoney = deltaMoney
-            entryDB.vendor = vendor
+            entryDB.parentVendor = parentVendor
             entryDB.descriptor = descriptor
             
             try realm.write {

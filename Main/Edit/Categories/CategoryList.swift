@@ -6,12 +6,11 @@
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
 
-// List only updates when list going from zero to one
 import SwiftUI
 import RealmSwift
 
 struct CategoryList: View {
-    
+
     @State private var showingAddView = false
     
     @State var categories: [Category]

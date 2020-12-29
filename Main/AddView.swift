@@ -14,11 +14,11 @@ struct AddView: View {
     @State private var catPickerSelection: Int = 0 // Turns out this is now the selected category's id
     @State private var vendorPickerselection = 0
     @State private var categoryEntries: Results<EntryDB>?
-    @State private var vendors: Results<Vendor>?
     @State private var selectedCategory: Category?
     
     @EnvironmentObject var categoryModel: CategoryViewModel
     @EnvironmentObject var entryModel: EntryViewModel
+    @EnvironmentObject var vendorModel: VendorViewModel
     
     @ObservedObject var form: EntryForm
     @ObservedObject var amount = NumbersOnly()
@@ -60,8 +60,8 @@ struct AddView: View {
                 }
 
                 Picker("Vendor", selection: $vendorPickerselection) {
-                    ForEach(0..<(vendors?.count ?? 1)) { _ in
-                        Text("")
+                    ForEach(vendorModel.vendors) { vendor in
+                        Text(vendor.name)
                     }
                 }
                 
@@ -79,6 +79,13 @@ struct AddView: View {
                     self.hideKeyboard()
                 }, label: {Text("Add Entry")})
             }
+//            Section {
+//                Text("Name: \(form.parentCategory)")
+//                Text("Name: \(form.date)")
+//                Text("Name: \(form.deltaMoney)")
+//                Text("Name: \(form.parentVendor)")
+//                Text("Name: \(form.descriptor)")
+//            }
         }
     }
 }
@@ -88,7 +95,7 @@ struct AddView: View {
 
 extension AddView {
     func saveItems() {
-        entryModel.create(parentCategory: form.parentCategory, date: form.date, deltaMoney: form.deltaMoney, vendor: form.vendor, descriptor: form.descriptor)
+//        entryModel.create(parentCategory: form.parentCategory, date: form.date, deltaMoney: form.deltaMoney, parentVendor: form.parentVendor, descriptor: form.descriptor)
     }
     
     func loadItems() {

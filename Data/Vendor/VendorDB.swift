@@ -6,18 +6,22 @@
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
 
-import SwiftUI
 import RealmSwift
 import UIKit
 
-class Vendor: Object {
+class VendorDB: Object {
     
+    @objc dynamic var id = 0
     @objc dynamic var name: String = ""
     @objc dynamic var descriptor: String? = nil
     @objc dynamic var colour: UIColor = UIColor.white
     
+    let entries = RealmSwift.List<EntryDB>()
+    
     override static func ignoredProperties() -> [String] {
         return ["colour"]
     }
-    
+    override static func primaryKey() -> String? {
+        "id"
+    }
 }

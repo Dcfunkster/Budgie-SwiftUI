@@ -16,7 +16,7 @@ class Entry: Identifiable {
     let id: Int
     let date: Date
     let deltaMoney: Double
-    let vendor: Vendor?
+    let parentVendor: LinkingObjects<VendorDB>
     let descriptor: String?
     var parentCategory: LinkingObjects<CategoryDB>
     
@@ -25,7 +25,7 @@ class Entry: Identifiable {
         id = entryDB.id
         date = entryDB.date
         deltaMoney = entryDB.deltaMoney
-        vendor = entryDB.vendor
+        parentVendor = entryDB.parentVendor
         descriptor = entryDB.descriptor
         parentCategory = entryDB.parentCategory
     }

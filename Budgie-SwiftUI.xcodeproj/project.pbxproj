@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36E0A1132031A987C99EA99E /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA8E5F487B07CB464FAF72E /* Pods_Budgie_SwiftUI.framework */; };
 		C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0224F0BDC2008443B5 /* EditView.swift */; };
 		C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0424F0BDDD008443B5 /* AddView.swift */; };
 		C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8562E0624F0BDFA008443B5 /* SavingView.swift */; };
@@ -33,19 +34,21 @@
 		C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D5B7824F1DCFF008F169A /* SettingsView.swift */; };
 		C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57124F33F3B00D69E34 /* ArcView.swift */; };
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
-		C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* Vendor.swift */; };
+		C8663BA224FB225D00D28C4B /* VendorDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* VendorDB.swift */; };
 		C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A15658258D1A0B00208A2B /* EntryDB.swift */; };
 		C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565B258D1B2A00208A2B /* EntryForm.swift */; };
 		C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */; };
 		C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */; };
 		C8A9CFD1259BA05200CDD3E4 /* VendorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CFD0259BA05200CDD3E4 /* VendorViewModel.swift */; };
-		C8F34FD5259AE021001465D3 /* AllCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F34FD4259AE021001465D3 /* AllCategories.swift */; };
-		D8DA9A4F8D9D5CC0F7497A9C /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D1E10EAA915C5A37233025 /* Pods_Budgie_SwiftUI.framework */; };
+		C8A9CFDA259BA5F400CDD3E4 /* VendorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CFD9259BA5F400CDD3E4 /* VendorList.swift */; };
+		C8A9CFF2259BA6FF00CDD3E4 /* AddVendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CFF1259BA6FF00CDD3E4 /* AddVendor.swift */; };
+		C8A9CFF7259BA87400CDD3E4 /* VendorForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CFF6259BA87400CDD3E4 /* VendorForm.swift */; };
+		C8A9CFFB259BA90500CDD3E4 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CFFA259BA90500CDD3E4 /* Vendor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		95D1E10EAA915C5A37233025 /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C245CECE19F561566EC81AEF /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
+		4DA8E5F487B07CB464FAF72E /* Pods_Budgie_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgie_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77262EDD8CF46434B99B0DCA /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		C8562DFF24F0ABBF008443B5 /* Budgie-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Budgie-SwiftUI.entitlements"; sourceTree = "<group>"; };
 		C8562E0224F0BDC2008443B5 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		C8562E0424F0BDDD008443B5 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
@@ -75,14 +78,17 @@
 		C85D5B7824F1DCFF008F169A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
-		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		C8663BA124FB225D00D28C4B /* VendorDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDB.swift; sourceTree = "<group>"; };
 		C8A15658258D1A0B00208A2B /* EntryDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDB.swift; sourceTree = "<group>"; };
 		C8A1565B258D1B2A00208A2B /* EntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryForm.swift; sourceTree = "<group>"; };
 		C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 		C8A9CFD0259BA05200CDD3E4 /* VendorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorViewModel.swift; sourceTree = "<group>"; };
-		C8F34FD4259AE021001465D3 /* AllCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategories.swift; sourceTree = "<group>"; };
-		CA10D6AA228CC836ECB39930 /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		C8A9CFD9259BA5F400CDD3E4 /* VendorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorList.swift; sourceTree = "<group>"; };
+		C8A9CFF1259BA6FF00CDD3E4 /* AddVendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVendor.swift; sourceTree = "<group>"; };
+		C8A9CFF6259BA87400CDD3E4 /* VendorForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorForm.swift; sourceTree = "<group>"; };
+		C8A9CFFA259BA90500CDD3E4 /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		FAE91FA1BA987939F59F5818 /* Pods-Budgie-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,18 +96,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DA9A4F8D9D5CC0F7497A9C /* Pods_Budgie_SwiftUI.framework in Frameworks */,
+				36E0A1132031A987C99EA99E /* Pods_Budgie_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F9425C3C5EA843C10318D1F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DA8E5F487B07CB464FAF72E /* Pods_Budgie_SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85229E5CB622AD85C1410241 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C245CECE19F561566EC81AEF /* Pods-Budgie-SwiftUI.debug.xcconfig */,
-				CA10D6AA228CC836ECB39930 /* Pods-Budgie-SwiftUI.release.xcconfig */,
+				FAE91FA1BA987939F59F5818 /* Pods-Budgie-SwiftUI.debug.xcconfig */,
+				77262EDD8CF46434B99B0DCA /* Pods-Budgie-SwiftUI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -111,7 +125,7 @@
 			children = (
 				C8A15654258D18E500208A2B /* Category */,
 				C8A15656258D18F000208A2B /* Entry */,
-				C8663BA124FB225D00D28C4B /* Vendor.swift */,
+				C8A9CFFF259BAD8D00CDD3E4 /* Vendor */,
 				C85BBA1024EF5D93000DD312 /* Bill.swift */,
 				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
 			);
@@ -133,6 +147,7 @@
 			children = (
 				C8562E0224F0BDC2008443B5 /* EditView.swift */,
 				C8A9CFCB259BA00200CDD3E4 /* Categories */,
+				C8A9CFF4259BA70400CDD3E4 /* Vendors */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -147,7 +162,7 @@
 				C85BBA1B24EF5F95000DD312 /* Views */,
 				C85BBA1824EF5EB0000DD312 /* GoogleService-Info.plist */,
 				85229E5CB622AD85C1410241 /* Pods */,
-				F95A68E87678854A18CCAEED /* Frameworks */,
+				1F9425C3C5EA843C10318D1F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,7 +230,6 @@
 				C85BBA1224EF5D93000DD312 /* Category.swift */,
 				C85B3CDD258C3202000D8B6A /* CategoryDB.swift */,
 				C85B3CE0258C33D6000D8B6A /* CategoryForm.swift */,
-				C8F34FD4259AE021001465D3 /* AllCategories.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -237,6 +251,25 @@
 				C85B3CE7258C5564000D8B6A /* AddCategory.swift */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		C8A9CFF4259BA70400CDD3E4 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				C8A9CFD9259BA5F400CDD3E4 /* VendorList.swift */,
+				C8A9CFF1259BA6FF00CDD3E4 /* AddVendor.swift */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		C8A9CFFF259BAD8D00CDD3E4 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				C8A9CFFA259BA90500CDD3E4 /* Vendor.swift */,
+				C8663BA124FB225D00D28C4B /* VendorDB.swift */,
+				C8A9CFF6259BA87400CDD3E4 /* VendorForm.swift */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		C8E3DBA124FBF8C1003FDF34 /* Welcome */ = {
@@ -262,14 +295,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		F95A68E87678854A18CCAEED /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				95D1E10EAA915C5A37233025 /* Pods_Budgie_SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,19 +302,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie-SwiftUI" */;
 			buildPhases = (
-				40C39E4DA27DC73AC4A9A729 /* [CP] Check Pods Manifest.lock */,
+				3CE029522B6B7C997226AF31 /* [CP] Check Pods Manifest.lock */,
 				C85BB9ED24EF5D24000DD312 /* Sources */,
 				C85BB9EE24EF5D24000DD312 /* Frameworks */,
 				C85BB9EF24EF5D24000DD312 /* Resources */,
-				DF4F513E09D8E0D790A37D55 /* [CP] Embed Pods Frameworks */,
+				5F260E60EDA2AC4816568862 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Budgie-SwiftUI";
-			packageProductDependencies = (
-			);
 			productName = "Budgie-SwiftUI";
 			productReference = C85BB9F124EF5D24000DD312 /* Budgie-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -318,8 +341,6 @@
 				Base,
 			);
 			mainGroup = C85BB9E824EF5D24000DD312;
-			packageReferences = (
-			);
 			productRefGroup = C85BB9F224EF5D24000DD312 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -344,7 +365,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		40C39E4DA27DC73AC4A9A729 /* [CP] Check Pods Manifest.lock */ = {
+		3CE029522B6B7C997226AF31 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,7 +387,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DF4F513E09D8E0D790A37D55 /* [CP] Embed Pods Frameworks */ = {
+		5F260E60EDA2AC4816568862 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -398,17 +419,21 @@
 				C85BBA1624EF5D93000DD312 /* Category.swift in Sources */,
 				C85B3CE1258C33D6000D8B6A /* CategoryForm.swift in Sources */,
 				C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */,
+				C8A9CFF7259BA87400CDD3E4 /* VendorForm.swift in Sources */,
 				C85B3CDE258C3202000D8B6A /* CategoryDB.swift in Sources */,
 				C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */,
 				C85B3CD4258C2733000D8B6A /* CategoryViewModel.swift in Sources */,
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
 				C85BBA0F24EF5D86000DD312 /* LoginView.swift in Sources */,
+				C8A9CFDA259BA5F400CDD3E4 /* VendorList.swift in Sources */,
 				C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */,
+				C8A9CFF2259BA6FF00CDD3E4 /* AddVendor.swift in Sources */,
 				C85B3CE8258C5564000D8B6A /* AddCategory.swift in Sources */,
 				C85BB9F724EF5D24000DD312 /* SceneDelegate.swift in Sources */,
 				C85D5B7924F1DCFF008F169A /* SettingsView.swift in Sources */,
 				C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */,
-				C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */,
+				C8A9CFFB259BA90500CDD3E4 /* Vendor.swift in Sources */,
+				C8663BA224FB225D00D28C4B /* VendorDB.swift in Sources */,
 				C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */,
 				C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */,
 				C85BBA0E24EF5D86000DD312 /* WelcomeUI.swift in Sources */,
@@ -416,7 +441,6 @@
 				C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */,
 				C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */,
 				C85BBA0D24EF5D86000DD312 /* SignupView.swift in Sources */,
-				C8F34FD5259AE021001465D3 /* AllCategories.swift in Sources */,
 				C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */,
 				C85B3CE4258C3DE8000D8B6A /* CategoryList.swift in Sources */,
 			);
@@ -554,7 +578,7 @@
 		};
 		C85BBA0624EF5D26000DD312 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C245CECE19F561566EC81AEF /* Pods-Budgie-SwiftUI.debug.xcconfig */;
+			baseConfigurationReference = FAE91FA1BA987939F59F5818 /* Pods-Budgie-SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
@@ -583,7 +607,7 @@
 		};
 		C85BBA0724EF5D26000DD312 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA10D6AA228CC836ECB39930 /* Pods-Budgie-SwiftUI.release.xcconfig */;
+			baseConfigurationReference = 77262EDD8CF46434B99B0DCA /* Pods-Budgie-SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Budgie-SwiftUI/Budgie-SwiftUI.entitlements";
