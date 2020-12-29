@@ -16,7 +16,7 @@ struct AddCategory: View {
     
     @ObservedObject var form: CategoryForm
     
-    @State var categories: [Category]
+    @Binding var parentCategories: [Category]
     
     var body: some View {
         NavigationView {
@@ -40,6 +40,8 @@ struct AddCategory: View {
     //                    ColorPicker("", selection: $form.colour, supportsOpacity: false) // Want this to eventually automatically choose a colour that the user has not previously selected.
     //                        .multilineTextAlignment(.trailing)
     //                }
+                }
+                Section {
                     if form.updating {
                         Button("Delete", action: {
                             deleteCategory(categoryID: form.categoryID!)
@@ -65,20 +67,34 @@ extension AddCategory {
     func dismiss() {
         self.isPresented = false
     }
+    
+    
+    // Need to remove the category from the model and the created parentCategories becuase if only the model is changed, the form doesn't update
     func updateCategory() {
         if let categoryID = form.categoryID {
             categoryModel.update(categoryID: categoryID, name: form.name, descriptor: form.descriptor)
+            
+            // Also update the same category from parentCategories
+            let index = parentCategories.firstIndex { $0.id == categoryID }
+            let oldCategory = parentCategories[index!]
+            oldCategory.name = form.name
+            oldCategory.descriptor = form.descriptor
             dismiss()
         }
     }
     func saveCategory() {
         categoryModel.create(name: form.name, descriptor: form.descriptor)
-        categories.append(categoryModel.categories.last!)
+        
+        // Also add the category to parentCategories
+        parentCategories.append(categoryModel.categories.last!)
         dismiss()
     }
     func deleteCategory(categoryID: Int) {
         categoryModel.delete(categoryID: categoryID)
-        //categories.remove(at: <#T##Int#>)
+        
+        // Also delete the category from parentCategories
+        let index = parentCategories.firstIndex { $0.id == categoryID }
+        parentCategories.remove(at: index!)
         dismiss()
     }
 }

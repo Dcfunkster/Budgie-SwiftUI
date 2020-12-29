@@ -36,7 +36,7 @@ struct CategoryList: View {
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), categories: categories)
+                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), parentCategories: $categories)
                         .environmentObject(self.categoryModel)
                 }
             }
@@ -57,7 +57,7 @@ struct CategoryList: View {
                 .multilineTextAlignment(.center)
         }
         .sheet(isPresented: $showingAddView) {
-            AddCategory(isPresented: self.$showingAddView, form: CategoryForm(), categories: categories)
+            AddCategory(isPresented: self.$showingAddView, form: CategoryForm(), parentCategories: $categories)
                 .environmentObject(self.categoryModel)
         }
     }

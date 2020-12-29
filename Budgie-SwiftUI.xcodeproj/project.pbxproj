@@ -38,6 +38,7 @@
 		C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565B258D1B2A00208A2B /* EntryForm.swift */; };
 		C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */; };
 		C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */; };
+		C8F34FD5259AE021001465D3 /* AllCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F34FD4259AE021001465D3 /* AllCategories.swift */; };
 		D8DA9A4F8D9D5CC0F7497A9C /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D1E10EAA915C5A37233025 /* Pods_Budgie_SwiftUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		C8A1565B258D1B2A00208A2B /* EntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryForm.swift; sourceTree = "<group>"; };
 		C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
+		C8F34FD4259AE021001465D3 /* AllCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategories.swift; sourceTree = "<group>"; };
 		CA10D6AA228CC836ECB39930 /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				C85BBA1224EF5D93000DD312 /* Category.swift */,
 				C85B3CDD258C3202000D8B6A /* CategoryDB.swift */,
 				C85B3CE0258C33D6000D8B6A /* CategoryForm.swift */,
+				C8F34FD4259AE021001465D3 /* AllCategories.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				C8562E0924F0BE15008443B5 /* SpendingView.swift in Sources */,
 				C85BBA1524EF5D93000DD312 /* Frequency.swift in Sources */,
 				C85BBA0D24EF5D86000DD312 /* SignupView.swift in Sources */,
+				C8F34FD5259AE021001465D3 /* AllCategories.swift in Sources */,
 				C85BBA0C24EF5D86000DD312 /* MainUI.swift in Sources */,
 				C85B3CE4258C3DE8000D8B6A /* CategoryList.swift in Sources */,
 			);
