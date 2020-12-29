@@ -21,7 +21,7 @@ struct CategoryRow: View {
             }
         }
         .sheet(isPresented: $showAddModal) {
-            AddCategory(isPresented: self.$showAddModal, form: CategoryForm(self.category))
+            AddCategory(isPresented: self.$showAddModal, form: CategoryForm(self.category), categories: self.categoryModel.categories)
                 .environmentObject(self.categoryModel)
         }
     }

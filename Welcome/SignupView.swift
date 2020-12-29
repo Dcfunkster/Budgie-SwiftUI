@@ -20,7 +20,6 @@ struct SignupView: View {
     
     @State var authenticationDidFail: Bool = false
     @State var errorMessage: String = ""
-    
     @State var authenticationDidSucceed: Bool = false
     
     var body: some View {
@@ -70,6 +69,9 @@ struct SignupView: View {
                     Text("Sign Up")
                         .padding()
                 })
+                .alert(isPresented: $authenticationDidFail) {
+                    Alert(title: Text("Important Message"), message: Text(errorMessage))
+                }
                 Spacer()
             }
         } else {

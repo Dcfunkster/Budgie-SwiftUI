@@ -31,15 +31,11 @@ struct WelcomeUI: View {
     }
 }
 
-struct WelcomeUI_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeUI()
-    }
-}
-
 struct WelcomeView: View {
     @Binding var signupPressed: Bool
     @Binding var loginPressed: Bool
+    
+    var authenticationPressed: String = ""
     
     var body: some View {
         VStack {

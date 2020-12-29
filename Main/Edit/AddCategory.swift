@@ -16,6 +16,8 @@ struct AddCategory: View {
     
     @ObservedObject var form: CategoryForm
     
+    @State var categories: [Category]
+    
     var body: some View {
         NavigationView {
             Form {
@@ -71,10 +73,12 @@ extension AddCategory {
     }
     func saveCategory() {
         categoryModel.create(name: form.name, descriptor: form.descriptor)
+        categories.append(categoryModel.categories.last!)
         dismiss()
     }
     func deleteCategory(categoryID: Int) {
         categoryModel.delete(categoryID: categoryID)
+        //categories.remove(at: <#T##Int#>)
         dismiss()
     }
 }
