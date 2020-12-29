@@ -12,12 +12,16 @@ import RealmSwift
 struct EditView: View {
     
     @EnvironmentObject var categoryModel: CategoryViewModel
+    @EnvironmentObject var vendorModel: VendorViewModel
     
     var body: some View {
         Form {
             Section {
                 NavigationLink(destination: CategoryList(categories: categoryModel.categories)) {
                     Text("Categories")
+                }
+                NavigationLink(destination: VendorList(vendors: vendorModel.vendors)) {
+                    Text("Vendors")
                 }
             }
         }

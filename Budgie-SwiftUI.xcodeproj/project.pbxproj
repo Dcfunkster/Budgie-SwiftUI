@@ -38,6 +38,7 @@
 		C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565B258D1B2A00208A2B /* EntryForm.swift */; };
 		C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */; };
 		C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */; };
+		C8A9CFD1259BA05200CDD3E4 /* VendorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CFD0259BA05200CDD3E4 /* VendorViewModel.swift */; };
 		C8F34FD5259AE021001465D3 /* AllCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F34FD4259AE021001465D3 /* AllCategories.swift */; };
 		D8DA9A4F8D9D5CC0F7497A9C /* Pods_Budgie_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D1E10EAA915C5A37233025 /* Pods_Budgie_SwiftUI.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		C8A1565B258D1B2A00208A2B /* EntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryForm.swift; sourceTree = "<group>"; };
 		C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
+		C8A9CFD0259BA05200CDD3E4 /* VendorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorViewModel.swift; sourceTree = "<group>"; };
 		C8F34FD4259AE021001465D3 /* AllCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategories.swift; sourceTree = "<group>"; };
 		CA10D6AA228CC836ECB39930 /* Pods-Budgie-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgie-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Budgie-SwiftUI/Pods-Budgie-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C85B3CD3258C2733000D8B6A /* CategoryViewModel.swift */,
+				C8A9CFD0259BA05200CDD3E4 /* VendorViewModel.swift */,
 				C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */,
 			);
 			path = ViewModels;
@@ -129,8 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				C8562E0224F0BDC2008443B5 /* EditView.swift */,
-				C85B3CE3258C3DE8000D8B6A /* CategoryList.swift */,
-				C85B3CE7258C5564000D8B6A /* AddCategory.swift */,
+				C8A9CFCB259BA00200CDD3E4 /* Categories */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -226,6 +228,15 @@
 				C8A1565B258D1B2A00208A2B /* EntryForm.swift */,
 			);
 			path = Entry;
+			sourceTree = "<group>";
+		};
+		C8A9CFCB259BA00200CDD3E4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C85B3CE3258C3DE8000D8B6A /* CategoryList.swift */,
+				C85B3CE7258C5564000D8B6A /* AddCategory.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		C8E3DBA124FBF8C1003FDF34 /* Welcome */ = {
@@ -381,6 +392,7 @@
 			files = (
 				C8562E0724F0BDFA008443B5 /* SavingView.swift in Sources */,
 				C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */,
+				C8A9CFD1259BA05200CDD3E4 /* VendorViewModel.swift in Sources */,
 				C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */,
 				C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */,
 				C85BBA1624EF5D93000DD312 /* Category.swift in Sources */,

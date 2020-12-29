@@ -30,7 +30,6 @@ struct AddView: View {
     }
     let categories: [Category]
     
-    // TODO: use the list of all categories and find the index of selection using the int given by the picker
     var body: some View {
         Form {
             Section {
@@ -38,7 +37,9 @@ struct AddView: View {
                     ForEach(categories) { i in
                         VStack {
                             Text(i.name)
+                                .bold()
                             Text(i.descriptor!)
+                                .italic()
                         }
                     }
                 }
@@ -49,7 +50,7 @@ struct AddView: View {
                 .onTapGesture {
                     self.hideKeyboard()
                 }
-                
+
                 HStack {
                     Text("Amount ($)")
                     Spacer()
@@ -57,7 +58,7 @@ struct AddView: View {
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                 }
-                
+
                 Picker("Vendor", selection: $vendorPickerselection) {
                     ForEach(0..<(vendors?.count ?? 1)) { _ in
                         Text("")
@@ -72,6 +73,7 @@ struct AddView: View {
             }
             Section {
                 Button(action: {
+                    form.deltaMoney = (amount.value as NSString).doubleValue // downcasts to NSString and converts that to double
                     loadItems()
                     //newEntry.vendor = vendor -also need a list of vendors stored in db
                     self.hideKeyboard()
