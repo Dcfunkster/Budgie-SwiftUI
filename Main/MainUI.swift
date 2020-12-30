@@ -14,8 +14,9 @@ var entries: Results<EntryDB>?
 
 struct MainUI: View {
     
-    @State var selectedTab: Views = .edit
+    @State var selectedTab: Views = .add
     @EnvironmentObject var categoryModel: CategoryViewModel
+    @EnvironmentObject var vendorModel: VendorViewModel
     
     var body: some View {
         NavigationView {
@@ -30,7 +31,7 @@ struct MainUI: View {
                         Image(systemName: "dollarsign.circle.fill")
                         Text("Saving")
                     }.tag(Views.saving)
-                AddView(form: EntryForm(), categories: categoryModel.categories)
+                AddView(form: EntryForm(), categories: categoryModel.categories, vendors: vendorModel.vendors)
                     .tabItem {
                         Image(systemName: "plus.circle.fill")
                         Text("Add")

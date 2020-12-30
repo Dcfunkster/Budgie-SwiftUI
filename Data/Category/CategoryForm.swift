@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CategoryForm: ObservableObject {
     
@@ -14,6 +15,7 @@ class CategoryForm: ObservableObject {
     @Published var name = ""
     @Published var descriptor = ""
     @Published var colour = UIColor.white
+    @Published var entries = List<EntryDB>()
 
     var categoryID: Int?
     
@@ -28,5 +30,8 @@ class CategoryForm: ObservableObject {
         descriptor = category.descriptor!
         categoryID = category.id
         colour = category.colour
+        if let safeEntries = category.entries {
+            entries = safeEntries
+        }
     }
 }

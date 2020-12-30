@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct AddVendor: View {
     
@@ -17,6 +18,8 @@ struct AddVendor: View {
     @ObservedObject var form: VendorForm
     
     @Binding var parentVendors: [Vendor]
+    
+    @State var entries: RealmSwift.List<EntryDB>?
     
     var body: some View {
         NavigationView {
@@ -46,6 +49,15 @@ struct AddVendor: View {
                         Button("Delete", action: {
                             deleteVendor(vendorID: form.vendorID!)
                         })
+                        .foregroundColor(.red)
+                    }
+                }
+                Section {
+                    if form.updating {
+                        Text("Recent Entries")
+                        ForEach(0..<entries!.count) {
+                            Text(entries![$0].vendor!.name)
+                        }
                     }
                 }
             }
@@ -68,7 +80,6 @@ extension AddVendor {
         self.isPresented = false
     }
     
-    
     // Need to remove the vendor from the model and the created parentVendors becuase if only the model is changed, the form doesn't update
     func updateVendor() {
         if let vendorID = form.vendorID {
@@ -82,13 +93,17 @@ extension AddVendor {
             dismiss()
         }
     }
+    
     func saveVendor() {
         vendorModel.create(name: form.name, descriptor: form.descriptor)
         
         // Also add the vendor to parentVendor
-        parentVendors.append(vendorModel.vendors.last!)
+        parentVendors.append(vendorModel.vendors.first(where: {
+            $0.name == form.name
+        })!)
         dismiss()
     }
+    
     func deleteVendor(vendorID: Int) {
         vendorModel.delete(vendorID: vendorID)
         

@@ -5,7 +5,7 @@
 //  Created by Daniel Funk on 2020-12-17.
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
-
+// entries are not populating
 import SwiftUI
 import RealmSwift
 
@@ -15,8 +15,6 @@ struct CategoryList: View {
     
     @State var categories: [Category]
     @EnvironmentObject var categoryModel: CategoryViewModel
-    
-    @State private var selectedCategory: Category?
 
     var body: some View {
         
@@ -25,17 +23,15 @@ struct CategoryList: View {
             newCategoryButton
             
             ForEach(categories) { category in
-               // CategoryRow(category: category)
                 HStack {
                     Button(action: {
-                        self.selectedCategory = category
                         self.showingAddView.toggle()
                     }) {
                         Text(category.name)
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), parentCategories: $categories)
+                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), parentCategories: $categories, entries: (category.entries)!)
                         .environmentObject(self.categoryModel)
                 }
             }
@@ -49,11 +45,12 @@ struct CategoryList: View {
     var newCategoryButton: some View {
         Button(action: openNewCategory) {
             HStack {
+                Spacer()
                 Image(systemName: "plus.circle.fill")
                 Text("Add new category")
                     .bold()
+                Spacer()
             }
-                .multilineTextAlignment(.center)
         }
         .sheet(isPresented: $showingAddView) {
             AddCategory(isPresented: self.$showingAddView, form: CategoryForm(), parentCategories: $categories)
@@ -69,6 +66,8 @@ extension CategoryList {
     }
     
     func delete(categoryIndex: IndexSet) {
+        
+        // Given an index of the item to be deleted, find it in both lists and delete it
         if let first = categoryIndex.first {
             let categoryID = categories[first].id
             categoryModel.delete(categoryID: categoryID)

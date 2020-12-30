@@ -23,7 +23,8 @@ final class EntryViewModel: ObservableObject {
 
 //MARK: - CRUD Actions
 extension EntryViewModel {
-    func create(parentCategory: LinkingObjects<CategoryDB>, date: Date, deltaMoney: Double, parentVendor: LinkingObjects<VendorDB>, descriptor: String?) {
+    // should be phrased as an update to the category instead of a creation
+    func create(linkingParentCategory: LinkingObjects<CategoryDB>, parentCategoryDB: CategoryDB, date: Date, deltaMoney: Double, linkingParentVendor: LinkingObjects<VendorDB>, parentVendorDB: VendorDB, descriptor: String?) {
         objectWillChange.send()
         
         do {
@@ -31,14 +32,16 @@ extension EntryViewModel {
             
             let entryDB = EntryDB()
             entryDB.id = UUID().hashValue
-            entryDB.parentCategory = parentCategory
+            entryDB.parentCategory = linkingParentCategory
             entryDB.date = date
             entryDB.deltaMoney = deltaMoney
-            entryDB.parentVendor = parentVendor
+            entryDB.parentVendor = linkingParentVendor
             entryDB.descriptor = descriptor
             
             try realm.write {
-                realm.add(entryDB)
+                //realm.add(entryDB)
+                parentCategoryDB.entries.append(entryDB)
+                parentVendorDB.entries.append(entryDB)
             }
         } catch {
             // Handle error

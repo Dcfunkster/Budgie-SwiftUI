@@ -14,7 +14,8 @@ struct AddView: View {
     @State private var catPickerSelection: Int = 0 // Turns out this is now the selected category's id
     @State private var vendorPickerselection = 0
     @State private var categoryEntries: Results<EntryDB>?
-    @State private var selectedCategory: Category?
+    @State private var selectedCategory: CategoryDB?
+    @State private var selectedVendor: VendorDB?
     
     @EnvironmentObject var categoryModel: CategoryViewModel
     @EnvironmentObject var entryModel: EntryViewModel
@@ -29,6 +30,7 @@ struct AddView: View {
         return formatter
     }
     let categories: [Category]
+    let vendors: [Vendor]
     
     var body: some View {
         Form {
@@ -41,6 +43,12 @@ struct AddView: View {
                             Text(i.descriptor!)
                                 .italic()
                         }
+                    }
+                }
+                
+                Picker("Vendor", selection: $vendorPickerselection) {
+                    ForEach(vendors) { i in
+                        Text(i.name)
                     }
                 }
                 
@@ -58,12 +66,6 @@ struct AddView: View {
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                 }
-
-                Picker("Vendor", selection: $vendorPickerselection) {
-                    ForEach(vendorModel.vendors) { vendor in
-                        Text(vendor.name)
-                    }
-                }
                 
                 HStack {
                     Text("Description")
@@ -74,18 +76,11 @@ struct AddView: View {
             Section {
                 Button(action: {
                     form.deltaMoney = (amount.value as NSString).doubleValue // downcasts to NSString and converts that to double
-                    loadItems()
-                    //newEntry.vendor = vendor -also need a list of vendors stored in db
+//                    loadItems()
+                    saveItems()
                     self.hideKeyboard()
-                }, label: {Text("Add Entry")})
+                }, label: { Text("Add Entry") })
             }
-//            Section {
-//                Text("Name: \(form.parentCategory)")
-//                Text("Name: \(form.date)")
-//                Text("Name: \(form.deltaMoney)")
-//                Text("Name: \(form.parentVendor)")
-//                Text("Name: \(form.descriptor)")
-//            }
         }
     }
 }
@@ -95,14 +90,33 @@ struct AddView: View {
 
 extension AddView {
     func saveItems() {
-//        entryModel.create(parentCategory: form.parentCategory, date: form.date, deltaMoney: form.deltaMoney, parentVendor: form.parentVendor, descriptor: form.descriptor)
+        selectedCategory = realm.objects(CategoryDB.self).filter { $0.id == catPickerSelection }.first
+        selectedVendor = realm.objects(VendorDB.self).filter { $0.id == vendorPickerselection }.first
+        
+        let newEntry = EntryDB(value: [
+                                "id": UUID().hashValue,
+                                "date": form.date,
+                                "deltaMoney": form.deltaMoney,
+                                "vendor": selectedVendor!, // TODO: make default vendor if no vendor selected
+                                "descriptor": form.descriptor])
+        
+        categoryModel.update(categoryID: selectedCategory!.id, name: selectedCategory!.name, descriptor: selectedCategory!.descriptor!, entries: selectedCategory!.entries, newEntry: newEntry)
+        vendorModel.update(vendorID: selectedVendor!.id, name: selectedVendor!.name, descriptor: selectedVendor!.descriptor!, entries: selectedVendor!.entries, newEntry: newEntry)
+//        entryModel.create(
+//            linkingParentCategory: form.parentCategory,
+//            parentCategoryDB:      selectedCategory!,
+//            date:                  form.date,
+//            deltaMoney:            form.deltaMoney,
+//            linkingParentVendor:   form.parentVendor,
+//            parentVendorDB:        selectedVendor!,
+//            descriptor:            form.descriptor)
     }
     
-    func loadItems() {
-        // finds the category with the id inputted into catPickerSelection from the picker
-        selectedCategory = categories.filter{ $0.id == catPickerSelection }.first
-        categoryEntries = selectedCategory?.entries?.sorted(byKeyPath: "date", ascending: true)
-    }
+//    func loadItems() {
+//        // finds the category with the id inputted into catPickerSelection from the picker
+//        selectedCategory = categories.filter{ $0.id == catPickerSelection }.first
+//        categoryEntries = selectedCategory?.entries?.sorted(byKeyPath: "date", ascending: true)
+//    }
 }
 
 // adds functionality to self to easily dismiss keyboard using self.hideKeyboard()

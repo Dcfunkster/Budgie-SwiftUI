@@ -15,8 +15,6 @@ struct VendorList: View {
     
     @State var vendors: [Vendor]
     @EnvironmentObject var vendorModel: VendorViewModel
-    
-    @State private var selectedVendor: Vendor?
 
     var body: some View {
         
@@ -27,14 +25,13 @@ struct VendorList: View {
             ForEach(vendors) { vendor in
                 HStack {
                     Button(action: {
-                        self.selectedVendor = vendor
                         self.showingAddView.toggle()
                     }) {
                         Text(vendor.name)
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddVendor(isPresented: self.$showingAddView, form: VendorForm(vendor), parentVendors: $vendors)
+                    AddVendor(isPresented: self.$showingAddView, form: VendorForm(vendor), parentVendors: $vendors, entries: vendor.entries!)
                         .environmentObject(self.vendorModel)
                 }
             }
@@ -48,11 +45,12 @@ struct VendorList: View {
     var newVendorButton: some View {
         Button(action: openNewVendor) {
             HStack {
+                Spacer()
                 Image(systemName: "plus.circle.fill")
                 Text("Add new vendor")
                     .bold()
+                Spacer()
             }
-                .multilineTextAlignment(.center)
         }
         .sheet(isPresented: $showingAddView) {
             AddVendor(isPresented: self.$showingAddView, form: VendorForm(), parentVendors: $vendors)
@@ -68,6 +66,8 @@ extension VendorList {
     }
     
     func delete(vendorIndex: IndexSet) {
+        
+        // Given an index of the item to be deleted, find it in both lists and delete it
         if let first = vendorIndex.first {
             let vendorID = vendors[first].id
             vendorModel.delete(vendorID: vendorID)

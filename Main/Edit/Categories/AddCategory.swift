@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct AddCategory: View {
     
@@ -17,6 +18,8 @@ struct AddCategory: View {
     @ObservedObject var form: CategoryForm
     
     @Binding var parentCategories: [Category]
+    
+    @State var entries: RealmSwift.List<EntryDB>?
     
     var body: some View {
         NavigationView {
@@ -46,6 +49,15 @@ struct AddCategory: View {
                         Button("Delete", action: {
                             deleteCategory(categoryID: form.categoryID!)
                         })
+                        .foregroundColor(.red)
+                    }
+                }
+                Section {
+                    if form.updating {
+                        Text("Recent Entries")
+                        ForEach(0..<entries!.count) {
+                            Text(entries![$0].vendor!.name)
+                        }
                     }
                 }
             }
@@ -68,7 +80,6 @@ extension AddCategory {
         self.isPresented = false
     }
     
-    
     // Need to remove the category from the model and the created parentCategories becuase if only the model is changed, the form doesn't update
     func updateCategory() {
         if let categoryID = form.categoryID {
@@ -82,13 +93,17 @@ extension AddCategory {
             dismiss()
         }
     }
+    
     func saveCategory() {
         categoryModel.create(name: form.name, descriptor: form.descriptor)
         
         // Also add the category to parentCategories
-        parentCategories.append(categoryModel.categories.last!)
+        parentCategories.append(categoryModel.categories.first(where: {
+            $0.name == form.name
+        })!)
         dismiss()
     }
+    
     func deleteCategory(categoryID: Int) {
         categoryModel.delete(categoryID: categoryID)
         

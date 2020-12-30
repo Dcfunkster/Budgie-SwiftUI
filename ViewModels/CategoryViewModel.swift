@@ -62,6 +62,33 @@ extension CategoryViewModel {
         }
     }
     
+    // Add entry to category
+    func update(categoryID: Int, name: String, descriptor: String, entries: List<EntryDB>, newEntry: EntryDB) {
+        objectWillChange.send()
+        
+        let appendedEntries = RealmSwift.List<EntryDB>()
+        entries.forEach {
+            appendedEntries.append($0)
+        }
+        appendedEntries.append(newEntry)
+        
+        
+        do {
+            let realm = try! Realm()
+            try realm.write {
+                realm.create(CategoryDB.self,
+                             value: [
+                                "id": categoryID,
+                                "name": name,
+                                "descriptor": descriptor,
+                                "entries": appendedEntries],
+                             update: .modified)
+            }
+        } catch {
+            print("Error adding entry to category, \(error.localizedDescription)")
+        }
+    }
+    
     func delete(categoryID: Int) {
         objectWillChange.send()
         

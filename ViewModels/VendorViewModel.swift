@@ -60,6 +60,33 @@ extension VendorViewModel {
         }
     }
     
+    func update(vendorID: Int, name: String, descriptor: String, entries: List<EntryDB>, newEntry: EntryDB) {
+        objectWillChange.send()
+        
+        let appendedEntries = RealmSwift.List<EntryDB>()
+        entries.forEach {
+            appendedEntries.append($0)
+        }
+        appendedEntries.append(newEntry)
+        
+        
+        do {
+            let realm = try! Realm()
+            try realm.write {
+                realm.create(VendorDB.self,
+                             value: [
+                                "id": vendorID,
+                                "name": name,
+                                "descriptor": descriptor,
+                                "entries": appendedEntries],
+                             update: .modified)
+            }
+        } catch {
+            print("Error adding entry to vendor, \(error.localizedDescription)")
+        }
+
+    }
+    
     func delete(vendorID: Int) {
         objectWillChange.send()
         
