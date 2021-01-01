@@ -35,6 +35,7 @@
 		C85EE57224F33F3B00D69E34 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57124F33F3B00D69E34 /* ArcView.swift */; };
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
 		C8663BA224FB225D00D28C4B /* VendorDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* VendorDB.swift */; };
+		C89FBAB2259F9DCC00DFC094 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89FBAB1259F9DCC00DFC094 /* Enums.swift */; };
 		C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A15658258D1A0B00208A2B /* EntryDB.swift */; };
 		C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565B258D1B2A00208A2B /* EntryForm.swift */; };
 		C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */; };
@@ -59,7 +60,7 @@
 		C85B3CE0258C33D6000D8B6A /* CategoryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryForm.swift; sourceTree = "<group>"; };
 		C85B3CE3258C3DE8000D8B6A /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		C85B3CE7258C5564000D8B6A /* AddCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategory.swift; sourceTree = "<group>"; };
-		C85BB9F124EF5D24000DD312 /* Budgie-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgie-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C85BB9F124EF5D24000DD312 /* Budgie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85BB9F424EF5D24000DD312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C85BB9F624EF5D24000DD312 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C85BB9FA24EF5D26000DD312 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		C85EE57124F33F3B00D69E34 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		C8663BA124FB225D00D28C4B /* VendorDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDB.swift; sourceTree = "<group>"; };
+		C89FBAB1259F9DCC00DFC094 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C8A15658258D1A0B00208A2B /* EntryDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDB.swift; sourceTree = "<group>"; };
 		C8A1565B258D1B2A00208A2B /* EntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryForm.swift; sourceTree = "<group>"; };
 		C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
@@ -169,7 +171,7 @@
 		C85BB9F224EF5D24000DD312 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C85BB9F124EF5D24000DD312 /* Budgie-SwiftUI.app */,
+				C85BB9F124EF5D24000DD312 /* Budgie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */,
+				C89FBAB1259F9DCC00DFC094 /* Enums.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -298,9 +301,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C85BB9F024EF5D24000DD312 /* Budgie-SwiftUI */ = {
+		C85BB9F024EF5D24000DD312 /* Budgie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie-SwiftUI" */;
+			buildConfigurationList = C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie" */;
 			buildPhases = (
 				3CE029522B6B7C997226AF31 /* [CP] Check Pods Manifest.lock */,
 				C85BB9ED24EF5D24000DD312 /* Sources */,
@@ -312,9 +315,9 @@
 			);
 			dependencies = (
 			);
-			name = "Budgie-SwiftUI";
+			name = Budgie;
 			productName = "Budgie-SwiftUI";
-			productReference = C85BB9F124EF5D24000DD312 /* Budgie-SwiftUI.app */;
+			productReference = C85BB9F124EF5D24000DD312 /* Budgie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -332,7 +335,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C85BB9EC24EF5D24000DD312 /* Build configuration list for PBXProject "Budgie-SwiftUI" */;
+			buildConfigurationList = C85BB9EC24EF5D24000DD312 /* Build configuration list for PBXProject "Budgie" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -345,7 +348,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C85BB9F024EF5D24000DD312 /* Budgie-SwiftUI */,
+				C85BB9F024EF5D24000DD312 /* Budgie */,
 			);
 		};
 /* End PBXProject section */
@@ -421,6 +424,7 @@
 				C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */,
 				C8A9CFF7259BA87400CDD3E4 /* VendorForm.swift in Sources */,
 				C85B3CDE258C3202000D8B6A /* CategoryDB.swift in Sources */,
+				C89FBAB2259F9DCC00DFC094 /* Enums.swift in Sources */,
 				C8562E0324F0BDC2008443B5 /* EditView.swift in Sources */,
 				C85B3CD4258C2733000D8B6A /* CategoryViewModel.swift in Sources */,
 				C85BB9F524EF5D24000DD312 /* AppDelegate.swift in Sources */,
@@ -597,7 +601,7 @@
 					"$(OTHER_LDFLAGS)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielfunk.budgie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -626,7 +630,7 @@
 					"$(OTHER_LDFLAGS)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.danielfunk.Budgie-SwiftUI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielfunk.budgie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -637,7 +641,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C85BB9EC24EF5D24000DD312 /* Build configuration list for PBXProject "Budgie-SwiftUI" */ = {
+		C85BB9EC24EF5D24000DD312 /* Build configuration list for PBXProject "Budgie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C85BBA0324EF5D26000DD312 /* Debug */,
@@ -646,7 +650,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie-SwiftUI" */ = {
+		C85BBA0524EF5D26000DD312 /* Build configuration list for PBXNativeTarget "Budgie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C85BBA0624EF5D26000DD312 /* Debug */,

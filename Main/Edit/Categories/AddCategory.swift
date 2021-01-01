@@ -20,6 +20,7 @@ struct AddCategory: View {
     @Binding var parentCategories: [Category]
     
     @State var entries: RealmSwift.List<EntryDB>?
+    var accountSelection: Int
     
     var body: some View {
         NavigationView {
@@ -31,12 +32,14 @@ struct AddCategory: View {
                         TextField("Groceries", text: $form.name)
                             .multilineTextAlignment(.trailing)
                     }
+                    
                     HStack {
                         Text("Description")
                         Spacer()
                         TextField("Optional", text: $form.descriptor)
                             .multilineTextAlignment(.trailing)
                     }
+                    
     //                HStack {
     //                    Text("Colour")
     //                    Spacer()
@@ -44,16 +47,18 @@ struct AddCategory: View {
     //                        .multilineTextAlignment(.trailing)
     //                }
                 }
-                Section {
-                    if form.updating {
+                
+                if form.updating { // TODO: Make button that lets user change from saving to spending or vv.
+                    Section {
                         Button("Delete", action: {
                             deleteCategory(categoryID: form.categoryID!)
                         })
                         .foregroundColor(.red)
                     }
                 }
-                Section {
-                    if form.updating {
+                
+                if form.updating {
+                    Section {
                         Text("Recent Entries")
                         ForEach(0..<entries!.count) {
                             Text(entries![$0].vendor!.name)
@@ -61,7 +66,7 @@ struct AddCategory: View {
                     }
                 }
             }
-            .navigationBarTitle(form.updating ? form.name : "New Category")
+            .navigationBarTitle(form.updating ? form.name : "\((accountSelection == 0) ? "Spending" : "Saving")")
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel", action: dismiss)
@@ -83,7 +88,10 @@ extension AddCategory {
     // Need to remove the category from the model and the created parentCategories becuase if only the model is changed, the form doesn't update
     func updateCategory() {
         if let categoryID = form.categoryID {
-            categoryModel.update(categoryID: categoryID, name: form.name, descriptor: form.descriptor)
+            categoryModel.update(accountSelection: form.accountSelection,
+                                 categoryID: categoryID,
+                                 name: form.name,
+                                 descriptor: form.descriptor)
             
             // Also update the same category from parentCategories
             let index = parentCategories.firstIndex { $0.id == categoryID }
@@ -95,7 +103,9 @@ extension AddCategory {
     }
     
     func saveCategory() {
-        categoryModel.create(name: form.name, descriptor: form.descriptor)
+        categoryModel.create(accountSelection: form.accountSelection,
+                             name: form.name,
+                             descriptor: form.descriptor)
         
         // Also add the category to parentCategories
         parentCategories.append(categoryModel.categories.first(where: {

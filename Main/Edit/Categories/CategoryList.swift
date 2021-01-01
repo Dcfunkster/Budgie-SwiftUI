@@ -18,6 +18,7 @@ struct CategoryList: View {
     
     @State var categories: [Category]
     @EnvironmentObject var categoryModel: CategoryViewModel
+    var accountSelection: Int
 
     var body: some View {
         
@@ -34,7 +35,11 @@ struct CategoryList: View {
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), parentCategories: $categories, entries: category.entries!)
+                    AddCategory(isPresented: self.$showingAddView,
+                                form: CategoryForm(category),
+                                parentCategories: $categories,
+                                entries: category.entries!,
+                                accountSelection: accountSelection)
                         .environmentObject(self.categoryModel)
                 }
                 .alert(isPresented: $deletingItem) {
@@ -72,13 +77,19 @@ extension CategoryList {
             HStack {
                 Spacer()
                 Image(systemName: "plus.circle.fill")
+                    .foregroundColor(.blue)
+                    .imageScale(.large)
                 Text("Add new category")
                     .bold()
+                    .foregroundColor(.blue)
                 Spacer()
             }
         }
         .sheet(isPresented: $showingAddView) {
-            AddCategory(isPresented: self.$showingAddView, form: CategoryForm(), parentCategories: $categories)
+            AddCategory(isPresented: self.$showingAddView,
+                        form: CategoryForm(),
+                        parentCategories: $categories,
+                        accountSelection: accountSelection)
                 .environmentObject(self.categoryModel)
         }
     }

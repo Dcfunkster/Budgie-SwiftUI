@@ -11,6 +11,7 @@ import RealmSwift
 class EntryDB: Object {
     
     // The entry that is readable for Realm
+    @objc dynamic var accountSelection: Int = 0
     @objc dynamic var id = 0
     @objc dynamic var date = Date()
     @objc dynamic var deltaMoney: Double = 0.0

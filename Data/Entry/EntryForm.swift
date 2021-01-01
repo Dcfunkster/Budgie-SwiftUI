@@ -9,8 +9,10 @@
 import UIKit
 import RealmSwift
 
-class EntryForm: ObservableObject {
+class EntryForm: ObservableObject, Equatable {
+    
     // The items that will be presented on the add entry form
+    @Published var accountSelection: Int = 0
     @Published var parentCategory = LinkingObjects(fromType: CategoryDB.self, property: "entries")
     @Published var parentVendor = LinkingObjects(fromType: VendorDB.self, property: "entries")
     @Published var date = Date()
@@ -26,11 +28,16 @@ class EntryForm: ObservableObject {
     init() { }
     
     init(_ entry: Entry) {
+        accountSelection = entry.accountSelection
         parentCategory = entry.parentCategory
         parentVendor = entry.parentVendor
         date = entry.date
         deltaMoney = entry.deltaMoney
         descriptor = entry.descriptor!
         entryID = entry.id
+    }
+    
+    static func == (lhs: EntryForm, rhs: EntryForm) -> Bool {
+        return lhs.accountSelection == rhs.accountSelection
     }
 }

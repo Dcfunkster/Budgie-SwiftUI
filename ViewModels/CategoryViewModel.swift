@@ -24,13 +24,14 @@ final class CategoryViewModel: ObservableObject {
 
 //MARK: - CRUD Actions
 extension CategoryViewModel {
-    func create(name: String, descriptor: String) {
+    func create(accountSelection: Int, name: String, descriptor: String) {
         objectWillChange.send()
         
         do {
             let realm = try Realm()
             
             let categoryDB = CategoryDB()
+            categoryDB.accountSelection = accountSelection
             categoryDB.id = UUID().hashValue
             categoryDB.name = name
             categoryDB.descriptor = descriptor
@@ -44,7 +45,7 @@ extension CategoryViewModel {
         }
     }
     
-    func update(categoryID: Int, name: String, descriptor: String) {
+    func update(accountSelection: Int, categoryID: Int, name: String, descriptor: String) {
         objectWillChange.send()
         
         do {
@@ -52,6 +53,7 @@ extension CategoryViewModel {
             try realm.write {
                 realm.create(CategoryDB.self,
                              value: [
+                                "accountSelection": accountSelection,
                                 "id": categoryID,
                                 "name": name,
                                 "descriptor": descriptor],
@@ -63,7 +65,7 @@ extension CategoryViewModel {
     }
     
     // Add entry to category
-    func update(categoryID: Int, name: String, descriptor: String, entries: List<EntryDB>, newEntry: EntryDB) {
+    func update(accountSelection: Int, categoryID: Int, name: String, descriptor: String, entries: List<EntryDB>, newEntry: EntryDB) {
         objectWillChange.send()
         
         let appendedEntries = RealmSwift.List<EntryDB>()
@@ -78,6 +80,7 @@ extension CategoryViewModel {
             try realm.write {
                 realm.create(CategoryDB.self,
                              value: [
+                                "accountSelection": accountSelection,
                                 "id": categoryID,
                                 "name": name,
                                 "descriptor": descriptor,

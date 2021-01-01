@@ -43,15 +43,15 @@ struct LoginView: View {
                 
                 Button(action: {
 
-//                    // Login
+                    // Login
 //                    Auth.auth().signIn(withEmail: self.email, password: self.password) { (authResult, error) in
 //                        if let e = error {
 //                            self.errorMessage = e.localizedDescription
 //                            self.authenticationDidFail = true
 //                        } else {
-//                            withAnimation(.easeOut(duration: 0.3)) {
+                            withAnimation(.easeOut(duration: 0.3)) {
                                 self.authenticationDidSucceed = true
-//                            }
+                            }
 //                        }
 //                    }
 

@@ -12,6 +12,7 @@ import RealmSwift
 class CategoryForm: ObservableObject {
     
     // The items that will be presented on the add category form
+    @Published var accountSelection: Int = 0
     @Published var name = ""
     @Published var descriptor = ""
     @Published var colour = UIColor.white
@@ -26,6 +27,7 @@ class CategoryForm: ObservableObject {
     init() { }
     
     init(_ category: Category) {
+        accountSelection = category.accountSelection
         name = category.name
         descriptor = category.descriptor!
         categoryID = category.id

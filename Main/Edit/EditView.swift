@@ -14,27 +14,42 @@ struct EditView: View {
     @EnvironmentObject var categoryModel: CategoryViewModel
     @EnvironmentObject var vendorModel: VendorViewModel
     
+    @State private var spendingCategories = [Category]()
+    @State private var savingCategories = [Category]()
+    
     var body: some View {
         Form {
-            Section {
-                NavigationLink(destination: CategoryList(categories: categoryModel.categories)) {
-                    Text("Categories")
+            Section(header: Text("Categories")) {
+                
+                NavigationLink(destination: CategoryList(categories: spendingCategories, accountSelection: 0)) {
+                    Text("Spending")
                 }
+                NavigationLink(destination: CategoryList(categories: savingCategories, accountSelection: 1)) {
+                    Text("Saving")
+                }
+            }
+            
+            Section {
                 NavigationLink(destination: VendorList(vendors: vendorModel.vendors)) {
                     Text("Vendors")
                 }
             }
         }
+        .onAppear(perform: categorySort)
     }
 }
 
-struct EditCategory: View {
-    var selectedCategory: CategoryDB?
-
-    var body: some View {
-        Form {
-            Section {
-                Text(selectedCategory!.name)
+extension EditView {
+    func categorySort() {
+        // Reset these two arrays to blank in case they are populated
+        spendingCategories = [Category]()
+        savingCategories = [Category]()
+        
+        categoryModel.categories.forEach {
+            if $0.accountSelection == 0 { //spending
+                spendingCategories.append($0)
+            } else {
+                savingCategories.append($0)
             }
         }
     }

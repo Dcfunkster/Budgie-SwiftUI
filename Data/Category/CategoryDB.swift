@@ -11,6 +11,7 @@ import RealmSwift
 class CategoryDB: Object {
     
     // The category object that is readable for Realm
+    @objc dynamic var accountSelection = 0
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var descriptor: String?

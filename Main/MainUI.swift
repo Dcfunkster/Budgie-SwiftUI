@@ -54,14 +54,6 @@ struct MainUI: View {
     }
 }
 
-enum Views: String {
-    case spending = "Spending"
-    case saving = "Saving"
-    case add = "Add"
-    case edit = "Edit"
-    case settings = "Settings"
-}
-
 struct MainUI_Previews: PreviewProvider {
     static var previews: some View {
         MainUI()

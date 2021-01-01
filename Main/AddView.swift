@@ -12,7 +12,8 @@ import RealmSwift
 struct AddView: View {
     
     @State private var catPickerSelection: Int = 0 // Turns out this is now the selected category's id
-    @State private var vendorPickerselection = 0
+    @State private var vendorPickerselection: Int = 0
+    @State private var spendFromSavings = false
     @State private var categoryEntries: Results<EntryDB>?
     @State private var selectedCategory: CategoryDB?
     @State private var selectedVendor: VendorDB?
@@ -31,12 +32,33 @@ struct AddView: View {
     }
     let categories: [Category]
     let vendors: [Vendor]
+    @State private var activeCategories = [Category]()
     
     var body: some View {
         Form {
+            
             Section {
+                Picker("Account Selection", selection: $form.accountSelection) {
+                    Text("Spend").tag(0)
+                    Text("Save").tag(1)
+                    Text("PAYDAY").tag(2) // TODO: Different form for PAYDAY
+                }.pickerStyle(SegmentedPickerStyle())
+                .onChange(of: form.accountSelection) { _ in
+                    poplulateCategoryList()
+                }
+                .onAppear {
+                    poplulateCategoryList()
+                }
+                
+                if form.accountSelection == 0 {
+                    Toggle("Spend from Savings", isOn: $spendFromSavings)
+                }
+            }
+                
+            Section {
+                
                 Picker("Category", selection: $catPickerSelection) {
-                    ForEach(categories) { i in
+                    ForEach(activeCategories) { i in
                         VStack {
                             Text(i.name)
                                 .bold()
@@ -46,9 +68,11 @@ struct AddView: View {
                     }
                 }
                 
-                Picker("Vendor", selection: $vendorPickerselection) {
-                    ForEach(vendors) { i in
-                        Text(i.name)
+                if form.accountSelection == 0 {
+                    Picker("Vendor", selection: $vendorPickerselection) {
+                        ForEach(vendors) { i in
+                            Text(i.name)
+                        }
                     }
                 }
                 
@@ -96,13 +120,27 @@ extension AddView {
         let newEntry = EntryDB(value: [
                                 "id": UUID().hashValue,
                                 "date": form.date,
-                                "deltaMoney": form.deltaMoney,
+                                "deltaMoney": (form.accountSelection == 0 || form.accountSelection == 1) ? -form.deltaMoney : form.deltaMoney,
                                 "vendor": selectedVendor!, // TODO: make default vendor if no vendor selected
                                 "descriptor": form.descriptor])
         
-        categoryModel.update(categoryID: selectedCategory!.id, name: selectedCategory!.name, descriptor: selectedCategory!.descriptor!, entries: selectedCategory!.entries, newEntry: newEntry)
+        categoryModel.update(accountSelection: selectedCategory!.accountSelection,
+                             categoryID: selectedCategory!.id,
+                             name: selectedCategory!.name,
+                             descriptor: selectedCategory!.descriptor!,
+                             entries: selectedCategory!.entries,
+                             newEntry: newEntry)
         vendorModel.update(vendorID: selectedVendor!.id, name: selectedVendor!.name, descriptor: selectedVendor!.descriptor!, entries: selectedVendor!.entries, newEntry: newEntry)
 
+    }
+    
+    func poplulateCategoryList() {
+        activeCategories = [Category]()
+        categories.forEach {
+            if form.accountSelection == $0.accountSelection {
+                activeCategories.append($0)
+            }
+        }
     }
     
 //    func loadItems() {

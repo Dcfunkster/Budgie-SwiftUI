@@ -13,6 +13,7 @@ import UIKit
 
 class Entry: Identifiable {
     
+    let accountSelection: Int
     let id: Int
     let date: Date
     let deltaMoney: Double
@@ -22,6 +23,7 @@ class Entry: Identifiable {
     
     // Convenience initializer
     init(entryDB: EntryDB) {
+        accountSelection = entryDB.accountSelection
         id = entryDB.id
         date = entryDB.date
         deltaMoney = entryDB.deltaMoney

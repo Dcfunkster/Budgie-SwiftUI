@@ -56,8 +56,11 @@ struct VendorList: View {
             HStack {
                 Spacer()
                 Image(systemName: "plus.circle.fill")
+                    .foregroundColor(.blue)
+                    .imageScale(.large)
                 Text("Add new vendor")
                     .bold()
+                    .foregroundColor(.blue)
                 Spacer()
             }
         }

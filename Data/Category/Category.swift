@@ -12,6 +12,7 @@ import UIKit
 class Category: Identifiable, ObservableObject {
     
     // The category object that is more usable for our code
+    @Published var accountSelection: Int
     @Published var id: Int
     @Published var name: String
     @Published var descriptor: String?
@@ -21,6 +22,7 @@ class Category: Identifiable, ObservableObject {
     
     // Convenience initializer
     init(categoryDB: CategoryDB) {
+        accountSelection = categoryDB.accountSelection
         id = categoryDB.id
         name = categoryDB.name
         descriptor = categoryDB.descriptor
