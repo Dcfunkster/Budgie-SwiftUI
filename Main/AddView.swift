@@ -102,14 +102,7 @@ extension AddView {
         
         categoryModel.update(categoryID: selectedCategory!.id, name: selectedCategory!.name, descriptor: selectedCategory!.descriptor!, entries: selectedCategory!.entries, newEntry: newEntry)
         vendorModel.update(vendorID: selectedVendor!.id, name: selectedVendor!.name, descriptor: selectedVendor!.descriptor!, entries: selectedVendor!.entries, newEntry: newEntry)
-//        entryModel.create(
-//            linkingParentCategory: form.parentCategory,
-//            parentCategoryDB:      selectedCategory!,
-//            date:                  form.date,
-//            deltaMoney:            form.deltaMoney,
-//            linkingParentVendor:   form.parentVendor,
-//            parentVendorDB:        selectedVendor!,
-//            descriptor:            form.descriptor)
+
     }
     
 //    func loadItems() {

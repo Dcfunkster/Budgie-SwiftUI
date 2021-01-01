@@ -11,6 +11,9 @@ import RealmSwift
 
 struct VendorList: View {
 
+    @State private var deletingItem = false
+    @State private var deleteIndexSet: IndexSet?
+    
     @State private var showingAddView = false
     
     @State var vendors: [Vendor]
@@ -34,8 +37,14 @@ struct VendorList: View {
                     AddVendor(isPresented: self.$showingAddView, form: VendorForm(vendor), parentVendors: $vendors, entries: vendor.entries!)
                         .environmentObject(self.vendorModel)
                 }
+                .alert(isPresented: $deletingItem) {
+                    deleteAlert()
+                }
             }
-            .onDelete(perform: delete)
+            .onDelete { indexSet in
+                self.deletingItem.toggle()
+                self.deleteIndexSet = indexSet
+            }
         }
         .navigationBarTitle("Vendors", displayMode: .inline)
         .navigationBarHidden(false)
@@ -59,13 +68,29 @@ struct VendorList: View {
     }
 }
 
+//MARK: - Views
+extension VendorList {
+    func deleteAlert() -> Alert {
+        let deletedVendorName = vendors[deleteIndexSet!.first!].name
+        
+        return Alert(
+            title:           Text("Delete \(deletedVendorName)?"),
+            message:         Text("Deleting \(deletedVendorName) will not remove all entries from that vendor."), // TODO: make it so that if entry does not have a vendor, add it to a "miscellaneous" or "other" category
+            primaryButton:   .cancel(),
+            secondaryButton: .destructive(Text("Delete"),
+                                          action: {
+                                            delete(deleteIndexSet!)
+                                          }))
+    }
+}
+
 //MARK: - Actions
 extension VendorList {
     func openNewVendor() {
         self.showingAddView = true
     }
     
-    func delete(vendorIndex: IndexSet) {
+    func delete(_ vendorIndex: IndexSet) {
         
         // Given an index of the item to be deleted, find it in both lists and delete it
         if let first = vendorIndex.first {

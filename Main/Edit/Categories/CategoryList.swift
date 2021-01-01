@@ -11,6 +11,9 @@ import RealmSwift
 
 struct CategoryList: View {
 
+    @State private var deletingItem = false
+    @State private var deleteIndexSet: IndexSet?
+    
     @State private var showingAddView = false
     
     @State var categories: [Category]
@@ -31,15 +34,37 @@ struct CategoryList: View {
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), parentCategories: $categories, entries: (category.entries)!)
+                    AddCategory(isPresented: self.$showingAddView, form: CategoryForm(category), parentCategories: $categories, entries: category.entries!)
                         .environmentObject(self.categoryModel)
                 }
+                .alert(isPresented: $deletingItem) {
+                    deleteAlert()
+                }
             }
-            .onDelete(perform: delete)
+            .onDelete { indexSet in
+                self.deletingItem.toggle()
+                self.deleteIndexSet = indexSet
+            }
         }
         .navigationBarTitle("Categories", displayMode: .inline)
         .navigationBarHidden(false)
         .toolbar { EditButton() }
+    }
+}
+
+//MARK: - Views
+extension CategoryList {
+    func deleteAlert() -> Alert {
+        let deletedCategoryName = categories[deleteIndexSet!.first!].name
+        
+        return Alert(
+            title:           Text("Delete \(deletedCategoryName)?"),
+            message:         Text("Deleting \(deletedCategoryName) will not remove all entries from that category."), // TODO: make it so that if entry does not have a category, add it to a "miscellaneous" or "other" category
+            primaryButton:   .cancel(),
+            secondaryButton: .destructive(Text("Delete"),
+                                          action: {
+                                            delete(deleteIndexSet!)
+                                          }))
     }
     
     var newCategoryButton: some View {
@@ -59,13 +84,14 @@ struct CategoryList: View {
     }
 }
 
+
 //MARK: - Actions
 extension CategoryList {
     func openNewCategory() {
         self.showingAddView = true
     }
     
-    func delete(categoryIndex: IndexSet) {
+    func delete(_ categoryIndex: IndexSet) {
         
         // Given an index of the item to be deleted, find it in both lists and delete it
         if let first = categoryIndex.first {
