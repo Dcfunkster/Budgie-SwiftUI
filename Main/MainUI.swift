@@ -10,18 +10,18 @@ import SwiftUI
 import RealmSwift
 
 var realm = try! Realm()
-var entries: Results<EntryDB>?
 
 struct MainUI: View {
     
-    @State var selectedTab: Views = .add
+    @State var selectedTab: Views = .spending
     @EnvironmentObject var categoryModel: CategoryViewModel
     @EnvironmentObject var vendorModel: VendorViewModel
+    @EnvironmentObject var entryModel: EntryViewModel
     
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                SpendingView()
+                SpendingView(entries: entryModel.entries)
                     .tabItem {
                         Image(systemName: "bag.circle.fill")
                         Text("Spending")

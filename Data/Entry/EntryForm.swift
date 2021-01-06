@@ -13,8 +13,8 @@ class EntryForm: ObservableObject, Equatable {
     
     // The items that will be presented on the add entry form
     @Published var accountSelection: Int = 0
-    @Published var parentCategory = LinkingObjects(fromType: CategoryDB.self, property: "entries")
-    @Published var parentVendor = LinkingObjects(fromType: VendorDB.self, property: "entries")
+//    @Published var parentCategory = LinkingObjects(fromType: CategoryDB.self, property: "entries")
+//    @Published var parentVendor = LinkingObjects(fromType: VendorDB.self, property: "entries")
     @Published var date = Date()
     @Published var deltaMoney: Double = 0.0
     @Published var descriptor = ""
@@ -29,8 +29,8 @@ class EntryForm: ObservableObject, Equatable {
     
     init(_ entry: Entry) {
         accountSelection = entry.accountSelection
-        parentCategory = entry.parentCategory
-        parentVendor = entry.parentVendor
+//        parentCategory = entry.linkingCategory
+//        parentVendor = entry.linkingVendor
         date = entry.date
         deltaMoney = entry.deltaMoney
         descriptor = entry.descriptor!

@@ -90,12 +90,13 @@ extension VendorViewModel {
     func delete(vendorID: Int) {
         objectWillChange.send()
         
-        guard let vendorDB = vendorResults.first(
-            where: { $0.id == vendorID })
+        guard let vendorDB = vendorResults.first(where: { $0.id == vendorID })
         else { return }
+        
         
         do {
             let realm = try Realm()
+            
             try realm.write {
                 realm.delete(vendorDB)
             }

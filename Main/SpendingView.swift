@@ -10,24 +10,61 @@ import SwiftUI
 
 struct SpendingView: View {
     
+    @EnvironmentObject var entryModel: EntryViewModel
+    @State var entries: [Entry]
+    @State var sortFunction: (Entry, Entry) throws -> Bool = { $0.date > $1.date } // descending chronological
+    
     @State private var show: Bool = false
     
     var body: some View {
-        VStack {
+
+        ScrollView { // scrolling problem is with scrollview for sure
+
             ArcView(data: testArcData)
+            
+            Text("Entries")
+                .font(.title).padding()
+            ForEach(try! entries.sorted(by: sortFunction)) { e in
+                HStack {
+                    Text("\(e.vendor?.name ?? "Miscellaneous")")
+                        .bold().padding(.leading)
+                        .onAppear {
+                            print("\(e.vendor?.name ?? "Miscellaneous")")
+                        }
+                    Spacer()
+                    if e.deltaMoney < 0 {
+                        Text(NumberFormatter.localizedString(from: NSNumber(value: e.deltaMoney), number: .currency))
+                            .foregroundColor(.red).padding(.trailing)
+                    } else {
+                        Text(NumberFormatter.localizedString(from: NSNumber(value: e.deltaMoney), number: .currency))
+                            .padding(.trailing)
+                    }
+                }
+            }
+            
+        }
+        .onAppear {
+            entries = entryModel.entries
+            try! entries.sort(by: sortFunction)
         }
     }
 }
 
-
-
-struct SpendingView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabView {
-            SpendingView()
-        }
-    }
-}
+//struct SpendingView_Previews: PreviewProvider {
+//
+//    var entries: [Entry] = testEntryData
+//
+//    static var previews: some View {
+//        TabView {
+//            NavigationView {
+//                TabView {
+//                    SpendingView(entries: entryModel.entries)
+//                }
+//                .navigationTitle("Spending")
+//            }
+//        }
+//    }
+//}
 
 var testArcData = [
 

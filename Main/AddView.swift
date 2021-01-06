@@ -11,7 +11,7 @@ import RealmSwift
 
 struct AddView: View {
     
-    @State private var catPickerSelection: Int = 0 // Turns out this is now the selected category's id
+    @State private var catPickerSelection: Int = 0 // The selected category's id
     @State private var vendorPickerselection: Int = 0
     @State private var spendFromSavings = false
     @State private var categoryEntries: Results<EntryDB>?
@@ -41,7 +41,7 @@ struct AddView: View {
                 Picker("Account Selection", selection: $form.accountSelection) {
                     Text("Spend").tag(0)
                     Text("Save").tag(1)
-                    Text("PAYDAY").tag(2) // TODO: Different form for PAYDAY
+                    Text("Income").tag(2) // TODO: Different form for PAYDAY
                 }.pickerStyle(SegmentedPickerStyle())
                 .onChange(of: form.accountSelection) { _ in
                     poplulateCategoryList()
@@ -58,19 +58,21 @@ struct AddView: View {
             Section {
                 
                 Picker("Category", selection: $catPickerSelection) {
-                    ForEach(activeCategories) { i in
+                    ForEach(activeCategories.sorted(by: { $0.name < $1.name } )) { i in
                         VStack {
                             Text(i.name)
                                 .bold()
-                            Text(i.descriptor!)
-                                .italic()
+                            if i.descriptor != "" { // only show descriptor if there it is populated
+                                Text(i.descriptor!)
+                                    .italic()
+                            }
                         }
                     }
                 }
                 
-                if form.accountSelection == 0 {
+                if form.accountSelection == 0 || form.accountSelection == 2 {
                     Picker("Vendor", selection: $vendorPickerselection) {
-                        ForEach(vendors) { i in
+                        ForEach(vendors.sorted(by: { $0.name < $1.name })) { i in
                             Text(i.name)
                         }
                     }
@@ -130,7 +132,7 @@ extension AddView {
                              descriptor: selectedCategory!.descriptor!,
                              entries: selectedCategory!.entries,
                              newEntry: newEntry)
-        vendorModel.update(vendorID: selectedVendor!.id, name: selectedVendor!.name, descriptor: selectedVendor!.descriptor!, entries: selectedVendor!.entries, newEntry: newEntry)
+//        vendorModel.update(vendorID: selectedVendor!.id, name: selectedVendor!.name, descriptor: selectedVendor!.descriptor!, entries: selectedVendor!.entries, newEntry: newEntry)
 
     }
     

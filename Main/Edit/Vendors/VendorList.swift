@@ -16,6 +16,8 @@ struct VendorList: View {
     
     @State private var showingAddView = false
     
+    @State private var sortFunction: (Vendor, Vendor) throws -> Bool = { $0.name < $1.name } // TODO: save sort preference
+    
     @State var vendors: [Vendor]
     @EnvironmentObject var vendorModel: VendorViewModel
 
@@ -25,7 +27,7 @@ struct VendorList: View {
         List {
             newVendorButton
             
-            ForEach(vendors) { vendor in
+            ForEach(try! vendors.sorted(by: sortFunction)) { vendor in
                 HStack {
                     Button(action: {
                         self.showingAddView.toggle()
@@ -46,9 +48,40 @@ struct VendorList: View {
                 self.deleteIndexSet = indexSet
             }
         }
+        .onAppear {
+            try! vendors.sort(by: sortFunction)
+        }
         .navigationBarTitle("Vendors", displayMode: .inline)
         .navigationBarHidden(false)
-        .toolbar { EditButton() }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+            
+                Menu(content: {
+                    Button(action: {
+                        sortFunction = { $0.name < $1.name }
+                        sortVendors()
+                    }) {
+                            Image(systemName: "arrow.up")
+                            Text("Name (A-Z)")
+                    }
+                    Button(action: {
+                        sortFunction = { $0.name > $1.name }
+                        sortVendors()
+                    }) {
+                            Image(systemName: "arrow.down")
+                            Text("Name (Z-A)")
+                    }
+                }) {
+                    Image(systemName: "arrow.up.arrow.down")
+                        .padding()
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+            
+        }
     }
     
     var newVendorButton: some View {
@@ -93,13 +126,18 @@ extension VendorList {
         self.showingAddView = true
     }
     
+    func sortVendors() {
+        try! vendors.sort(by: sortFunction)
+    }
+    
     func delete(_ vendorIndex: IndexSet) {
         
         // Given an index of the item to be deleted, find it in both lists and delete it
         if let first = vendorIndex.first {
             let vendorID = vendors[first].id
+            
             vendorModel.delete(vendorID: vendorID)
-            vendors.remove(at: first)
+            vendors.removeAll(where: { $0.id == vendorID })
         }
     }
 }

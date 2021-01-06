@@ -16,6 +16,7 @@ struct EditView: View {
     
     @State private var spendingCategories = [Category]()
     @State private var savingCategories = [Category]()
+    @State private var incomeCategories = [Category]()
     
     var body: some View {
         Form {
@@ -26,6 +27,9 @@ struct EditView: View {
                 }
                 NavigationLink(destination: CategoryList(categories: savingCategories, accountSelection: 1)) {
                     Text("Saving")
+                }
+                NavigationLink(destination: CategoryList(categories: incomeCategories, accountSelection: 2)) {
+                    Text("Income")
                 }
             }
             
@@ -44,12 +48,15 @@ extension EditView {
         // Reset these two arrays to blank in case they are populated
         spendingCategories = [Category]()
         savingCategories = [Category]()
+        incomeCategories = [Category]()
         
         categoryModel.categories.forEach {
-            if $0.accountSelection == 0 { //spending
+            if $0.accountSelection == 0 { // spending
                 spendingCategories.append($0)
-            } else {
+            } else if $0.accountSelection == 1 { // saving
                 savingCategories.append($0)
+            } else if $0.accountSelection == 2 { // income
+                incomeCategories.append($0)
             }
         }
     }

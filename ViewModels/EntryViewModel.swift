@@ -26,11 +26,11 @@ extension EntryViewModel {
     // should be phrased as an update to the category instead of a creation
     func create(accountSelection: Int,
                 linkingParentCategory: LinkingObjects<CategoryDB>,
-                parentCategoryDB: CategoryDB,
+                categoryDB: CategoryDB,
                 date: Date,
                 deltaMoney: Double,
                 linkingParentVendor: LinkingObjects<VendorDB>,
-                parentVendorDB: VendorDB,
+                vendorDB: VendorDB,
                 descriptor: String?) {
         
         objectWillChange.send()
@@ -41,16 +41,17 @@ extension EntryViewModel {
             let entryDB = EntryDB()
             entryDB.accountSelection = accountSelection
             entryDB.id = UUID().hashValue
-            entryDB.parentCategory = linkingParentCategory
+            entryDB.linkingCategory = linkingParentCategory
+            entryDB.category = categoryDB
             entryDB.date = date
             entryDB.deltaMoney = deltaMoney
-            entryDB.parentVendor = linkingParentVendor
+            entryDB.linkingVendor = linkingParentVendor
+            entryDB.vendor = vendorDB
             entryDB.descriptor = descriptor
             
             try realm.write {
-                //realm.add(entryDB)
-                parentCategoryDB.entries.append(entryDB)
-                parentVendorDB.entries.append(entryDB)
+                categoryDB.entries.append(entryDB)
+                vendorDB.entries.append(entryDB)
             }
         } catch {
             // Handle error

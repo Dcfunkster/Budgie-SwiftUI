@@ -48,14 +48,7 @@ struct AddCategory: View {
     //                }
                 }
                 
-                if form.updating { // TODO: Make button that lets user change from saving to spending or vv.
-                    Section {
-                        Button("Delete", action: {
-                            deleteCategory(categoryID: form.categoryID!)
-                        })
-                        .foregroundColor(.red)
-                    }
-                }
+                // TODO: Make button that lets user change from saving to spending or vv?
                 
                 if form.updating {
                     Section {
@@ -66,13 +59,16 @@ struct AddCategory: View {
                     }
                 }
             }
-            .navigationBarTitle(form.updating ? form.name : "\((accountSelection == 0) ? "Spending" : "Saving")")
+            .navigationBarTitle(form.updating ? form.name :
+                                accountSelection == 0 ? "Spending" :
+                                accountSelection == 1 ? "Saving" : "Income")
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel", action: dismiss)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(form.updating ? "Update" : "Save", action: form.updating ? updateCategory : saveCategory)
+                    Button(form.updating ? "Update" : "Save",
+                           action: form.updating ? updateCategory : saveCategory)
                 }
             })
         }
@@ -103,23 +99,17 @@ extension AddCategory {
     }
     
     func saveCategory() {
-        categoryModel.create(accountSelection: form.accountSelection,
+        categoryModel.create(accountSelection: accountSelection, // TODO: throw error if user enters a repeating category name in the same accountSelection
                              name: form.name,
                              descriptor: form.descriptor)
         
+        print(form.name)
+        
         // Also add the category to parentCategories
         parentCategories.append(categoryModel.categories.first(where: {
-            $0.name == form.name
+            // id doesn't work to compare, so use name and accountSelection and make sure user has no repeating names
+            ($0.name == form.name) && ($0.accountSelection == accountSelection) // TODO: compare based on date created
         })!)
-        dismiss()
-    }
-    
-    func deleteCategory(categoryID: Int) {
-        categoryModel.delete(categoryID: categoryID)
-        
-        // Also delete the category from parentCategories
-        let index = parentCategories.firstIndex { $0.id == categoryID }
-        parentCategories.remove(at: index!)
         dismiss()
     }
 }

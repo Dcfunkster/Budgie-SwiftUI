@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView = WelcomeUI()
             .environmentObject(CategoryViewModel(realm: realm))
             .environmentObject(VendorViewModel(realm: realm))
+            .environmentObject(EntryViewModel(realm: realm))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

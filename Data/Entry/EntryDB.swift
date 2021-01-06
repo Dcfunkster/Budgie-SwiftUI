@@ -16,8 +16,9 @@ class EntryDB: Object {
     @objc dynamic var date = Date()
     @objc dynamic var deltaMoney: Double = 0.0
     @objc dynamic var vendor: VendorDB?
+    @objc dynamic var category: CategoryDB?
     @objc dynamic var descriptor: String?
     
-    var parentCategory = LinkingObjects(fromType: CategoryDB.self, property: "entries")
-    var parentVendor = LinkingObjects(fromType: VendorDB.self, property: "entries")
+    var linkingCategory = LinkingObjects(fromType: CategoryDB.self, property: "entries")
+    var linkingVendor = LinkingObjects(fromType: VendorDB.self, property: "entries")
 }

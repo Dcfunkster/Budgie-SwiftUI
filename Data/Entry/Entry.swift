@@ -17,9 +17,11 @@ class Entry: Identifiable {
     let id: Int
     let date: Date
     let deltaMoney: Double
-    let parentVendor: LinkingObjects<VendorDB>
+    let linkingVendor: LinkingObjects<VendorDB>
+    let vendor: VendorDB?
     let descriptor: String?
-    var parentCategory: LinkingObjects<CategoryDB>
+    var linkingCategory: LinkingObjects<CategoryDB>
+    let category: CategoryDB?
     
     // Convenience initializer
     init(entryDB: EntryDB) {
@@ -27,8 +29,10 @@ class Entry: Identifiable {
         id = entryDB.id
         date = entryDB.date
         deltaMoney = entryDB.deltaMoney
-        parentVendor = entryDB.parentVendor
+        linkingVendor = entryDB.linkingVendor
+        vendor = entryDB.vendor
         descriptor = entryDB.descriptor
-        parentCategory = entryDB.parentCategory
+        linkingCategory = entryDB.linkingCategory
+        category = entryDB.category
     }
 }

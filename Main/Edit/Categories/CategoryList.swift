@@ -5,16 +5,18 @@
 //  Created by Daniel Funk on 2020-12-17.
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
-// entries are not populating
+
 import SwiftUI
 import RealmSwift
 
 struct CategoryList: View {
-
+    
     @State private var deletingItem = false
     @State private var deleteIndexSet: IndexSet?
     
     @State private var showingAddView = false
+    
+    @State private var sortFunction: (Category, Category) throws -> Bool = { $0.name < $1.name } // TODO: save sort preference
     
     @State var categories: [Category]
     @EnvironmentObject var categoryModel: CategoryViewModel
@@ -25,8 +27,9 @@ struct CategoryList: View {
         // Create a location for a category to be displayed for every category in entries
         List {
             newCategoryButton
-            
-            ForEach(categories) { category in
+
+            ForEach(try! categories.sorted(by: sortFunction))
+            { category in
                 HStack {
                     Button(action: {
                         self.showingAddView.toggle()
@@ -51,9 +54,39 @@ struct CategoryList: View {
                 self.deleteIndexSet = indexSet
             }
         }
+        .onAppear {
+            try! categories.sort(by: sortFunction)
+        }
         .navigationBarTitle("Categories", displayMode: .inline)
         .navigationBarHidden(false)
-        .toolbar { EditButton() }
+        .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                
+                    Menu(content: {
+                        Button(action: {
+                            sortFunction = { $0.name < $1.name }
+                            sortCategories()
+                        }) {
+                                Image(systemName: "arrow.up")
+                                Text("Name (A-Z)")
+                        }
+                        Button(action: {
+                            sortFunction = { $0.name > $1.name }
+                            sortCategories()
+                        }) {
+                                Image(systemName: "arrow.down")
+                                Text("Name (Z-A)")
+                        }
+                    }) {
+                        Image(systemName: "arrow.up.arrow.down")
+                            .padding()
+                    }
+                }
+            
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+        }
     }
 }
 
@@ -68,7 +101,7 @@ extension CategoryList {
             primaryButton:   .cancel(),
             secondaryButton: .destructive(Text("Delete"),
                                           action: {
-                                            delete(deleteIndexSet!)
+                                            delete(categoryIndexSet: deleteIndexSet!)
                                           }))
     }
     
@@ -102,13 +135,17 @@ extension CategoryList {
         self.showingAddView = true
     }
     
-    func delete(_ categoryIndex: IndexSet) {
+    func sortCategories() {
+        try! categories.sort(by: sortFunction)
+    }
+    
+    func delete(categoryIndexSet: IndexSet) {
         
         // Given an index of the item to be deleted, find it in both lists and delete it
-        if let first = categoryIndex.first {
+        if let first = categoryIndexSet.first {
             let categoryID = categories[first].id
             categoryModel.delete(categoryID: categoryID)
-            categories.remove(at: first)
+            categories.removeAll(where: { $0.id == categoryID }) // TODO: remove based on id, not index
         }
     }
 }

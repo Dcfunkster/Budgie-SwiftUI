@@ -10,7 +10,9 @@ import SwiftUI
 
 struct SavingView: View {
     var body: some View {
-        ArcView(data: secondTestArcData)
+        ScrollView {
+            ArcView(data: secondTestArcData)
+        }
     }
 }
 

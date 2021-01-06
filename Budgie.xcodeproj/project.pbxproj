@@ -126,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				C8A15654258D18E500208A2B /* Category */,
-				C8A15656258D18F000208A2B /* Entry */,
 				C8A9CFFF259BAD8D00CDD3E4 /* Vendor */,
+				C8A15656258D18F000208A2B /* Entry */,
 				C85BBA1024EF5D93000DD312 /* Bill.swift */,
 				C85BBA1124EF5D93000DD312 /* Frequency.swift */,
 			);
