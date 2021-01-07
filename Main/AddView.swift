@@ -15,8 +15,8 @@ struct AddView: View {
     @State private var vendorPickerselection: Int = 0
     @State private var spendFromSavings = false
     @State private var categoryEntries: Results<EntryDB>?
-    @State private var selectedCategory: CategoryDB?
-    @State private var selectedVendor: VendorDB?
+    @State private var selectedCategory: Category?
+    @State private var selectedVendor: Vendor?
     
     @EnvironmentObject var categoryModel: CategoryViewModel
     @EnvironmentObject var entryModel: EntryViewModel
@@ -30,8 +30,6 @@ struct AddView: View {
         formatter.dateStyle = .long
         return formatter
     }
-    let categories: [Category]
-    let vendors: [Vendor]
     @State private var activeCategories = [Category]()
     
     var body: some View {
@@ -72,7 +70,7 @@ struct AddView: View {
                 
                 if form.accountSelection == 0 || form.accountSelection == 2 {
                     Picker("Vendor", selection: $vendorPickerselection) {
-                        ForEach(vendors.sorted(by: { $0.name < $1.name })) { i in
+                        ForEach(vendorModel.vendors.sorted(by: { $0.name < $1.name })) { i in
                             Text(i.name)
                         }
                     }
@@ -116,8 +114,8 @@ struct AddView: View {
 
 extension AddView {
     func saveItems() {
-        selectedCategory = realm.objects(CategoryDB.self).filter { $0.id == catPickerSelection }.first
-        selectedVendor = realm.objects(VendorDB.self).filter { $0.id == vendorPickerselection }.first
+        selectedCategory = realm.objects(Category.self).filter { $0.id == catPickerSelection }.first
+        selectedVendor = realm.objects(Vendor.self).filter { $0.id == vendorPickerselection }.first
         
         let newEntry = EntryDB(value: [
                                 "id": UUID().hashValue,
@@ -138,7 +136,7 @@ extension AddView {
     
     func poplulateCategoryList() {
         activeCategories = [Category]()
-        categories.forEach {
+        categoryModel.categories.forEach {
             if form.accountSelection == $0.accountSelection {
                 activeCategories.append($0)
             }

@@ -26,7 +26,6 @@ class VendorForm: ObservableObject {
     init(_ vendor: Vendor) {
         name = vendor.name
         descriptor = vendor.descriptor!
-        vendorID = vendor.id
         colour = vendor.colour
     }
 }

@@ -18,8 +18,10 @@ struct VendorList: View {
     
     @State private var sortFunction: (Vendor, Vendor) throws -> Bool = { $0.name < $1.name } // TODO: save sort preference
     
-    @State var vendors: [Vendor]
     @EnvironmentObject var vendorModel: VendorViewModel
+    @EnvironmentObject var entryModel: EntryViewModel
+    
+    @State private var selectedVendor = Vendor()
 
     var body: some View {
         
@@ -27,17 +29,19 @@ struct VendorList: View {
         List {
             newVendorButton
             
-            ForEach(try! vendors.sorted(by: sortFunction)) { vendor in
+            ForEach(try! vendorModel.vendors.sorted(by: sortFunction)) { vendor in
                 HStack {
                     Button(action: {
                         self.showingAddView.toggle()
+                        selectedVendor = vendor
                     }) {
                         Text(vendor.name)
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddVendor(isPresented: self.$showingAddView, form: VendorForm(vendor), parentVendors: $vendors, entries: vendor.entries!)
+                    AddVendor(isPresented: self.$showingAddView, form: VendorForm(vendor), selectedVendor: selectedVendor)
                         .environmentObject(self.vendorModel)
+                        .environmentObject(self.entryModel)
                 }
                 .alert(isPresented: $deletingItem) {
                     deleteAlert()
@@ -48,9 +52,6 @@ struct VendorList: View {
                 self.deleteIndexSet = indexSet
             }
         }
-        .onAppear {
-            try! vendors.sort(by: sortFunction)
-        }
         .navigationBarTitle("Vendors", displayMode: .inline)
         .navigationBarHidden(false)
         .toolbar {
@@ -59,14 +60,12 @@ struct VendorList: View {
                 Menu(content: {
                     Button(action: {
                         sortFunction = { $0.name < $1.name }
-                        sortVendors()
                     }) {
                             Image(systemName: "arrow.up")
                             Text("Name (A-Z)")
                     }
                     Button(action: {
                         sortFunction = { $0.name > $1.name }
-                        sortVendors()
                     }) {
                             Image(systemName: "arrow.down")
                             Text("Name (Z-A)")
@@ -98,7 +97,7 @@ struct VendorList: View {
             }
         }
         .sheet(isPresented: $showingAddView) {
-            AddVendor(isPresented: self.$showingAddView, form: VendorForm(), parentVendors: $vendors)
+            AddVendor(isPresented: self.$showingAddView, form: VendorForm(), selectedVendor: selectedVendor)
                 .environmentObject(self.vendorModel)
         }
     }
@@ -107,11 +106,20 @@ struct VendorList: View {
 //MARK: - Views
 extension VendorList {
     func deleteAlert() -> Alert {
-        let deletedVendorName = vendors[deleteIndexSet!.first!].name
+        
+        var sortedVendors: [Vendor]?
+        var deletedVendorName: String?
+        
+        do {
+            sortedVendors = try vendorModel.vendors.sorted(by: sortFunction)
+            deletedVendorName = sortedVendors?[deleteIndexSet!.first!].name
+        } catch {
+            print(error.localizedDescription)
+        }
         
         return Alert(
-            title:           Text("Delete \(deletedVendorName)?"),
-            message:         Text("Deleting \(deletedVendorName) will not remove all entries from that vendor."), // TODO: make it so that if entry does not have a vendor, add it to a "miscellaneous" or "other" category
+            title:           Text("Delete \(deletedVendorName ?? "nil")?"),
+            message:         Text("Deleting \(deletedVendorName ?? "nil") will not remove all entries from that vendor."), // TODO: make it so that if entry does not have a vendor, add it to a "miscellaneous" or "other" category
             primaryButton:   .cancel(),
             secondaryButton: .destructive(Text("Delete"),
                                           action: {
@@ -126,18 +134,17 @@ extension VendorList {
         self.showingAddView = true
     }
     
-    func sortVendors() {
-        try! vendors.sort(by: sortFunction)
-    }
-    
-    func delete(_ vendorIndex: IndexSet) {
+    func delete(_ vendorIndexSet: IndexSet) {
         
         // Given an index of the item to be deleted, find it in both lists and delete it
-        if let first = vendorIndex.first {
-            let vendorID = vendors[first].id
+        if let first = vendorIndexSet.first {
             
-            vendorModel.delete(vendorID: vendorID)
-            vendors.removeAll(where: { $0.id == vendorID })
+            do {
+                let vendorID = try vendorModel.vendors.sorted(by: sortFunction)[first].id
+                vendorModel.delete(vendorID: vendorID)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }

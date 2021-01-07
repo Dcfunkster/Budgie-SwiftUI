@@ -16,7 +16,7 @@ class EntryForm: ObservableObject, Equatable {
 //    @Published var parentCategory = LinkingObjects(fromType: CategoryDB.self, property: "entries")
 //    @Published var parentVendor = LinkingObjects(fromType: VendorDB.self, property: "entries")
     @Published var date = Date()
-    @Published var deltaMoney: Double = 0.0
+    @Published var deltaMoney = 0.0
     @Published var descriptor = ""
     
     var entryID: Int?
@@ -27,7 +27,7 @@ class EntryForm: ObservableObject, Equatable {
     
     init() { }
     
-    init(_ entry: Entry) {
+    init(_ entry: EntryDB) {
         accountSelection = entry.accountSelection
 //        parentCategory = entry.linkingCategory
 //        parentVendor = entry.linkingVendor
@@ -37,6 +37,7 @@ class EntryForm: ObservableObject, Equatable {
         entryID = entry.id
     }
     
+    // comparison operator modifier to be able to compare properties of Entry to each other
     static func == (lhs: EntryForm, rhs: EntryForm) -> Bool {
         return lhs.accountSelection == rhs.accountSelection
     }

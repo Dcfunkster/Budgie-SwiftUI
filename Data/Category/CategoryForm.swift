@@ -32,8 +32,6 @@ class CategoryForm: ObservableObject {
         descriptor = category.descriptor!
         categoryID = category.id
         colour = category.colour
-        if let safeEntries = category.entries {
-            entries = safeEntries
-        }
+        entries = category.entries
     }
 }

@@ -10,27 +10,24 @@ import Foundation
 import RealmSwift
 
 final class EntryViewModel: ObservableObject {
-    private var entryResults: Results<EntryDB>
+    var entries: Results<EntryDB>
     
     init(realm: Realm) {
-        entryResults = realm.objects(EntryDB.self)
+        entries = realm.objects(EntryDB.self)
     }
     
-    var entries: [Entry] {
-        entryResults.map(Entry.init)
-    }
 }
 
 //MARK: - CRUD Actions
 extension EntryViewModel {
     // should be phrased as an update to the category instead of a creation
     func create(accountSelection: Int,
-                linkingParentCategory: LinkingObjects<CategoryDB>,
-                categoryDB: CategoryDB,
+                linkingParentCategory: LinkingObjects<Category>,
+                categoryDB: Category,
                 date: Date,
                 deltaMoney: Double,
-                linkingParentVendor: LinkingObjects<VendorDB>,
-                vendorDB: VendorDB,
+                linkingParentVendor: LinkingObjects<Vendor>,
+                vendorDB: Vendor,
                 descriptor: String?) {
         
         objectWillChange.send()
@@ -42,11 +39,9 @@ extension EntryViewModel {
             entryDB.accountSelection = accountSelection
             entryDB.id = UUID().hashValue
             entryDB.linkingCategory = linkingParentCategory
-            entryDB.category = categoryDB
             entryDB.date = date
             entryDB.deltaMoney = deltaMoney
             entryDB.linkingVendor = linkingParentVendor
-            entryDB.vendor = vendorDB
             entryDB.descriptor = descriptor
             
             try realm.write {

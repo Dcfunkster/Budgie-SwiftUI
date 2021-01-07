@@ -21,7 +21,7 @@ struct MainUI: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                SpendingView(entries: entryModel.entries)
+                SpendingView()
                     .tabItem {
                         Image(systemName: "bag.circle.fill")
                         Text("Spending")
@@ -31,7 +31,7 @@ struct MainUI: View {
                         Image(systemName: "dollarsign.circle.fill")
                         Text("Saving")
                     }.tag(Views.saving)
-                AddView(form: EntryForm(), categories: categoryModel.categories, vendors: vendorModel.vendors)
+                AddView(form: EntryForm())
                     .tabItem {
                         Image(systemName: "plus.circle.fill")
                         Text("Add")

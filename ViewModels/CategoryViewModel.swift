@@ -10,15 +10,10 @@ import Foundation
 import RealmSwift
 
 final class CategoryViewModel: ObservableObject {
-    private var categoryResults: Results<CategoryDB>
+    var categories: Results<Category>
     
     init(realm: Realm) {
-        categoryResults = realm.objects(CategoryDB.self)
-    }
-    
-    // maps the Results<Category> onto a normal more usable array
-    var categories: [Category] {
-        categoryResults.map(Category.init)
+        categories = realm.objects(Category.self)
     }
 }
 
@@ -30,7 +25,7 @@ extension CategoryViewModel {
         do {
             let realm = try Realm()
             
-            let categoryDB = CategoryDB()
+            let categoryDB = Category()
             categoryDB.accountSelection = accountSelection
             categoryDB.id = UUID().hashValue
             categoryDB.name = name
@@ -51,7 +46,7 @@ extension CategoryViewModel {
         do {
             let realm = try! Realm()
             try realm.write {
-                realm.create(CategoryDB.self,
+                realm.create(Category.self,
                              value: [
                                 "accountSelection": accountSelection,
                                 "id": categoryID,
@@ -78,7 +73,7 @@ extension CategoryViewModel {
         do {
             let realm = try! Realm()
             try realm.write {
-                realm.create(CategoryDB.self,
+                realm.create(Category.self,
                              value: [
                                 "accountSelection": accountSelection,
                                 "id": categoryID,
@@ -95,7 +90,7 @@ extension CategoryViewModel {
     func delete(categoryID: Int) {
         objectWillChange.send()
         
-        guard let categoryDB = categoryResults.first(
+        guard let categoryDB = categories.first(
             where: { $0.id == categoryID })
         else { return }
         

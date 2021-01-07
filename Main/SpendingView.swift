@@ -11,8 +11,7 @@ import SwiftUI
 struct SpendingView: View {
     
     @EnvironmentObject var entryModel: EntryViewModel
-    @State var entries: [Entry]
-    @State var sortFunction: (Entry, Entry) throws -> Bool = { $0.date > $1.date } // descending chronological
+    @State var sortFunction: (EntryDB, EntryDB) throws -> Bool = { $0.date > $1.date } // descending chronological
     
     @State private var show: Bool = false
     
@@ -24,12 +23,12 @@ struct SpendingView: View {
             
             Text("Entries")
                 .font(.title).padding()
-            ForEach(try! entries.sorted(by: sortFunction)) { e in
+            ForEach(try! entryModel.entries.sorted(by: sortFunction)) { e in
                 HStack {
-                    Text("\(e.vendor?.name ?? "Miscellaneous")")
+                    Text("\(e.linkingVendor.first?.name ?? "Miscellaneous")")
                         .bold().padding(.leading)
                         .onAppear {
-                            print("\(e.vendor?.name ?? "Miscellaneous")")
+                            print("\(e.linkingVendor.first?.name ?? "Miscellaneous")")
                         }
                     Spacer()
                     if e.deltaMoney < 0 {
@@ -42,10 +41,6 @@ struct SpendingView: View {
                 }
             }
             
-        }
-        .onAppear {
-            entries = entryModel.entries
-            try! entries.sort(by: sortFunction)
         }
     }
 }

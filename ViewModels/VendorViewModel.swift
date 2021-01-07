@@ -10,14 +10,10 @@ import Foundation
 import RealmSwift
 
 final class VendorViewModel: ObservableObject {
-    private var vendorResults: Results<VendorDB>
+    var vendors: Results<Vendor>
     
     init(realm: Realm) {
-        vendorResults = realm.objects(VendorDB.self)
-    }
-    
-    var vendors: [Vendor] {
-        vendorResults.map(Vendor.init)
+        vendors = realm.objects(Vendor.self)
     }
 }
 
@@ -29,7 +25,7 @@ extension VendorViewModel {
         do {
             let realm = try Realm()
             
-            let vendorDB = VendorDB()
+            let vendorDB = Vendor()
             vendorDB.id = UUID().hashValue
             vendorDB.name = name
             vendorDB.descriptor = descriptor
@@ -48,7 +44,7 @@ extension VendorViewModel {
         do {
             let realm = try! Realm()
             try realm.write {
-                realm.create(VendorDB.self,
+                realm.create(Vendor.self,
                              value: [
                                 "id": vendorID,
                                 "name": name,
@@ -73,7 +69,7 @@ extension VendorViewModel {
         do {
             let realm = try! Realm()
             try realm.write {
-                realm.create(VendorDB.self,
+                realm.create(Vendor.self,
                              value: [
                                 "id": vendorID,
                                 "name": name,
@@ -90,7 +86,7 @@ extension VendorViewModel {
     func delete(vendorID: Int) {
         objectWillChange.send()
         
-        guard let vendorDB = vendorResults.first(where: { $0.id == vendorID })
+        guard let vendorDB = vendors.first(where: { $0.id == vendorID })
         else { return }
         
         

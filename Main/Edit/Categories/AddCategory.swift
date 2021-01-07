@@ -14,12 +14,10 @@ struct AddCategory: View {
     @Binding var isPresented: Bool
     
     @EnvironmentObject var categoryModel: CategoryViewModel
+    @EnvironmentObject var entryModel: EntryViewModel
     
     @ObservedObject var form: CategoryForm
-    
-    @Binding var parentCategories: [Category]
-    
-    @State var entries: RealmSwift.List<EntryDB>?
+    var selectedCategory: Category
     var accountSelection: Int
     
     var body: some View {
@@ -53,8 +51,8 @@ struct AddCategory: View {
                 if form.updating {
                     Section {
                         Text("Recent Entries")
-                        ForEach(0..<entries!.count) {
-                            Text(entries![$0].vendor!.name)
+                        ForEach(entryModel.entries.filter({ $0.linkingCategory.first == selectedCategory })) { e in
+                            Text("\(e.linkingCategory.first!.name)")
                         }
                     }
                 }
@@ -88,12 +86,6 @@ extension AddCategory {
                                  categoryID: categoryID,
                                  name: form.name,
                                  descriptor: form.descriptor)
-            
-            // Also update the same category from parentCategories
-            let index = parentCategories.firstIndex { $0.id == categoryID }
-            let oldCategory = parentCategories[index!]
-            oldCategory.name = form.name
-            oldCategory.descriptor = form.descriptor
             dismiss()
         }
     }
@@ -102,14 +94,6 @@ extension AddCategory {
         categoryModel.create(accountSelection: accountSelection, // TODO: throw error if user enters a repeating category name in the same accountSelection
                              name: form.name,
                              descriptor: form.descriptor)
-        
-        print(form.name)
-        
-        // Also add the category to parentCategories
-        parentCategories.append(categoryModel.categories.first(where: {
-            // id doesn't work to compare, so use name and accountSelection and make sure user has no repeating names
-            ($0.name == form.name) && ($0.accountSelection == accountSelection) // TODO: compare based on date created
-        })!)
         dismiss()
     }
 }

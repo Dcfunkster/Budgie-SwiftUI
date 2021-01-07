@@ -1,33 +1,29 @@
 //
-//  Category.swift
-//  Budgie
+//  CategoryDB.swift
+//  Budgie-SwiftUI
 //
-//  Created by Daniel Funk on 2020-08-18.
+//  Created by Daniel Funk on 2020-12-17.
 //  Copyright © 2020 Daniel Funk. All rights reserved.
 //
 
 import RealmSwift
-import UIKit
 
-class Category: Identifiable, ObservableObject {
+class Category: Object, Identifiable {
     
-    // The category object that is more usable for our code
-    @Published var accountSelection: Int
-    @Published var id: Int
-    @Published var name: String
-    @Published var descriptor: String?
-    @Published var moneySpentThisPeriod: Double
-    @Published var colour: UIColor
-    @Published var entries: List<EntryDB>?
+    // The category object that is readable for Realm
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+    @objc dynamic var descriptor: String?
+    @objc dynamic var moneySpentThisPeriod: Double = 0.0
+    @objc dynamic var colour: UIColor = UIColor.white
+    @objc dynamic var accountSelection = 0
     
-    // Convenience initializer
-    init(categoryDB: CategoryDB) {
-        accountSelection = categoryDB.accountSelection
-        id = categoryDB.id
-        name = categoryDB.name
-        descriptor = categoryDB.descriptor
-        moneySpentThisPeriod = categoryDB.moneySpentThisPeriod
-        entries = categoryDB.entries
-        colour = categoryDB.colour
+    let entries = RealmSwift.List<EntryDB>()
+
+    override static func ignoredProperties() -> [String] {
+        return ["colour"]
+    }
+    override static func primaryKey() -> String? {
+        "id"
     }
 }
