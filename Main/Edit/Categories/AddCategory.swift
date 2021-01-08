@@ -13,12 +13,16 @@ struct AddCategory: View {
     
     @Binding var isPresented: Bool
     
-    @EnvironmentObject var categoryModel: CategoryViewModel
-    @EnvironmentObject var entryModel: EntryViewModel
-    
-    @ObservedObject var form: CategoryForm
-    var selectedCategory: Category
+//    var selectedCategory: Category
     var accountSelection: Int
+    
+    // FORM
+    @State private var categoryID: Int?
+    @State private var name = ""
+    @State private var descriptor = ""
+    @State private var updating = false
+    
+    var entries = realm.objects(Entry.self)
     
     var body: some View {
         NavigationView {
@@ -27,14 +31,14 @@ struct AddCategory: View {
                     HStack {
                         Text("Name")
                         Spacer()
-                        TextField("Groceries", text: $form.name)
+                        TextField("Groceries", text: $name)
                             .multilineTextAlignment(.trailing)
                     }
                     
                     HStack {
                         Text("Description")
                         Spacer()
-                        TextField("Optional", text: $form.descriptor)
+                        TextField("Optional", text: $descriptor)
                             .multilineTextAlignment(.trailing)
                     }
                     
@@ -48,16 +52,16 @@ struct AddCategory: View {
                 
                 // TODO: Make button that lets user change from saving to spending or vv?
                 
-                if form.updating {
-                    Section {
-                        Text("Recent Entries")
-                        ForEach(entryModel.entries.filter({ $0.linkingCategory.first == selectedCategory })) { e in
-                            Text("\(e.linkingCategory.first!.name)")
-                        }
-                    }
-                }
+//                if updating {
+//                    Section {
+//                        Text("Recent Entries")
+//                        ForEach(entries.filter({ $0.linkingCategory.first == selectedCategory })) { e in
+//                            Text("\(e.linkingCategory.first!.name)")
+//                        }
+//                    }
+//                }
             }
-            .navigationBarTitle(form.updating ? form.name :
+            .navigationBarTitle(updating ? name :
                                 accountSelection == 0 ? "Spending" :
                                 accountSelection == 1 ? "Saving" : "Income")
             .toolbar(content: {
@@ -65,8 +69,8 @@ struct AddCategory: View {
                     Button("Cancel", action: dismiss)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(form.updating ? "Update" : "Save",
-                           action: form.updating ? updateCategory : saveCategory)
+                    Button(updating ? "Update" : "Save",
+                           action: /*updating ? updateCategory :*/ saveCategory)
                 }
             })
         }
@@ -80,20 +84,47 @@ extension AddCategory {
     }
     
     // Need to remove the category from the model and the created parentCategories becuase if only the model is changed, the form doesn't update
-    func updateCategory() {
-        if let categoryID = form.categoryID {
-            categoryModel.update(accountSelection: form.accountSelection,
-                                 categoryID: categoryID,
-                                 name: form.name,
-                                 descriptor: form.descriptor)
-            dismiss()
-        }
-    }
+//    func updateCategory() {
+//        if let categoryID = categoryID {
+//
+//            do {
+//                let realm = try! Realm()
+//                try realm.write {
+//                    realm.create(Category.self,
+//                                 value: [
+//                                    "accountSelection": accountSelection,
+//                                    "id": categoryID,
+//                                    "name": name,
+//                                    "descriptor": descriptor],
+//                                 update: .modified)
+//                }
+//            } catch {
+//                print("Error updating category, \(error.localizedDescription)")
+//            }
+//
+//            dismiss()
+//        }
+//    }
     
     func saveCategory() {
-        categoryModel.create(accountSelection: accountSelection, // TODO: throw error if user enters a repeating category name in the same accountSelection
-                             name: form.name,
-                             descriptor: form.descriptor)
+        
+        do {
+            let realm = try Realm()
+
+            let categoryDB = Category()
+            categoryDB.accountSelection = accountSelection
+            categoryDB.id = UUID().hashValue
+            categoryDB.name = name
+            categoryDB.descriptor = descriptor
+
+            try realm.write {
+                realm.add(categoryDB)
+            }
+        } catch {
+            // Handle error
+            print("Error creating new category, \(error.localizedDescription)")
+        }
+        
         dismiss()
     }
 }

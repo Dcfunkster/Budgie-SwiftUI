@@ -14,9 +14,6 @@ var realm = try! Realm()
 struct MainUI: View {
     
     @State var selectedTab: Views = .spending
-    @EnvironmentObject var categoryModel: CategoryViewModel
-    @EnvironmentObject var vendorModel: VendorViewModel
-    @EnvironmentObject var entryModel: EntryViewModel
     
     var body: some View {
         NavigationView {
@@ -31,7 +28,7 @@ struct MainUI: View {
                         Image(systemName: "dollarsign.circle.fill")
                         Text("Saving")
                     }.tag(Views.saving)
-                AddView(form: EntryForm())
+                AddView()
                     .tabItem {
                         Image(systemName: "plus.circle.fill")
                         Text("Add")

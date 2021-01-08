@@ -14,49 +14,44 @@ struct AddView: View {
     @State private var catPickerSelection: Int = 0 // The selected category's id
     @State private var vendorPickerselection: Int = 0
     @State private var spendFromSavings = false
-    @State private var categoryEntries: Results<EntryDB>?
     @State private var selectedCategory: Category?
-    @State private var selectedVendor: Vendor?
     
-    @EnvironmentObject var categoryModel: CategoryViewModel
-    @EnvironmentObject var entryModel: EntryViewModel
-    @EnvironmentObject var vendorModel: VendorViewModel
-    
-    @ObservedObject var form: EntryForm
     @ObservedObject var amount = NumbersOnly()
+    
+    // FORM
+    @State private var accountSelection = 0
+    @State private var deltaMoney = 0.0
+    @State private var date = Date()
+    @State private var descriptor = ""
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         return formatter
     }
-    @State private var activeCategories = [Category]()
+    
+    var categories = realm.objects(Category.self)
+    var vendors = realm.objects(Vendor.self)
     
     var body: some View {
         Form {
-            
+
             Section {
-                Picker("Account Selection", selection: $form.accountSelection) {
+                Picker("Account Selection", selection: $accountSelection) {
                     Text("Spend").tag(0)
                     Text("Save").tag(1)
                     Text("Income").tag(2) // TODO: Different form for PAYDAY
                 }.pickerStyle(SegmentedPickerStyle())
-                .onChange(of: form.accountSelection) { _ in
-                    poplulateCategoryList()
-                }
-                .onAppear {
-                    poplulateCategoryList()
-                }
-                
-                if form.accountSelection == 0 {
+
+                if accountSelection == 0 {
                     Toggle("Spend from Savings", isOn: $spendFromSavings)
                 }
             }
-                
+
             Section {
-                
+
                 Picker("Category", selection: $catPickerSelection) {
-                    ForEach(activeCategories.sorted(by: { $0.name < $1.name } )) { i in
+                    ForEach(categories.filter({ $0.accountSelection == accountSelection }).sorted(by: { $0.name < $1.name })) { i in
                         VStack {
                             Text(i.name)
                                 .bold()
@@ -67,16 +62,16 @@ struct AddView: View {
                         }
                     }
                 }
-                
-                if form.accountSelection == 0 || form.accountSelection == 2 {
+
+                if accountSelection == 0 || accountSelection == 2 {
                     Picker("Vendor", selection: $vendorPickerselection) {
-                        ForEach(vendorModel.vendors.sorted(by: { $0.name < $1.name })) { i in
+                        ForEach(vendors.sorted(by: { $0.name < $1.name })) { i in
                             Text(i.name)
                         }
                     }
                 }
-                
-                DatePicker(selection: $form.date, in: ...Date(), displayedComponents: .date) {
+
+                DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
                     Text("Select a date")
                 }
                 .onTapGesture {
@@ -90,17 +85,16 @@ struct AddView: View {
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                 }
-                
+
                 HStack {
                     Text("Description")
-                    TextField("E.g. Lunch with friends", text: $form.descriptor)
+                    TextField("E.g. Lunch with friends", text: $descriptor)
                         .multilineTextAlignment(.trailing)
                 }
             }
             Section {
                 Button(action: {
-                    form.deltaMoney = (amount.value as NSString).doubleValue // downcasts to NSString and converts that to double
-//                    loadItems()
+                    deltaMoney = (amount.value as NSString).doubleValue // downcasts to NSString and converts that to double
                     saveItems()
                     self.hideKeyboard()
                 }, label: { Text("Add Entry") })
@@ -109,45 +103,31 @@ struct AddView: View {
     }
 }
 
-
 //MARK: - Actions
 
 extension AddView {
     func saveItems() {
         selectedCategory = realm.objects(Category.self).filter { $0.id == catPickerSelection }.first
-        selectedVendor = realm.objects(Vendor.self).filter { $0.id == vendorPickerselection }.first
+
+        do {
+            let realm = try! Realm()
+            try realm.write {
+                realm.create(Category.self,
+                             value: [
+                                "accountSelection": selectedCategory!.accountSelection,
+                                "id": selectedCategory!.id,
+                                "name": selectedCategory!.name,
+                                "descriptor": selectedCategory!.descriptor!,
+                                "entries": selectedCategory!.entries],
+                             update: .modified)
+            }
+        } catch {
+            print("Error adding entry to category, \(error.localizedDescription)")
+        }
         
-        let newEntry = EntryDB(value: [
-                                "id": UUID().hashValue,
-                                "date": form.date,
-                                "deltaMoney": (form.accountSelection == 0 || form.accountSelection == 1) ? -form.deltaMoney : form.deltaMoney,
-                                "vendor": selectedVendor!, // TODO: make default vendor if no vendor selected
-                                "descriptor": form.descriptor])
-        
-        categoryModel.update(accountSelection: selectedCategory!.accountSelection,
-                             categoryID: selectedCategory!.id,
-                             name: selectedCategory!.name,
-                             descriptor: selectedCategory!.descriptor!,
-                             entries: selectedCategory!.entries,
-                             newEntry: newEntry)
 //        vendorModel.update(vendorID: selectedVendor!.id, name: selectedVendor!.name, descriptor: selectedVendor!.descriptor!, entries: selectedVendor!.entries, newEntry: newEntry)
 
     }
-    
-    func poplulateCategoryList() {
-        activeCategories = [Category]()
-        categoryModel.categories.forEach {
-            if form.accountSelection == $0.accountSelection {
-                activeCategories.append($0)
-            }
-        }
-    }
-    
-//    func loadItems() {
-//        // finds the category with the id inputted into catPickerSelection from the picker
-//        selectedCategory = categories.filter{ $0.id == catPickerSelection }.first
-//        categoryEntries = selectedCategory?.entries?.sorted(byKeyPath: "date", ascending: true)
-//    }
 }
 
 // adds functionality to self to easily dismiss keyboard using self.hideKeyboard()

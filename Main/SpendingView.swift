@@ -10,10 +10,11 @@ import SwiftUI
 
 struct SpendingView: View {
     
-    @EnvironmentObject var entryModel: EntryViewModel
-    @State var sortFunction: (EntryDB, EntryDB) throws -> Bool = { $0.date > $1.date } // descending chronological
+    @State var sortFunction: (Entry, Entry) throws -> Bool = { $0.date > $1.date } // descending chronological
     
     @State private var show: Bool = false
+    
+    var entries = realm.objects(Entry.self)
     
     var body: some View {
 
@@ -23,7 +24,7 @@ struct SpendingView: View {
             
             Text("Entries")
                 .font(.title).padding()
-            ForEach(try! entryModel.entries.sorted(by: sortFunction)) { e in
+            ForEach(try! entries.sorted(by: sortFunction)) { e in
                 HStack {
                     Text("\(e.linkingVendor.first?.name ?? "Miscellaneous")")
                         .bold().padding(.leading)

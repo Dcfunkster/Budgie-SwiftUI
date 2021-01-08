@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 final class EntryViewModel: ObservableObject {
-    var entries: Results<EntryDB>
+    var entries: Results<Entry>
     
     init(realm: Realm) {
-        entries = realm.objects(EntryDB.self)
+        entries = realm.objects(Entry.self)
     }
     
 }
@@ -35,18 +35,18 @@ extension EntryViewModel {
         do {
             let realm = try Realm()
             
-            let entryDB = EntryDB()
-            entryDB.accountSelection = accountSelection
-            entryDB.id = UUID().hashValue
-            entryDB.linkingCategory = linkingParentCategory
-            entryDB.date = date
-            entryDB.deltaMoney = deltaMoney
-            entryDB.linkingVendor = linkingParentVendor
-            entryDB.descriptor = descriptor
+            let entry = Entry()
+            entry.accountSelection = accountSelection
+            entry.id = UUID().hashValue
+            entry.linkingCategory = linkingParentCategory
+            entry.date = date
+            entry.deltaMoney = deltaMoney
+            entry.linkingVendor = linkingParentVendor
+            entry.descriptor = descriptor
             
             try realm.write {
-                categoryDB.entries.append(entryDB)
-                vendorDB.entries.append(entryDB)
+                categoryDB.entries.append(entry)
+                vendorDB.entries.append(entry)
             }
         } catch {
             // Handle error

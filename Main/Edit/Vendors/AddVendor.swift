@@ -13,11 +13,16 @@ struct AddVendor: View {
     
     @Binding var isPresented: Bool
     
-    @EnvironmentObject var vendorModel: VendorViewModel
-    @EnvironmentObject var entryModel: EntryViewModel
-    
-    @ObservedObject var form: VendorForm
     var selectedVendor: Vendor
+    
+    // FORM
+    @State private var updating = false
+    @State private var vendorID: Int?
+    @State private var name = ""
+    @State private var descriptor = ""
+    
+    var entries = realm.objects(Entry.self)
+    var vendors = realm.objects(Vendor.self)
     
     var body: some View {
         NavigationView {
@@ -26,13 +31,13 @@ struct AddVendor: View {
                     HStack {
                         Text("Name")
                         Spacer()
-                        TextField("Superstore", text: $form.name)
+                        TextField("Superstore", text: $name)
                             .multilineTextAlignment(.trailing)
                     }
                     HStack {
                         Text("Description")
                         Spacer()
-                        TextField("Optional", text: $form.descriptor)
+                        TextField("Optional", text: $descriptor)
                             .multilineTextAlignment(.trailing)
                     }
     //                HStack {
@@ -43,29 +48,29 @@ struct AddVendor: View {
     //                }
                 }
                 Section {
-                    if form.updating {
+                    if updating {
                         Button("Delete", action: {
-                            deleteVendor(vendorID: form.vendorID!)
+                            deleteVendor(vendorID: vendorID!)
                         })
                         .foregroundColor(.red)
                     }
                 }
                 Section {
-                    if form.updating {
+                    if updating {
                         Text("Recent Entries")
-                        ForEach(entryModel.entries.filter({ $0.linkingVendor.first == selectedVendor })) { e in
+                        ForEach(entries.filter({ $0.linkingVendor.first == selectedVendor })) { e in
                             Text("\(e.linkingVendor.first!.name)")
                         }
                     }
                 }
             }
-            .navigationBarTitle(form.updating ? form.name : "New Vendor")
+            .navigationBarTitle(updating ? name : "New Vendor")
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel", action: { self.isPresented.toggle() })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(form.updating ? "Update" : "Save", action: form.updating ? updateVendor : saveVendor)
+                    Button(updating ? "Update" : "Save", action: updating ? updateVendor : saveVendor)
                 }
             })
         }
@@ -76,19 +81,64 @@ struct AddVendor: View {
 extension AddVendor {
     // Need to remove the vendor from the model and the created parentVendors becuase if only the model is changed, the form doesn't update
     func updateVendor() {
-        if let vendorID = form.vendorID {
-            vendorModel.update(vendorID: vendorID, name: form.name, descriptor: form.descriptor)
+        if let safeVendorID = vendorID {
+                
+            do {
+                let realm = try! Realm()
+                try realm.write {
+                    realm.create(Vendor.self,
+                                 value: [
+                                    "id": safeVendorID,
+                                    "name": name,
+                                    "descriptor": descriptor],
+                                 update: .modified)
+                }
+            } catch {
+                print("Error updating vendor, \(error.localizedDescription)")
+            }
+            
+            
             self.isPresented.toggle()
         }
     }
     
     func saveVendor() {
-        vendorModel.create(name: form.name, descriptor: form.descriptor)
+        
+        do {
+            let realm = try Realm()
+
+            let vendorDB = Vendor()
+            vendorDB.id = UUID().hashValue
+            vendorDB.name = name
+            vendorDB.descriptor = descriptor
+
+            try realm.write {
+                realm.add(vendorDB)
+            }
+        } catch {
+            print("Error creating new category, \(error.localizedDescription)")
+        }
+        
+        
         self.isPresented.toggle()
     }
     
     func deleteVendor(vendorID: Int) {
-        vendorModel.delete(vendorID: vendorID)
+        
+        guard let vendorDB = vendors.first(where: { $0.id == vendorID })
+        else { return }
+
+
+        do {
+            let realm = try Realm()
+
+            try realm.write {
+                realm.delete(vendorDB)
+            }
+        } catch {
+            print("Error deleting category, \(error.localizedDescription)")
+        }
+        
         self.isPresented.toggle()
     }
 }

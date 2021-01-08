@@ -18,11 +18,10 @@ struct CategoryList: View {
     
     @State private var sortFunction: (Category, Category) throws -> Bool = { $0.name < $1.name } // TODO: save sort preference
     
-    @EnvironmentObject var categoryModel: CategoryViewModel
-    @EnvironmentObject var entryModel: EntryViewModel
-    
-    @State private var selectedCategory = Category()
+//    @State private var selectedCategory = Category()
     var accountSelection: Int
+    
+    @State private var categories = realm.objects(Category.self)
     
     var body: some View {
         
@@ -30,23 +29,20 @@ struct CategoryList: View {
         List {
             newCategoryButton
 
-            ForEach(try! categoryModel.categories.filter({ $0.accountSelection == accountSelection }).sorted(by: sortFunction))
+            ForEach(try! categories.filter({ $0.accountSelection == accountSelection }).sorted(by: sortFunction))
             { category in
                 HStack {
                     Button(action: {
                         self.showingAddView.toggle()
-                        selectedCategory = category
+//                        selectedCategory = category
                     }) {
                         Text(category.name)
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
                     AddCategory(isPresented: self.$showingAddView,
-                                form: CategoryForm(category),
-                                selectedCategory: selectedCategory,
+//                                selectedCategory: selectedCategory,
                                 accountSelection: accountSelection)
-                        .environmentObject(self.categoryModel)
-                        .environmentObject(self.entryModel)
                 }
                 .alert(isPresented: $deletingItem) {
                     deleteAlert()
@@ -92,7 +88,7 @@ struct CategoryList: View {
 extension CategoryList {
     func deleteAlert() -> Alert {
         
-        let unSortedActiveCategories = categoryModel.categories.filter({$0.accountSelection == accountSelection})
+        let unSortedActiveCategories = categories.filter({$0.accountSelection == accountSelection})
         let sortedCategories: [Category]?
         var deletedCategoryName: String?
         
@@ -128,9 +124,8 @@ extension CategoryList {
         }
         .sheet(isPresented: $showingAddView) {
             AddCategory(isPresented: self.$showingAddView,
-                        form: CategoryForm(),
-                        selectedCategory: selectedCategory, accountSelection: accountSelection)
-                .environmentObject(self.categoryModel)
+//                        selectedCategory: selectedCategory,
+                        accountSelection: accountSelection)
         }
     }
 }
@@ -145,15 +140,34 @@ extension CategoryList {
     func delete(categoryIndexSet: IndexSet) {
         
         // Given an index of the item to be deleted, find it in both lists and delete it
-        if let first = categoryIndexSet.first {
-            
-            do {
-                let categoryID = try categoryModel.categories.filter({ $0.accountSelection == accountSelection }).sorted(by: sortFunction)[first].id
-                categoryModel.delete(categoryID: categoryID)
-            } catch {
-                print(error.localizedDescription)
+        DispatchQueue.main.async {
+            autoreleasepool {
+                if let first = categoryIndexSet.first {
+                    
+                    do {
+                        let categoryID = try categories.filter({ $0.accountSelection == accountSelection }).sorted(by: sortFunction)[first].id
+                        
+                        guard let categoryDB = categories.first(
+                            where: { $0.id == categoryID })
+                        else { return }
+                
+                        do {
+                            let realm = try Realm()
+                            try realm.write {
+                                realm.delete(categoryDB)
+                                realm.refresh()
+                            }
+                        } catch {
+                            print("Error deleting category, \(error.localizedDescription)")
+                        }
+                        
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    // TODO: remove based on id, not index
+                }
             }
-            // TODO: remove based on id, not index
+        
         }
     }
 }

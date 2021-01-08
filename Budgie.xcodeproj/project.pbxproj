@@ -34,7 +34,7 @@
 		C85EE57524F3403F00D69E34 /* DrawShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85EE57424F3403F00D69E34 /* DrawShape.swift */; };
 		C8663BA224FB225D00D28C4B /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8663BA124FB225D00D28C4B /* Vendor.swift */; };
 		C89FBAB2259F9DCC00DFC094 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89FBAB1259F9DCC00DFC094 /* Enums.swift */; };
-		C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A15658258D1A0B00208A2B /* EntryDB.swift */; };
+		C8A15659258D1A0B00208A2B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A15658258D1A0B00208A2B /* Entry.swift */; };
 		C8A1565C258D1B2A00208A2B /* EntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565B258D1B2A00208A2B /* EntryForm.swift */; };
 		C8A1565F258D1DDC00208A2B /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */; };
 		C8A55ABF258A865F00B22F35 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */; };
@@ -76,7 +76,7 @@
 		C85EE57424F3403F00D69E34 /* DrawShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawShape.swift; sourceTree = "<group>"; };
 		C8663BA124FB225D00D28C4B /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		C89FBAB1259F9DCC00DFC094 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		C8A15658258D1A0B00208A2B /* EntryDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDB.swift; sourceTree = "<group>"; };
+		C8A15658258D1A0B00208A2B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C8A1565B258D1B2A00208A2B /* EntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryForm.swift; sourceTree = "<group>"; };
 		C8A1565E258D1DDC00208A2B /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		C8A55ABE258A865F00B22F35 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		C8A15656258D18F000208A2B /* Entry */ = {
 			isa = PBXGroup;
 			children = (
-				C8A15658258D1A0B00208A2B /* EntryDB.swift */,
+				C8A15658258D1A0B00208A2B /* Entry.swift */,
 				C8A1565B258D1B2A00208A2B /* EntryForm.swift */,
 			);
 			path = Entry;
@@ -411,7 +411,7 @@
 				C8562E0524F0BDDD008443B5 /* AddView.swift in Sources */,
 				C85BBA1424EF5D93000DD312 /* Bill.swift in Sources */,
 				C85B3CE1258C33D6000D8B6A /* CategoryForm.swift in Sources */,
-				C8A15659258D1A0B00208A2B /* EntryDB.swift in Sources */,
+				C8A15659258D1A0B00208A2B /* Entry.swift in Sources */,
 				C8A9CFF7259BA87400CDD3E4 /* VendorForm.swift in Sources */,
 				C85B3CDE258C3202000D8B6A /* Category.swift in Sources */,
 				C89FBAB2259F9DCC00DFC094 /* Enums.swift in Sources */,

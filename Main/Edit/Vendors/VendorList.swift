@@ -18,8 +18,8 @@ struct VendorList: View {
     
     @State private var sortFunction: (Vendor, Vendor) throws -> Bool = { $0.name < $1.name } // TODO: save sort preference
     
-    @EnvironmentObject var vendorModel: VendorViewModel
-    @EnvironmentObject var entryModel: EntryViewModel
+    let vendors = realm.objects(Vendor.self)
+    let entries = realm.objects(Vendor.self)
     
     @State private var selectedVendor = Vendor()
 
@@ -29,7 +29,7 @@ struct VendorList: View {
         List {
             newVendorButton
             
-            ForEach(try! vendorModel.vendors.sorted(by: sortFunction)) { vendor in
+            ForEach(try! vendors.sorted(by: sortFunction)) { vendor in
                 HStack {
                     Button(action: {
                         self.showingAddView.toggle()
@@ -39,9 +39,7 @@ struct VendorList: View {
                     }
                 }
                 .sheet(isPresented: $showingAddView) {
-                    AddVendor(isPresented: self.$showingAddView, form: VendorForm(vendor), selectedVendor: selectedVendor)
-                        .environmentObject(self.vendorModel)
-                        .environmentObject(self.entryModel)
+                    AddVendor(isPresented: self.$showingAddView, selectedVendor: selectedVendor)
                 }
                 .alert(isPresented: $deletingItem) {
                     deleteAlert()
@@ -97,8 +95,7 @@ struct VendorList: View {
             }
         }
         .sheet(isPresented: $showingAddView) {
-            AddVendor(isPresented: self.$showingAddView, form: VendorForm(), selectedVendor: selectedVendor)
-                .environmentObject(self.vendorModel)
+            AddVendor(isPresented: self.$showingAddView, selectedVendor: selectedVendor)
         }
     }
 }
@@ -111,7 +108,7 @@ extension VendorList {
         var deletedVendorName: String?
         
         do {
-            sortedVendors = try vendorModel.vendors.sorted(by: sortFunction)
+            sortedVendors = try vendors.sorted(by: sortFunction)
             deletedVendorName = sortedVendors?[deleteIndexSet!.first!].name
         } catch {
             print(error.localizedDescription)
@@ -124,6 +121,7 @@ extension VendorList {
             secondaryButton: .destructive(Text("Delete"),
                                           action: {
                                             delete(deleteIndexSet!)
+                                            selectedVendor = Vendor()
                                           }))
     }
 }
@@ -140,8 +138,22 @@ extension VendorList {
         if let first = vendorIndexSet.first {
             
             do {
-                let vendorID = try vendorModel.vendors.sorted(by: sortFunction)[first].id
-                vendorModel.delete(vendorID: vendorID)
+                let vendorID = try vendors.sorted(by: sortFunction)[first].id
+                
+                guard let vendorDB = vendors.first(where: { $0.id == vendorID })
+                else { return }
+        
+        
+                do {
+                    let realm = try Realm()
+        
+                    try realm.write {
+                        realm.delete(vendorDB)
+                    }
+                } catch {
+                    print("Error deleting category, \(error.localizedDescription)")
+                }
+                
             } catch {
                 print(error.localizedDescription)
             }

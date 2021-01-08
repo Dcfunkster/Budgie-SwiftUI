@@ -16,7 +16,7 @@ class Vendor: Object, Identifiable {
     @objc dynamic var descriptor: String? = nil
     @objc dynamic var colour: UIColor = UIColor.white
     
-    let entries = RealmSwift.List<EntryDB>()
+    let entries = RealmSwift.List<Entry>()
     
     override static func ignoredProperties() -> [String] {
         return ["colour"]

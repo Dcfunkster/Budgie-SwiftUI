@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-class EntryDB: Object, Identifiable {
+class Entry: Object, Identifiable {
     
     // The entry that is readable for Realm
     @objc dynamic var id = 0

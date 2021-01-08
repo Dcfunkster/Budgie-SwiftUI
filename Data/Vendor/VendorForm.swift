@@ -9,23 +9,23 @@
 import UIKit
 import RealmSwift
 
-class VendorForm: ObservableObject {
-    
-    @Published var name = ""
-    @Published var descriptor = ""
-    @Published var colour = UIColor.white
-    
-    var vendorID: Int?
-    
-    var updating: Bool {
-        vendorID != nil
-    }
-    
-    init() { }
-    
-    init(_ vendor: Vendor) {
-        name = vendor.name
-        descriptor = vendor.descriptor!
-        colour = vendor.colour
-    }
-}
+//class VendorForm: ObservableObject {
+//
+//    @Published var name = ""
+//    @Published var descriptor = ""
+//    @Published var colour = UIColor.white
+//
+//    var vendorID: Int?
+//
+//    var updating: Bool {
+//        vendorID != nil
+//    }
+//
+//    init() { }
+//
+//    init(_ vendor: Vendor) {
+//        name = vendor.name
+//        descriptor = vendor.descriptor!
+//        colour = vendor.colour
+//    }
+//}

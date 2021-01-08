@@ -11,10 +11,10 @@
 import Foundation
 import RealmSwift
 
-class Bill: Object {
-    
-    @objc dynamic var amount: Double = 0.0
-    @objc dynamic var vendor: Vendor? = nil
-    //@objc dynamic var frequency: Frequency? = nil
-
-}
+//class Bill: Object {
+//
+//    @objc dynamic var amount: Double = 0.0
+//    @objc dynamic var vendor: Vendor? = nil
+//    //@objc dynamic var frequency: Frequency? = nil
+//
+//}

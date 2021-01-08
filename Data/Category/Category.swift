@@ -18,7 +18,7 @@ class Category: Object, Identifiable {
     @objc dynamic var colour: UIColor = UIColor.white
     @objc dynamic var accountSelection = 0
     
-    let entries = RealmSwift.List<EntryDB>()
+    let entries = RealmSwift.List<Entry>()
 
     override static func ignoredProperties() -> [String] {
         return ["colour"]
